@@ -1,0 +1,34 @@
+.venv*
+__pycache__/
+*.pyc
+.DS_Store
+.env
+.idea/
+# Virtualenv for local development - don't commit
+.venv_pdfextract/
+
+# Allow PDFs in data/pdf_analysis but ignore others
+data/*.pdf
+!data/pdf_analysis/
+!data/pdf_analysis/*.pdf
+
+# Ignore unvalidated ground truth and extraction artifacts
+data/extracted/*_ground_truth_unvalidated.json
+data/extracted/*_ground_truth_unvalidated.*
+data/extracted/*.pdf.json
+
+# Temporary auto-mapper outputs and tmp files
+tmp/
+
+# Test artifacts
+pytest_validation_logs/
+pytest_results.txt
+
+# Logs and big artifacts
+logs/
+models/
+output/
+
+# Editor and OS files
+*~
+*.swp
