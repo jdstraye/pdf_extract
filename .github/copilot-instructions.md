@@ -87,3 +87,16 @@ Purpose: give an AI coding agent the minimal, high-value knowledge to be product
     c) Document integration tests clearly, explaining the purpose and expected outcomes.
     d) Starting integration tests are tests/test_pdf_extraction_ground_truth.py run with cli arguments for users whose ground truths are validated in data/extracted, as:
     - `pytest tests/test_pdf_extraction_ground_truth.py --user_id 582` because data/extracted/user_582_credit_summary_*ground_truth.json exists (validated grround truth file)
+
+## File and Chat preservation instructions:
+### Chat history preservation:
+- After every chat interaction, save the entire chat history in a markdown file under the `.github/ai-conversations/` directory.
+- Name the file using the format `conversation_{timestamp}.md`, where `{timestamp}` is  the current date and time in `YYYYMMDD-HHMMSS` format.
+- At the top of the markdown file, include a brief summary of the conversation, highlighting the main topics discussed and any key decisions made.
+- Ensure that the markdown file is well-formatted, with clear headings and sections for easy navigation.
+- Commit and push the markdown file to the repository to maintain a record of all AI interactions related to the project.
+### GIT commit preservation:
+- After every significant code change, create a GIT commit with a descriptive message summarizing the changes made.
+  - Use clear and concise language in the commit message to ensure that it accurately reflects the modifications.
+  - Use git forensics (status/diff/log) to do a targeted `git add/commit` rather than a blanket `git add .` to avoid including unrelated changes and create a clean commit history.
+- Push the commit to the remote repository to ensure that all changes are saved and tracked.
