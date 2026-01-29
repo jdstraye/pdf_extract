@@ -232,8 +232,9 @@ def extract_pdf_all_fields(doc_or_path: Any, page_limit: int = 2, include_spans:
                     for s in ln.get("spans", []):
                         st = s.get("text", "")
                         span = {"text": st}
-                        # convert numeric color to rgb/hex when available
-                        if include_spans and s.get("color") is not None:
+                        # convert numeric color to rgb/hex when available (populate so
+                        # factor color detection works even when include_spans=False)
+                        if s.get("color") is not None:
                             rgb = _intcolor_to_rgb(s.get("color"))
                             if rgb:
                                 span["rgb"] = rgb
@@ -714,7 +715,7 @@ def extract_pdf_all_fields(doc_or_path: Any, page_limit: int = 2, include_spans:
 
             # color detection from spans (if available) preferred over textual hint
             span_color = None
-            if include_spans and nxt.get('spans'):
+            if nxt.get('spans'):
                 s = nxt.get('spans')[0]
                 rgb = None
                 if s.get('rgb'):
