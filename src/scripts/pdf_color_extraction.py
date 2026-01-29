@@ -697,22 +697,30 @@ def extract_pdf_all_fields(doc_or_path: Any, page_limit: int = 2, include_spans:
         if 'inquir' in txt.lower():
             total = 0
             found_any = False
-            for nxt in all_lines[i + 1 : i + 20]:
-                nt = _line_text(nxt)
-                m = re.search(r"(\d+)\s+inq", nt, flags=re.IGNORECASE)
-                if m:
-                    n = int(m.group(1))
+            # quick check: next non-empty line may be a bare digit representing total
+            for nxt in all_lines[i + 1 : i + 6]:
+                nt = _line_text(nxt).strip()
+                if nt.isdigit():
+                    total = int(nt)
                     found_any = True
-                    # consider time windows expressed as months to be within 6 months
-                    if re.search(r"\b(\d+\s*-\s*\d+\s*mo|\d+\s*mo|last\s*\d+\s*mo|last\s*6\s*months)\b", nt, flags=re.IGNORECASE) or re.search(r"last\s*6\s*months", txt, flags=re.IGNORECASE):
-                        total += n
-                    else:
-                        # if 'Last' not explicit but the timeframe mentions months, count it
-                        if re.search(r"mo|month", nt, flags=re.IGNORECASE):
+                    break
+            if not found_any:
+                for nxt in all_lines[i + 1 : i + 20]:
+                    nt = _line_text(nxt)
+                    m = re.search(r"(\d+)\s+inq", nt, flags=re.IGNORECASE)
+                    if m:
+                        n = int(m.group(1))
+                        found_any = True
+                        # consider time windows expressed as months to be within 6 months
+                        if re.search(r"\b(\d+\s*-\s*\d+\s*mo|\d+\s*mo|last\s*\d+\s*mo|last\s*6\s*months)\b", nt, flags=re.IGNORECASE) or re.search(r"last\s*6\s*months", txt, flags=re.IGNORECASE):
                             total += n
                         else:
-                            # if no timeframe info, include as conservative default
-                            total += n
+                            # if 'Last' not explicit but the timeframe mentions months, count it
+                            if re.search(r"mo|month", nt, flags=re.IGNORECASE):
+                                total += n
+                            else:
+                                # if no timeframe info, include as conservative default
+                                total += n
             if found_any or re.search(r"last\s*6\s*months", txt, flags=re.IGNORECASE):
                 rec['inquiries_last_6_months'] = total
                 rec['inquiries_6mo'] = total
@@ -723,29 +731,55 @@ def extract_pdf_all_fields(doc_or_path: Any, page_limit: int = 2, include_spans:
         if 'late pay' in txt or 'lates +2yr' in txt or 'lates +2yr' in txt:
             l2 = 0
             lgt2 = 0
-            # First pass: look for explicit 'X ... in Y mo/yrs' patterns, prefer these
-            for nxt in all_lines[i + 1 : i + 20]:
-                nt = _line_text(nxt)
-                # lines like '2 Rev Lates in 4-6 mo' or '1 RE Late in 6-12 mo' or '40 RE Lates in 2-4 yrs'
-                m2 = re.search(r'(\d+)\s+(?:\w+\s+)*late[s]?\s+.*\bin\b\s*(\d+)(?:\s*-\s*(\d+))?\s*(mo|yr|yrs)?', nt, flags=re.IGNORECASE)
-                if m2:
-                    num = int(m2.group(1))
-                    unit = (m2.group(4) or '').lower()
-                    # if the timeframe mentions months, classify as last_2_years
-                    if 'mo' in unit or re.search(r'\bmo\b', nt, flags=re.IGNORECASE):
-                        l2 += num
-                    else:
-                        # treat 'yrs' or year ranges as >2yrs bucket
-                        lgt2 += num
-                    continue
-                # fallback: capture 'Lates +2yr: X/...' only if we have not already captured year-based lates
-                m = re.search(r'lates\s*\+2yr\s*:\s*(\d+)', nt, flags=re.IGNORECASE)
-                if m and lgt2 == 0:
-                    lgt2 += int(m.group(1))
-                    continue
+            # quick check: look for an immediate 'X / Y' summary line after the heading
+            summary_found = False
+            if i + 1 < len(all_lines):
+                nxt0 = _line_text(all_lines[i + 1]).strip()
+                m_xy = re.search(r"^(\d+)\s*/\s*(\d+)$", nxt0)
+                if m_xy:
+                    l2 = int(m_xy.group(1))
+                    lgt2 = int(m_xy.group(2))
+                    summary_found = True
+            # scan following lines for specific patterns and aggregate (only when no summary present for this heading)
+            if not summary_found:
+                for nxt in all_lines[i + 1 : i + 40]:
+                    nt = _line_text(nxt)
+                    # explicit patterns like '2 Rev Lates in 4-6 mo' or '1 RE Late in 6-12 mo' or '40 RE Lates in 2-4 yrs'
+                    m2 = re.search(r'(\d+)\s+(?:\w+\s+)*late[s]?\s+.*\bin\b\s*(\d+)(?:\s*-\s*(\d+))?\s*(mo|yr|yrs)?', nt, flags=re.IGNORECASE)
+                    if m2:
+                        num = int(m2.group(1))
+                        unit = (m2.group(4) or '').lower()
+                        if 'mo' in unit or re.search(r'\bmo\b', nt, flags=re.IGNORECASE):
+                            l2 += num
+                        else:
+                            lgt2 += num
+                        continue
+                    # capture 'Lates +2yr: X' and sum all occurrences
+                    m_all = re.findall(r'lates\s*\+2yr\s*:\s*([0-9]+)', nt, flags=re.IGNORECASE)
+                    if m_all:
+                        for s in m_all:
+                            try:
+                                lgt2 += int(s)
+                            except Exception:
+                                pass
+                        continue
             if l2 or lgt2:
-                rec['late_pays'] = {'last_2_years': l2, 'last_over_2_years': lgt2}
-                rec['late_pays_gt2yr'] = lgt2
+                # if a summary was found, prefer it and mark that we've seen a summary so later headings do not override
+                if summary_found:
+                    rec['late_pays'] = {'last_2_years': l2 if l2 else None, 'last_over_2_years': lgt2 if lgt2 else None}
+                    rec['late_pays_gt2yr'] = lgt2
+                    rec['_late_pays_summary_seen'] = True
+                else:
+                    # skip accumulation if an authoritative summary was already seen elsewhere
+                    if rec.get('_late_pays_summary_seen'):
+                        continue
+                    prev = rec.get('late_pays') or {}
+                    prev_l2 = prev.get('last_2_years') or 0
+                    prev_lgt2 = prev.get('last_over_2_years') or 0
+                    new_l2 = prev_l2 + (l2 or 0)
+                    new_lgt2 = prev_lgt2 + (lgt2 or 0)
+                    rec['late_pays'] = {'last_2_years': new_l2 if new_l2 else None, 'last_over_2_years': new_lgt2 if new_lgt2 else None}
+                    rec['late_pays_gt2yr'] = new_lgt2
 
 
     # Credit card totals: normalize any 'amounts' captured into structured fields when possible
@@ -844,6 +878,9 @@ def extract_pdf_all_fields(doc_or_path: Any, page_limit: int = 2, include_spans:
         rec["candidate_scores"] = []
         for cf in rec.get("credit_factors", []):
             rec["candidate_scores"].append({"factor": cf.get("factor"), "score": compute_candidate_score(cf)})
+
+    # cleanup internal markers used during parsing
+    rec.pop('_late_pays_summary_seen', None)
 
     return rec
 
