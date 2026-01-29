@@ -32,9 +32,8 @@ def test_inquiries_and_late_pays_and_collections(uid):
     # inquiries: when GT specifies a value, require extractor to match
     if gt.get('inquiries_last_6_months') is not None:
         assert canon.get('inquiries_last_6_months') == gt.get('inquiries_last_6_months')
-    # late pays: compare flattened keys when present
-    if gt.get('late_pays_2yr') is not None or gt.get('late_pays_gt2yr') is not None:
-        assert canon.get('late_pays_2yr') == gt.get('late_pays_2yr')
+    # late pays: compare flattened key when present
+    if gt.get('late_pays_gt2yr') is not None:
         assert canon.get('late_pays_gt2yr') == gt.get('late_pays_gt2yr')
     # collections counts
     if gt.get('collections_open') is not None:

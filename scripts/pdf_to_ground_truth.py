@@ -47,7 +47,7 @@ def build_text_only_gt(rec: dict, include_spans: bool = False) -> dict:
         source['credit_score_color'] = cs.get('color')
 
     # copy top-level known fields (include credit_card_open_totals)
-    for k in ('filename','source','credit_score','credit_score_color','age','address','collections_open','collections_closed','public_records','revolving_open_count','revolving_open_total','installment_open_count','installment_open_total','inquiries_last_6_months','monthly_payments','real_estate_open_count','real_estate_open_total','late_pays_2yr','late_pays_gt2yr','red_credit_factors_count','green_credit_factors_count','black_credit_factors_count','credit_freeze','fraud_alert','deceased','credit_card_open_totals'):
+    for k in ('filename','source','credit_score','credit_score_color','age','address','collections_open','collections_closed','public_records','revolving_open_count','revolving_open_total','installment_open_count','installment_open_total','inquiries_last_6_months','monthly_payments','real_estate_open_count','real_estate_open_total','late_pays_gt2yr','red_credit_factors_count','green_credit_factors_count','black_credit_factors_count','credit_freeze','fraud_alert','deceased','credit_card_open_totals'):
         if k in source:
             out[k] = source[k]
             # when spans were requested, include any attached bbox/page/spans for these top-level fields

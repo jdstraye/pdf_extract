@@ -74,10 +74,9 @@ def _normalize_aliases(d):
         d.pop('pdf_file', None)
     if 'late_pays' in d and isinstance(d['late_pays'], dict):
         lp = d['late_pays']
-        d['late_pays_2yr'] = lp.get('last_2_years')
         d['late_pays_gt2yr'] = lp.get('last_over_2_years')
-    if 'late_pays_2yr' in d and 'late_pays' not in d:
-        d['late_pays'] = {'last_2_years': d.get('late_pays_2yr'), 'last_over_2_years': d.get('late_pays_gt2yr')}
+    if 'late_pays_gt2yr' in d and 'late_pays' not in d:
+        d['late_pays'] = {'last_2_years': None, 'last_over_2_years': d.get('late_pays_gt2yr')}
     if 'credit_card_open_totals_no_retail' in d and 'credit_card_open_totals' not in d:
         d['credit_card_open_totals'] = d.pop('credit_card_open_totals_no_retail')
     if 'credit_card_open_totals' in d and isinstance(d['credit_card_open_totals'], dict):

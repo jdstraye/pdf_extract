@@ -691,6 +691,62 @@ def extract_pdf_all_fields(doc_or_path: Any, page_limit: int = 2, include_spans:
                         found = True
             # leave as-is if not found (do not set to 0 implicitly)
 
+    # Inquiries: parse counts near the 'Inquires' heading into inquiries_last_6_months (and alias inquiries_6mo)
+    for i, ln in enumerate(all_lines):
+        txt = _line_text(ln)
+        if 'inquir' in txt.lower():
+            total = 0
+            found_any = False
+            for nxt in all_lines[i + 1 : i + 20]:
+                nt = _line_text(nxt)
+                m = re.search(r"(\d+)\s+inq", nt, flags=re.IGNORECASE)
+                if m:
+                    n = int(m.group(1))
+                    found_any = True
+                    # consider time windows expressed as months to be within 6 months
+                    if re.search(r"\b(\d+\s*-\s*\d+\s*mo|\d+\s*mo|last\s*\d+\s*mo|last\s*6\s*months)\b", nt, flags=re.IGNORECASE) or re.search(r"last\s*6\s*months", txt, flags=re.IGNORECASE):
+                        total += n
+                    else:
+                        # if 'Last' not explicit but the timeframe mentions months, count it
+                        if re.search(r"mo|month", nt, flags=re.IGNORECASE):
+                            total += n
+                        else:
+                            # if no timeframe info, include as conservative default
+                            total += n
+            if found_any or re.search(r"last\s*6\s*months", txt, flags=re.IGNORECASE):
+                rec['inquiries_last_6_months'] = total
+                rec['inquiries_6mo'] = total
+
+    # Late pays: parse lines near 'Late Pays' to compute last_2_years and last_over_2_years
+    for i, ln in enumerate(all_lines):
+        txt = _line_text(ln).lower()
+        if 'late pay' in txt or 'lates +2yr' in txt or 'lates +2yr' in txt:
+            l2 = 0
+            lgt2 = 0
+            # First pass: look for explicit 'X ... in Y mo/yrs' patterns, prefer these
+            for nxt in all_lines[i + 1 : i + 20]:
+                nt = _line_text(nxt)
+                # lines like '2 Rev Lates in 4-6 mo' or '1 RE Late in 6-12 mo' or '40 RE Lates in 2-4 yrs'
+                m2 = re.search(r'(\d+)\s+(?:\w+\s+)*late[s]?\s+.*\bin\b\s*(\d+)(?:\s*-\s*(\d+))?\s*(mo|yr|yrs)?', nt, flags=re.IGNORECASE)
+                if m2:
+                    num = int(m2.group(1))
+                    unit = (m2.group(4) or '').lower()
+                    # if the timeframe mentions months, classify as last_2_years
+                    if 'mo' in unit or re.search(r'\bmo\b', nt, flags=re.IGNORECASE):
+                        l2 += num
+                    else:
+                        # treat 'yrs' or year ranges as >2yrs bucket
+                        lgt2 += num
+                    continue
+                # fallback: capture 'Lates +2yr: X/...' only if we have not already captured year-based lates
+                m = re.search(r'lates\s*\+2yr\s*:\s*(\d+)', nt, flags=re.IGNORECASE)
+                if m and lgt2 == 0:
+                    lgt2 += int(m.group(1))
+                    continue
+            if l2 or lgt2:
+                rec['late_pays'] = {'last_2_years': l2, 'last_over_2_years': lgt2}
+                rec['late_pays_gt2yr'] = lgt2
+
 
     # Credit card totals: normalize any 'amounts' captured into structured fields when possible
     if 'credit_card_open_totals' in rec and isinstance(rec['credit_card_open_totals'], dict):
