@@ -601,16 +601,38 @@ def extract_pdf_all_fields(doc_or_path: Any, page_limit: int = 2, include_spans:
         txt = _line_text(ln).lower()
         for key, outkey in category_map:
             if key in txt:
+                # handle explicit 'No ... Accounts' cases
+                if re.search(r'no .*accounts', txt):
+                    rec[outkey] = {'count': 0, 'amount': 0}
+                    if outkey == 'revolving_accounts_open':
+                        rec['revolving_open_count'] = 0
+                        rec['revolving_open_total'] = 0
+                    elif outkey == 'installment_accounts_open':
+                        rec['installment_open_count'] = 0
+                        rec['installment_open_total'] = 0
+                    elif outkey == 'real_estate_open':
+                        rec['real_estate_open_count'] = 0
+                        rec['real_estate_open_total'] = 0
+                    elif outkey == 'line_of_credit_accounts_open':
+                        rec['line_of_credit_accounts_open_count'] = 0
+                        rec['line_of_credit_accounts_open_total'] = 0
+                    elif outkey == 'miscellaneous_accounts_open':
+                        rec['miscellaneous_accounts_open_count'] = 0
+                        rec['miscellaneous_accounts_open_total'] = 0
+                    break
                 # try parse a count/amount pair in the same line first
                 m_pair = re.search(r'(\d+\s*/\s*\$?\s*[0-9,]+)', txt)
                 if m_pair:
                     count, amt = parse_count_amount_pair(m_pair.group(1))
                 else:
                     count, amt = None, None
-                # if not found, inspect the next few lines for a pair pattern
+                # if not found, inspect the next few lines for a pair pattern or explicit 'No ...'
                 if count is None and amt is None:
-                    for nxt in all_lines[i + 1 : i + 5]:
+                    for nxt in all_lines[i + 1 : i + 8]:
                         nt = _line_text(nxt)
+                        if re.search(r'no .*accounts', nt.lower()):
+                            count, amt = 0, 0
+                            break
                         m_pair = re.search(r'(\d+\s*/\s*\$?\s*[0-9,]+)', nt)
                         if m_pair:
                             count, amt = parse_count_amount_pair(m_pair.group(1))
@@ -639,14 +661,36 @@ def extract_pdf_all_fields(doc_or_path: Any, page_limit: int = 2, include_spans:
     for i, ln in enumerate(all_lines):
         t = _line_text(ln).lower()
         if 'collections' in t:
-            for nxt in all_lines[i + 1 : i + 4]:
+            found = False
+            # look for inline 'n / m'
+            for nxt in all_lines[i + 1 : i + 6]:
                 cc_text = _line_text(nxt)
                 a, b = parse_count_count_pair(cc_text)
                 if a is not None or b is not None:
                     rec['collections'] = {'open': a, 'closed': b}
                     rec['collections_open'] = a
                     rec['collections_closed'] = b
+                    found = True
                     break
+            if not found:
+                # fallback: check next two non-empty lines as separate numbers
+                vals = []
+                for nxt in all_lines[i + 1 : i + 6]:
+                    nt = _line_text(nxt).strip()
+                    if nt and nt.isdigit():
+                        vals.append(int(nt))
+                    if len(vals) >= 2:
+                        break
+                if vals:
+                    a = vals[0] if len(vals) >= 1 else None
+                    b = vals[1] if len(vals) >= 2 else None
+                    if a is not None or b is not None:
+                        rec['collections'] = {'open': a, 'closed': b}
+                        rec['collections_open'] = a
+                        rec['collections_closed'] = b
+                        found = True
+            # leave as-is if not found (do not set to 0 implicitly)
+
 
     # Credit card totals: normalize any 'amounts' captured into structured fields when possible
     if 'credit_card_open_totals' in rec and isinstance(rec['credit_card_open_totals'], dict):
