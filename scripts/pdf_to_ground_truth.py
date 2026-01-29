@@ -39,8 +39,15 @@ def build_text_only_gt(rec: dict, include_spans: bool = False) -> dict:
     else:
         source = rec
     out = {}
-    # copy top-level known fields
-    for k in ('filename','source','credit_score','credit_score_color','age','address','collections_open','collections_closed','public_records','revolving_open_count','revolving_open_total','installment_open_count','installment_open_total','inquiries_last_6_months','monthly_payments','real_estate_open_count','real_estate_open_total','late_pays_2yr','late_pays_gt2yr','red_credit_factors_count','green_credit_factors_count','black_credit_factors_count','credit_freeze','fraud_alert','deceased'):
+    # Normalize credit_score nested dict if present
+    if isinstance(source.get('credit_score'), dict):
+        cs = source.get('credit_score', {})
+        source = dict(source)
+        source['credit_score'] = cs.get('value')
+        source['credit_score_color'] = cs.get('color')
+
+    # copy top-level known fields (include credit_card_open_totals)
+    for k in ('filename','source','credit_score','credit_score_color','age','address','collections_open','collections_closed','public_records','revolving_open_count','revolving_open_total','installment_open_count','installment_open_total','inquiries_last_6_months','monthly_payments','real_estate_open_count','real_estate_open_total','late_pays_2yr','late_pays_gt2yr','red_credit_factors_count','green_credit_factors_count','black_credit_factors_count','credit_freeze','fraud_alert','deceased','credit_card_open_totals'):
         if k in source:
             out[k] = source[k]
             # when spans were requested, include any attached bbox/page/spans for these top-level fields
@@ -134,9 +141,11 @@ def attach_spans_to_gt(gt_json_path: Path, pdf_path: Path) -> Path:
         def _find_by_text(t):
             if not t:
                 return None
+            t_low = t.strip().lower()
             for ln in lines:
-                txt = _line_text(ln)
-                if txt == t or t in txt or txt in t:
+                txt = _line_text(ln).strip()
+                txt_low = txt.lower()
+                if txt == t or t in txt or txt in t or txt_low == t_low or t_low in txt_low or txt_low in t_low:
                     return ln
             return None
 
@@ -162,9 +171,40 @@ def attach_spans_to_gt(gt_json_path: Path, pdf_path: Path) -> Path:
                 gt['monthly_payments_page'] = found.get('page')
                 gt['monthly_payments_spans'] = found.get('spans')
 
-        # Note: removed heuristic-based heading and proximity matching for credit_freeze, fraud_alert, deceased, and inquiries
-        # to comply with first-principles extraction requirements. These mappings should be derived from explicit
-        # exact matches or upstream extractor span attribution instead of phrase lists.
+        # Map explicit headings (credit_freeze, fraud_alert, deceased, inquiries) by proximity when possible
+        for heading, key, value_type in (
+            ("credit freeze", "credit_freeze", "bool"),
+            ("fraud alert", "fraud_alert", "bool"),
+            ("deceased", "deceased", "bool"),
+            ("inquires", "inquiries_last_6_months", "int"),
+            ("inquiries", "inquiries_last_6_months", "int"),
+        ):
+            ln_h = _find_by_text(heading)
+            if not ln_h:
+                continue
+            try:
+                idx = lines.index(ln_h)
+            except ValueError:
+                continue
+            for nxt in lines[idx + 1 : idx + 4]:
+                txt = _line_text(nxt).strip().lower()
+                if value_type == "bool":
+                    if txt in ("yes", "no", "y", "n"):
+                        gt[key] = 1 if txt.startswith("y") else 0
+                        gt[f"{key}_bbox"] = nxt.get("bbox")
+                        gt[f"{key}_page"] = nxt.get("page")
+                        gt[f"{key}_spans"] = nxt.get("spans")
+                        break
+                elif value_type == "int":
+                    if txt.isdigit():
+                        gt["inquiries_last_6_months"] = int(txt)
+                        gt["inquiries_last_6_months_bbox"] = nxt.get("bbox")
+                        gt["inquiries_last_6_months_page"] = nxt.get("page")
+                        gt["inquiries_last_6_months_spans"] = nxt.get("spans")
+                        break
+
+        # Note: previously we removed some phrase-based heuristics; the above checks are conservative and
+        # only map explicit, near-by span values rather than broad phrase lists.
 
     except Exception:
         # best-effort: do not raise on mapping failures
