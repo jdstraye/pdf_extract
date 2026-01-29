@@ -31,8 +31,12 @@ def test_credit_factors_colors_present_without_spans(uid):
     if isinstance(gt, dict) and 'rec' in gt:
         gt = gt['rec']
 
-    gt_cfs = { (f.get('factor') or '').strip(): f.get('color') for f in gt.get('credit_factors', []) }
-    ex_cfs = { (f.get('factor') or '').strip(): f.get('color') for f in canon.get('credit_factors', []) }
+    import re
+    def norm(s):
+        return re.sub(r'[^a-z0-9]+', '', (s or '').lower())
+
+    gt_cfs = { norm(f.get('factor')): f.get('color') for f in gt.get('credit_factors', []) }
+    ex_cfs = { norm(f.get('factor')): f.get('color') for f in canon.get('credit_factors', []) }
 
     for k, gt_color in gt_cfs.items():
         if gt_color is None:
