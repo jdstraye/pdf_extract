@@ -1,0 +1,301 @@
+{
+  "filename": "user_1514_credit_summary_2025-09-01_145557.pdf",
+  "source": "data/pdf_analysis/user_1514_credit_summary_2025-09-01_145557.pdf",
+  "credit_score": 512,
+  "credit_score_bbox": [
+    53,
+    71,
+    77,
+    90
+  ],
+  "credit_score_page": 0,
+  "credit_score_spans": [
+    {
+      "text": "512",
+      "rgb": [
+        173,
+        48,
+        46
+      ],
+      "hex": "#ad302e"
+    }
+  ],
+  "credit_score_color": "red",
+  "age": 44,
+  "address": [
+    "Po Box 1117, Cairo, NY 12413",
+    "63 Mill Hill Rd, Woodstock, NY 12498"
+  ],
+  "collections_open": 20,
+  "collections_closed": 1,
+  "revolving_open_count": 16,
+  "revolving_open_total": 24888,
+  "installment_open_count": 10,
+  "installment_open_total": 190767,
+  "monthly_payments": 2501,
+  "monthly_payments_bbox": [
+    167,
+    71,
+    234,
+    90
+  ],
+  "real_estate_open_count": 1,
+  "real_estate_open_total": 121406,
+  "red_credit_factors_count": 13,
+  "green_credit_factors_count": 17,
+  "black_credit_factors_count": 4,
+  "credit_freeze": 0,
+  "credit_freeze_bbox": [
+    53,
+    71,
+    77,
+    90
+  ],
+  "credit_freeze_page": 0,
+  "credit_freeze_spans": [
+    {
+      "text": "512",
+      "rgb": [
+        173,
+        48,
+        46
+      ],
+      "hex": "#ad302e"
+    }
+  ],
+  "fraud_alert": 0,
+  "fraud_alert_bbox": [
+    53,
+    71,
+    77,
+    90
+  ],
+  "fraud_alert_page": 0,
+  "fraud_alert_spans": [
+    {
+      "text": "512",
+      "rgb": [
+        173,
+        48,
+        46
+      ],
+      "hex": "#ad302e"
+    }
+  ],
+  "deceased": 0,
+  "deceased_bbox": [
+    53,
+    71,
+    77,
+    90
+  ],
+  "deceased_page": 0,
+  "deceased_spans": [
+    {
+      "text": "512",
+      "rgb": [
+        173,
+        48,
+        46
+      ],
+      "hex": "#ad302e"
+    }
+  ],
+  "credit_card_open_totals": {
+    "balance": 24888,
+    "Percent": 134,
+    "limit": 18551,
+    "Payment": 159
+  },
+  "credit_card_open_totals_bbox": [
+    335,
+    503,
+    368,
+    515
+  ],
+  "credit_card_open_totals_page": 4,
+  "credit_card_open_totals_spans": [
+    {
+      "text": "$24,888",
+      "rgb": [
+        220,
+        53,
+        69
+      ],
+      "hex": "#dc3545"
+    }
+  ],
+  "credit_factors": [
+    {
+      "factor": "3 Charged Off Accts",
+      "hex": "#428f4e",
+      "color": "green"
+    },
+    {
+      "factor": "4 Unpaid Collection(s)",
+      "hex": "#428f4e",
+      "color": "green"
+    },
+    {
+      "factor": "$42683 Unpaid Collection(s)",
+      "hex": "#428f4e",
+      "color": "green"
+    },
+    {
+      "factor": "3 RE Lates in 4-6 mo",
+      "hex": "#428f4e",
+      "color": "green"
+    },
+    {
+      "factor": "23 RE Lates in 6-12 mo",
+      "hex": "#428f4e",
+      "color": "green"
+    },
+    {
+      "factor": "5 Rev Lates in 4-6 mo",
+      "hex": "#428f4e",
+      "color": "green"
+    },
+    {
+      "factor": "6 Rev Lates in 6-12 mo",
+      "hex": "#428f4e",
+      "color": "green"
+    },
+    {
+      "factor": "Current Lates (CREDIT ONE BANK)",
+      "hex": "#428f4e",
+      "color": "green"
+    },
+    {
+      "factor": "5 Rev Lates in 12-24 mo",
+      "hex": "#428f4e",
+      "color": "green"
+    },
+    {
+      "factor": "14 Over Limit Accnt",
+      "hex": "#428f4e",
+      "color": "green"
+    },
+    {
+      "factor": "Total Rev Usage > 90%",
+      "hex": "#428f4e",
+      "color": "green"
+    },
+    {
+      "factor": "Past Due Not Late",
+      "hex": "#428f4e",
+      "color": "green"
+    },
+    {
+      "factor": "Pay $18848 so Accts < 40%",
+      "hex": "#dc3545",
+      "color": "red"
+    },
+    {
+      "factor": "15 Chrgd Off Rev Accts",
+      "hex": "#dc3545",
+      "color": "red"
+    },
+    {
+      "factor": "1 Rev Late in 0-3 mo",
+      "hex": "#dc3545",
+      "color": "red"
+    },
+    {
+      "factor": "6 RE Lates in 12-24 mo",
+      "hex": "#dc3545",
+      "color": "red"
+    },
+    {
+      "factor": "2 Inq Last 4 Mo",
+      "hex": "#dc3545",
+      "color": "red"
+    },
+    {
+      "factor": "1 Chrgd Off Rev Acct",
+      "hex": "#dc3545",
+      "color": "red"
+    },
+    {
+      "factor": "5 Rev Lates in 2-4 yrs",
+      "hex": "#dc3545",
+      "color": "red"
+    },
+    {
+      "factor": "Light Open Rev Depth",
+      "hex": "#dc3545",
+      "color": "red"
+    },
+    {
+      "factor": "$1868 Unpaid Collections",
+      "hex": "#dc3545",
+      "color": "red"
+    },
+    {
+      "factor": "No 5k+ Lines",
+      "hex": "#dc3545",
+      "color": "red"
+    },
+    {
+      "factor": "2 Inqs last 2 Months",
+      "hex": "#dc3545",
+      "color": "red"
+    },
+    {
+      "factor": "Less than 5 yrs",
+      "hex": "#dc3545",
+      "color": "red"
+    },
+    {
+      "factor": "2 Total Inq 0-2 Mo",
+      "hex": "#dc3545",
+      "color": "red"
+    },
+    {
+      "factor": "3+ Closed Rev Accnts",
+      "hex": "#428f4e",
+      "color": "green"
+    },
+    {
+      "factor": "Good Closed Rev Depth",
+      "hex": "#428f4e",
+      "color": "green"
+    },
+    {
+      "factor": "Paid Off 100k+ RE/RE",
+      "hex": "#428f4e",
+      "color": "green"
+    },
+    {
+      "factor": "Seasoned Closed Accounts",
+      "hex": "#428f4e",
+      "color": "green"
+    },
+    {
+      "factor": "Closed Accnts Over 5k",
+      "hex": "#428f4e",
+      "color": "green"
+    },
+    {
+      "factor": "8+ Rev Accnts with Balances",
+      "hex": "#212529",
+      "color": "black"
+    },
+    {
+      "factor": "No Rev Acct Open 10K 2yr",
+      "hex": "#212529",
+      "color": "black"
+    },
+    {
+      "factor": "1 Inqs Fall Off In 30 Days",
+      "hex": "#212529",
+      "color": "black"
+    },
+    {
+      "factor": "1 Total Inqs 5-6 mo",
+      "hex": "#212529",
+      "color": "black"
+    }
+  ],
+  "credit_card_open_totals_color": "red"
+}

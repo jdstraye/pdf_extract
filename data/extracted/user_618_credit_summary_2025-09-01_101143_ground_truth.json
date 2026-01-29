@@ -1,0 +1,146 @@
+{
+  "filename": "user_618_credit_summary_2025-09-01_101143.pdf",
+  "source": "data/pdf_analysis/user_618_credit_summary_2025-09-01_101143.pdf",
+  "credit_score": 630,
+  "credit_score_bbox": [
+    53,
+    71,
+    77,
+    90
+  ],
+  "credit_score_page": 0,
+  "credit_score_spans": [
+    {
+      "text": "630",
+      "rgb": [
+        221,
+        84,
+        53
+      ],
+      "hex": "#dd5435"
+    }
+  ],
+  "credit_score_color": "red",
+  "age": 20,
+  "address": [
+    "89 Rosas Loop, Roma, TX 78584",
+    "2 San Julian St, Roma, TX 78584"
+  ],
+  "collections_open": 0,
+  "collections_closed": 0,
+  "revolving_open_count": 0,
+  "revolving_open_total": 0,
+  "installment_open_count": 0,
+  "installment_open_total": 0,
+  "monthly_payments": 0,
+  "monthly_payments_bbox": [
+    167,
+    71,
+    207,
+    90
+  ],
+  "real_estate_open_count": 0,
+  "real_estate_open_total": 0,
+  "red_credit_factors_count": 6,
+  "green_credit_factors_count": 0,
+  "black_credit_factors_count": 2,
+  "credit_freeze": 0,
+  "credit_freeze_bbox": [
+    53,
+    71,
+    77,
+    90
+  ],
+  "credit_freeze_page": 0,
+  "credit_freeze_spans": [
+    {
+      "text": "630",
+      "rgb": [
+        221,
+        84,
+        53
+      ],
+      "hex": "#dd5435"
+    }
+  ],
+  "fraud_alert": 0,
+  "fraud_alert_bbox": [
+    53,
+    71,
+    77,
+    90
+  ],
+  "fraud_alert_page": 0,
+  "fraud_alert_spans": [
+    {
+      "text": "630",
+      "rgb": [
+        221,
+        84,
+        53
+      ],
+      "hex": "#dd5435"
+    }
+  ],
+  "deceased": 0,
+  "deceased_bbox": [
+    53,
+    71,
+    77,
+    90
+  ],
+  "deceased_page": 0,
+  "deceased_spans": [
+    {
+      "text": "630",
+      "rgb": [
+        221,
+        84,
+        53
+      ],
+      "hex": "#dd5435"
+    }
+  ],
+  "credit_factors": [
+    {
+      "factor": "No Open 1k+ Lines",
+      "hex": "#dc3545",
+      "color": "red"
+    },
+    {
+      "factor": "No Open Rev Credit Lines",
+      "hex": "#dc3545",
+      "color": "red"
+    },
+    {
+      "factor": "No Revolving Accounts",
+      "hex": "#dc3545",
+      "color": "red"
+    },
+    {
+      "factor": "Avg Age Open",
+      "hex": "#dc3545",
+      "color": "red"
+    },
+    {
+      "factor": "No Closed Rev Depth",
+      "hex": "#dc3545",
+      "color": "red"
+    },
+    {
+      "factor": "Accounts Too New",
+      "hex": "#dc3545",
+      "color": "red"
+    },
+    {
+      "factor": "No Open Mortgage",
+      "hex": "#212529",
+      "color": "black"
+    },
+    {
+      "factor": "No Rev Acct Open 10K 2yr",
+      "hex": "#212529",
+      "color": "black"
+    },
+  ]
+}

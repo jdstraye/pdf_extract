@@ -1,0 +1,264 @@
+{
+  "filename": "user_1254_credit_summary_2025-09-01_095528.pdf",
+  "source": "data/pdf_analysis/user_1254_credit_summary_2025-09-01_095528.pdf",
+  "credit_score": 516,
+  "credit_score_bbox": [
+    53,
+    71,
+    77,
+    90
+  ],
+  "credit_score_page": 0,
+  "credit_score_spans": [
+    {
+      "text": "516",
+      "rgb": [
+        173,
+        48,
+        46
+      ],
+      "hex": "#ad302e"
+    }
+  ],
+  "credit_score_color": "red",
+  "age": 33,
+  "address": [
+    "904 Beech St, Middletown, OH 45042"
+  ],
+  "collections_open": 3,
+  "collections_closed": 2,
+  "revolving_open_count": 2,
+  "revolving_open_total": 1187,
+  "installment_open_count": 10,
+  "installment_open_total": 78707,
+  "monthly_payments": 3735,
+  "monthly_payments_bbox": [
+    167,
+    71,
+    234,
+    90
+  ],
+  "real_estate_open_count": 0,
+  "real_estate_open_total": 0,
+  "red_credit_factors_count": 12,
+  "green_credit_factors_count": 10,
+  "black_credit_factors_count": 5,
+  "credit_freeze": 0,
+  "credit_freeze_bbox": [
+    53,
+    71,
+    77,
+    90
+  ],
+  "credit_freeze_page": 0,
+  "credit_freeze_spans": [
+    {
+      "text": "516",
+      "rgb": [
+        173,
+        48,
+        46
+      ],
+      "hex": "#ad302e"
+    }
+  ],
+  "fraud_alert": 0,
+  "fraud_alert_bbox": [
+    53,
+    71,
+    77,
+    90
+  ],
+  "fraud_alert_page": 0,
+  "fraud_alert_spans": [
+    {
+      "text": "516",
+      "rgb": [
+        173,
+        48,
+        46
+      ],
+      "hex": "#ad302e"
+    }
+  ],
+  "deceased": 0,
+  "deceased_bbox": [
+    53,
+    71,
+    77,
+    90
+  ],
+  "deceased_page": 0,
+  "deceased_spans": [
+    {
+      "text": "516",
+      "rgb": [
+        173,
+        48,
+        46
+      ],
+      "hex": "#ad302e"
+    }
+  ],
+  "credit_card_open_totals": {
+    "balance": 1418,
+    "limit": 5259,
+    "Payment": 76
+  },
+  "credit_card_open_totals_bbox": [
+    340,
+    253,
+    368,
+    266
+  ],
+  "credit_card_open_totals_page": 3,
+  "credit_card_open_totals_spans": [
+    {
+      "text": "$1,418",
+      "rgb": [
+        220,
+        53,
+        69
+      ],
+      "hex": "#dc3545"
+    }
+  ],
+  "credit_factors": [
+    {
+      "factor": "1 Unpaid Collection",
+      "hex": "#428f4e",
+      "color": "green"
+    },
+    {
+      "factor": "$1159 Unpaid Collection(s)",
+      "hex": "#428f4e",
+      "color": "green"
+    },
+    {
+      "factor": "2 RE Lates in 0-3 mo",
+      "hex": "#428f4e",
+      "color": "green"
+    },
+    {
+      "factor": "3 RE Lates in 4-6 mo",
+      "hex": "#428f4e",
+      "color": "green"
+    },
+    {
+      "factor": "7 RE Lates in 6-12 mo",
+      "hex": "#428f4e",
+      "color": "green"
+    },
+    {
+      "factor": "3 Over Limit Accnt",
+      "hex": "#428f4e",
+      "color": "green"
+    },
+    {
+      "factor": "Current Lates (CREDIT ACCEPTANCE CO)",
+      "hex": "#428f4e",
+      "color": "green"
+    },
+    {
+      "factor": "Past Due Not Late",
+      "hex": "#428f4e",
+      "color": "green"
+    },
+    {
+      "factor": "4 Chrgd Off Rev Accts",
+      "hex": "#dc3545",
+      "color": "red"
+    },
+    {
+      "factor": "1 Rev Late in 0-3 mo",
+      "hex": "#dc3545",
+      "color": "red"
+    },
+    {
+      "factor": "3 Inq Last 4 Mo",
+      "hex": "#dc3545",
+      "color": "red"
+    },
+    {
+      "factor": "1 Charged Off Accts",
+      "hex": "#dc3545",
+      "color": "red"
+    },
+    {
+      "factor": "1 Rev Late in 6-12 mo",
+      "hex": "#dc3545",
+      "color": "red"
+    },
+    {
+      "factor": "Avg Age Open",
+      "hex": "#dc3545",
+      "color": "red"
+    },
+    {
+      "factor": "No 5k+ Lines",
+      "hex": "#dc3545",
+      "color": "red"
+    },
+    {
+      "factor": "No Closed Rev Depth",
+      "hex": "#dc3545",
+      "color": "red"
+    },
+    {
+      "factor": "3 RE Lates in 2-4 yrs",
+      "hex": "#dc3545",
+      "color": "red"
+    },
+    {
+      "factor": "1 Rev Late in 2-4 yrs",
+      "hex": "#dc3545",
+      "color": "red"
+    },
+    {
+      "factor": "2 Inqs last 2 Months",
+      "hex": "#dc3545",
+      "color": "red"
+    },
+    {
+      "factor": "2 Total Inq 0-2 Mo",
+      "hex": "#dc3545",
+      "color": "red"
+    },
+    {
+      "factor": "Ok Open Rev Depth",
+      "hex": "#428f4e",
+      "color": "green"
+    },
+    {
+      "factor": "3+ Closed Rev Accnts",
+      "hex": "#428f4e",
+      "color": "green"
+    },
+    {
+      "factor": "$440 Unpaid 1 Collection",
+      "hex": "#212529",
+      "color": "black"
+    },
+    {
+      "factor": "No Open Mortgage",
+      "hex": "#212529",
+      "color": "black"
+    },
+    {
+      "factor": "No Rev Acct Open 10K 2yr",
+      "hex": "#212529",
+      "color": "black"
+    },
+    {
+      "factor": "1 Inq last 2-4 Mo",
+      "hex": "#212529",
+      "color": "black"
+    },
+    {
+      "factor": "1 Total Inq 2-4 Mo",
+      "hex": "#212529",
+      "color": "black"
+    }
+  ],
+  "credit_card_open_totals_color": "red",
+}
