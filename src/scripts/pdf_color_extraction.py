@@ -603,22 +603,24 @@ def extract_pdf_all_fields(doc_or_path: Any, page_limit: int = 2, include_spans:
             if key in txt:
                 # handle explicit 'No ... Accounts' cases
                 if re.search(r'no .*accounts', txt):
-                    rec[outkey] = {'count': 0, 'amount': 0}
-                    if outkey == 'revolving_accounts_open':
-                        rec['revolving_open_count'] = 0
-                        rec['revolving_open_total'] = 0
-                    elif outkey == 'installment_accounts_open':
-                        rec['installment_open_count'] = 0
-                        rec['installment_open_total'] = 0
-                    elif outkey == 'real_estate_open':
-                        rec['real_estate_open_count'] = 0
-                        rec['real_estate_open_total'] = 0
-                    elif outkey == 'line_of_credit_accounts_open':
-                        rec['line_of_credit_accounts_open_count'] = 0
-                        rec['line_of_credit_accounts_open_total'] = 0
-                    elif outkey == 'miscellaneous_accounts_open':
-                        rec['miscellaneous_accounts_open_count'] = 0
-                        rec['miscellaneous_accounts_open_total'] = 0
+                    # only set 'no accounts' when we haven't already found a concrete count/amount
+                    if outkey not in rec:
+                        rec[outkey] = {'count': 0, 'amount': 0}
+                        if outkey == 'revolving_accounts_open':
+                            rec['revolving_open_count'] = 0
+                            rec['revolving_open_total'] = 0
+                        elif outkey == 'installment_accounts_open':
+                            rec['installment_open_count'] = 0
+                            rec['installment_open_total'] = 0
+                        elif outkey == 'real_estate_open':
+                            rec['real_estate_open_count'] = 0
+                            rec['real_estate_open_total'] = 0
+                        elif outkey == 'line_of_credit_accounts_open':
+                            rec['line_of_credit_accounts_open_count'] = 0
+                            rec['line_of_credit_accounts_open_total'] = 0
+                        elif outkey == 'miscellaneous_accounts_open':
+                            rec['miscellaneous_accounts_open_count'] = 0
+                            rec['miscellaneous_accounts_open_total'] = 0
                     break
                 # try parse a count/amount pair in the same line first
                 m_pair = re.search(r'(\d+\s*/\s*\$?\s*[0-9,]+)', txt)
@@ -691,6 +693,39 @@ def extract_pdf_all_fields(doc_or_path: Any, page_limit: int = 2, include_spans:
                         found = True
             # leave as-is if not found (do not set to 0 implicitly)
 
+    # Public Records: capture count and optional detail lines (e.g., bankruptcy + date)
+    for i, ln in enumerate(all_lines):
+        t = _line_text(ln)
+        if 'public record' in t.lower():
+            # compose a small window of following lines to parse numeric count and details
+            window_lines = [ _line_text(n) for n in all_lines[i : i + 6] ]
+            window = '\n'.join(window_lines)
+            c, details = parse_public_records(window)
+            if c is not None:
+                rec['public_records'] = c
+            # look for an adjacent detail line mentioning bankruptcy or discharged and a date
+            for nxt in all_lines[i + 1 : i + 6]:
+                nt = _line_text(nxt).strip()
+                if not nt:
+                    continue
+                if re.search(r'bankrupt|discharg', nt, flags=re.IGNORECASE):
+                    detail = nt
+                    # try to extract date like 'MM/DD/YYYY' and normalize to YYYY-MM-DD
+                    mdate = re.search(r'(\d{1,2}/\d{1,2}/\d{4})', nt)
+                    date = None
+                    if mdate:
+                        mm,dd,yy = mdate.group(1).split('/')
+                        try:
+                            date = f"{int(yy):04d}-{int(mm):02d}-{int(dd):02d}"
+                        except Exception:
+                            date = None
+                    pd = {'detail': re.sub(r'\s+-\s*\d{1,2}/\d{1,2}/\d{4}$','',detail).strip()}
+                    if date:
+                        pd['date'] = date
+                    # assign a nominal color for bankruptcy items
+                    pd['color'] = 'red'
+                    rec['public_records_details'] = pd
+            # do not break; allow later 'Public Records' sections to be scanned for additional details
     # Inquiries: parse counts near the 'Inquires' heading into inquiries_last_6_months (and alias inquiries_6mo)
     for i, ln in enumerate(all_lines):
         txt = _line_text(ln)
