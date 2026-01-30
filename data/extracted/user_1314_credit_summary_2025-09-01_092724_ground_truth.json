@@ -1,8 +1,6 @@
 {
-  "credit_score": {
-    "value": 527,
-    "color": "red"
-  },
+  "credit_score": 527,
+  "credit_score_color": "red",
   "monthly_payments": 1036,
   "credit_freeze": false,
   "fraud_alert": false,
@@ -170,12 +168,6 @@
   ],
   "pdf_file": "data/pdf_analysis/user_1314_credit_summary_2025-09-01_092724.pdf",
   "installment_accounts_open_count": 10,
-  "installment_accounts_open_total": 56881,
-  "credit_card_open_totals_no_retail": {
-    "color": "red",
-    "balance": 20483,
-    "limit": 17650,
-    "utilization_percent": 116,
-    "payment": 549
-  }
+  "installment_accounts_open_total": 56881
+
 }

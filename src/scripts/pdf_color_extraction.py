@@ -392,52 +392,17 @@ def extract_pdf_all_fields(doc_or_path: Any, page_limit: int = 2, include_spans:
                     rec['credit_score'] = int(t)
                 except Exception:
                     pass
-                # try to capture color from nearby spans (if requested)
-                if include_spans:
-                    for k in range(max(0, j - 2), min(len(all_lines), j + 3)):
-                        ln2 = all_lines[k]
-                        spans = ln2.get('spans') or []
-                        # prefer a span that contains the numeric score text
-                        preferred = None
-                        for s in spans:
-                            if s.get('text') and t in s.get('text'):
-                                preferred = s
-                                break
-                        # otherwise prefer any span with rgb/hex
-                        if not preferred:
-                            for s in spans:
-                                if s.get('rgb') or s.get('hex'):
-                                    preferred = s
-                                    break
-                        if preferred:
-                            if preferred.get('rgb'):
-                                rec['credit_score_color'] = map_color_to_cat(tuple(preferred.get('rgb')))
-                            elif preferred.get('hex'):
-                                rgb = hex_to_rgb(preferred.get('hex'))
-                                if rgb:
-                                    rec['credit_score_color'] = map_color_to_cat(rgb)
-                            if rec.get('credit_score_color'):
-                                rec['credit_score_bbox'] = ln2.get('bbox')
-                                rec['credit_score_page'] = ln2.get('page')
-                                rec['credit_score_spans'] = spans
-                                break
-                break
-        if rec.get('credit_score') is not None:
-            break
-    # fallback: if a numeric line exists at top (first few lines) that looks like a score and not many digits
-    if 'credit_score' not in rec or rec.get('credit_score') is None:
-        for ln in all_lines[:6]:
-            t = _line_text(ln).strip()
-            if t.isdigit() and 300 <= int(t) <= 850:
-                rec['credit_score'] = int(t)
-                # attach color and spans from this numeric line when requested
-                if include_spans:
-                    spans = ln.get('spans') or []
+                # try to capture color from nearby spans (prefer spans even when include_spans is False)
+                for k in range(max(0, j - 2), min(len(all_lines), j + 3)):
+                    ln2 = all_lines[k]
+                    spans = ln2.get('spans') or []
+                    # prefer a span that contains the numeric score text
                     preferred = None
                     for s in spans:
                         if s.get('text') and t in s.get('text'):
                             preferred = s
                             break
+                    # otherwise prefer any span with rgb/hex
                     if not preferred:
                         for s in spans:
                             if s.get('rgb') or s.get('hex'):
@@ -450,10 +415,44 @@ def extract_pdf_all_fields(doc_or_path: Any, page_limit: int = 2, include_spans:
                             rgb = hex_to_rgb(preferred.get('hex'))
                             if rgb:
                                 rec['credit_score_color'] = map_color_to_cat(rgb)
-                        if rec.get('credit_score_color'):
-                            rec['credit_score_bbox'] = ln.get('bbox')
-                            rec['credit_score_page'] = ln.get('page')
+                        # attach bbox/page/spans only when requested
+                        if rec.get('credit_score_color') and include_spans:
+                            rec['credit_score_bbox'] = ln2.get('bbox')
+                            rec['credit_score_page'] = ln2.get('page')
                             rec['credit_score_spans'] = spans
+                        break
+                break
+        if rec.get('credit_score') is not None:
+            break
+    # fallback: if a numeric line exists at top (first few lines) that looks like a score and not many digits
+    if 'credit_score' not in rec or rec.get('credit_score') is None:
+        for ln in all_lines[:6]:
+            t = _line_text(ln).strip()
+            if t.isdigit() and 300 <= int(t) <= 850:
+                rec['credit_score'] = int(t)
+                # attach color from this numeric line if spans are available (do not require include_spans)
+                spans = ln.get('spans') or []
+                preferred = None
+                for s in spans:
+                    if s.get('text') and t in s.get('text'):
+                        preferred = s
+                        break
+                if not preferred:
+                    for s in spans:
+                        if s.get('rgb') or s.get('hex'):
+                            preferred = s
+                            break
+                if preferred:
+                    if preferred.get('rgb'):
+                        rec['credit_score_color'] = map_color_to_cat(tuple(preferred.get('rgb')))
+                    elif preferred.get('hex'):
+                        rgb = hex_to_rgb(preferred.get('hex'))
+                        if rgb:
+                            rec['credit_score_color'] = map_color_to_cat(rgb)
+                    if rec.get('credit_score_color') and include_spans:
+                        rec['credit_score_bbox'] = ln.get('bbox')
+                        rec['credit_score_page'] = ln.get('page')
+                        rec['credit_score_spans'] = spans
                 break
 
     # Monthly payments (fallback numeric search)
@@ -798,11 +797,12 @@ def extract_pdf_all_fields(doc_or_path: Any, page_limit: int = 2, include_spans:
                             except Exception:
                                 pass
                         continue
-            if l2 or lgt2:
+            if l2 is not None or lgt2 is not None:
                 # if a summary was found, prefer it and mark that we've seen a summary so later headings do not override
                 if summary_found:
-                    rec['late_pays'] = {'last_2_years': l2 if l2 else None, 'last_over_2_years': lgt2 if lgt2 else None}
+                    rec['late_pays'] = {'last_2_years': l2, 'last_over_2_years': lgt2}
                     rec['late_pays_gt2yr'] = lgt2
+                    rec['late_pays_lt2yr'] = l2
                     rec['_late_pays_summary_seen'] = True
                 else:
                     # skip accumulation if an authoritative summary was already seen elsewhere
@@ -813,9 +813,17 @@ def extract_pdf_all_fields(doc_or_path: Any, page_limit: int = 2, include_spans:
                     prev_lgt2 = prev.get('last_over_2_years') or 0
                     new_l2 = prev_l2 + (l2 or 0)
                     new_lgt2 = prev_lgt2 + (lgt2 or 0)
-                    rec['late_pays'] = {'last_2_years': new_l2 if new_l2 else None, 'last_over_2_years': new_lgt2 if new_lgt2 else None}
+                    rec['late_pays'] = {'last_2_years': new_l2, 'last_over_2_years': new_lgt2}
                     rec['late_pays_gt2yr'] = new_lgt2
+                    rec['late_pays_lt2yr'] = new_l2
 
+
+    # ensure flat late_pays keys are present when nested late_pays dict exists
+    if 'late_pays' in rec and isinstance(rec['late_pays'], dict):
+        lp = rec['late_pays']
+        # keep numeric zeros intact (do not convert to None)
+        rec['late_pays_lt2yr'] = lp.get('last_2_years')
+        rec['late_pays_gt2yr'] = lp.get('last_over_2_years')
 
     # Credit card totals: normalize any 'amounts' captured into structured fields when possible
     if 'credit_card_open_totals' in rec and isinstance(rec['credit_card_open_totals'], dict):
