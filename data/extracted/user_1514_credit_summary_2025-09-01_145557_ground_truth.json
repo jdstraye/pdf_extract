@@ -1,30 +1,36 @@
 {
+  "late_pays_lt2yr": 49,
+  "late_pays_gt2yr": 5,
+  "revolving_open_count": 16,
+  "revolving_open_total": 24888,
+  "installment_open_count": 10,
+  "installment_open_total": 190767,
+  "real_estate_open_count": 1,
+  "real_estate_open_total": 121406,
+  "line_of_credit_accounts_open_count": 0,
+  "line_of_credit_accounts_open_total": 0,
+  "miscellaneous_accounts_open_count": 0,
+  "miscellaneous_accounts_open_total": 0,
+  "filename": "user_1514_credit_summary_2025-09-01_145557.pdf",
+  "source": "data/pdf_analysis/user_1514_credit_summary_2025-09-01_145557.pdf",
   "credit_score": 512,
-  "monthly_payments": 2501,
-  "credit_freeze": 0,
-  "fraud_alert": 0,
-  "deceased": 0,
+  "credit_score_color": "red",
   "age": 44,
   "address": [
     "Po Box 1117, Cairo, NY 12413",
     "63 Mill Hill Rd, Woodstock, NY 12498"
   ],
-  "revolving_open_count": 16,
-  "revolving_open_total": 24888,
-  "real_estate_open_count": 1,
-  "real_estate_open_total": 121406,
-  "line_of_credit_accounts_open_count": 0,
-  "line_of_credit_accounts_open_total": 0,
-  "installment_open_count": 10,
-  "installment_open_total": 190767,
-  "miscellaneous_accounts_open_count": 0,
-  "miscellaneous_accounts_open_total": 0,
-  "public_records": 0,
-  "collections_open": 5,
+  "collections_open": 20,
   "collections_closed": 1,
+  "public_records": 0,
   "inquiries_last_6_months": 3,
-  "late_pays_lt2yr": 49,
-  "late_pays_gt2yr": 5,
+  "monthly_payments": 2501,
+  "red_credit_factors_count": 13,
+  "green_credit_factors_count": 17,
+  "black_credit_factors_count": 4,
+  "credit_freeze": 0,
+  "fraud_alert": 0,
+  "deceased": 0,
   "credit_factors": [
     {
       "factor": "3 Charged Off Accts",
@@ -197,8 +203,7 @@
       "color": "black"
     }
   ],
-  "filename": "user_1514_credit_summary_2025-09-01_145557.pdf",
-  "source": "data/pdf_analysis/user_1514_credit_summary_2025-09-01_145557.pdf",
+  "monthly_payments_color": null,
   "credit_score_bbox": [
     53,
     71,
@@ -217,16 +222,12 @@
       "hex": "#ad302e"
     }
   ],
-  "credit_score_color": "red",
   "monthly_payments_bbox": [
     167,
     71,
     234,
     90
   ],
-  "red_credit_factors_count": 13,
-  "green_credit_factors_count": 17,
-  "black_credit_factors_count": 4,
   "credit_freeze_bbox": [
     53,
     71,

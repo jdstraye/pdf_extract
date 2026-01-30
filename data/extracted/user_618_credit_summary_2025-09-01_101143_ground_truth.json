@@ -1,28 +1,36 @@
 {
+  "late_pays_lt2yr": 0,
+  "late_pays_gt2yr": 0,
+  "revolving_open_count": 0,
+  "revolving_open_total": 0,
+  "installment_open_count": 0,
+  "installment_open_total": 0,
+  "real_estate_open_count": 0,
+  "real_estate_open_total": 0,
+  "line_of_credit_accounts_open_count": 0,
+  "line_of_credit_accounts_open_total": 0,
+  "miscellaneous_accounts_open_count": 0,
+  "miscellaneous_accounts_open_total": 0,
+  "filename": "user_618_credit_summary_2025-09-01_101143.pdf",
+  "source": "data/pdf_analysis/user_618_credit_summary_2025-09-01_101143.pdf",
   "credit_score": 630,
-  "monthly_payments": 0,
-  "credit_freeze": 0,
-  "fraud_alert": 0,
-  "deceased": 0,
+  "credit_score_color": "red",
   "age": 20,
   "address": [
     "89 Rosas Loop, Roma, TX 78584",
     "2 San Julian St, Roma, TX 78584"
   ],
-  "revolving_open_count": 0,
-  "revolving_open_total": 0,
-  "real_estate_open_count": 0,
-  "real_estate_open_total": 0,
-  "line_of_credit_accounts_open_count": 0,
-  "line_of_credit_accounts_open_total": 0,
-  "installment_open_count": 0,
-  "installment_open_total": 0,
-  "miscellaneous_accounts_open_count": 0,
-  "miscellaneous_accounts_open_total": 0,
-  "public_records": 0,
   "collections_open": 0,
   "collections_closed": 0,
+  "public_records": 0,
   "inquiries_last_6_months": 0,
+  "monthly_payments": 0,
+  "red_credit_factors_count": 6,
+  "green_credit_factors_count": 0,
+  "black_credit_factors_count": 2,
+  "credit_freeze": 0,
+  "fraud_alert": 0,
+  "deceased": 0,
   "credit_factors": [
     {
       "factor": "No Open 1k+ Lines",
@@ -65,8 +73,7 @@
       "color": "black"
     }
   ],
-  "filename": "user_618_credit_summary_2025-09-01_101143.pdf",
-  "source": "data/pdf_analysis/user_618_credit_summary_2025-09-01_101143.pdf",
+  "monthly_payments_color": null,
   "credit_score_bbox": [
     53,
     71,
@@ -85,16 +92,12 @@
       "hex": "#dd5435"
     }
   ],
-  "credit_score_color": "red",
   "monthly_payments_bbox": [
     167,
     71,
     207,
     90
   ],
-  "red_credit_factors_count": 6,
-  "green_credit_factors_count": 0,
-  "black_credit_factors_count": 2,
   "credit_freeze_bbox": [
     53,
     71,
@@ -148,5 +151,6 @@
       ],
       "hex": "#dd5435"
     }
-  ]
+  ],
+  "credit_card_open_totals_color": null
 }

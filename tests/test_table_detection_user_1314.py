@@ -22,7 +22,8 @@ def test_table_detection_user_1314():
     assert canon.get('address') is not None
 
     # Account tables should be present in canonicalized output (flat keys are expected)
-    assert canon.get('revolving_open_count') == gt.get('revolving_accounts_open').get('count')
-    assert canon.get('revolving_open_total') == gt.get('revolving_accounts_open').get('amount')
-    assert canon.get('installment_open_count') == gt.get('installment_accounts_open').get('count')
-    assert canon.get('installment_open_total') == gt.get('installment_accounts_open').get('amount')
+    # Use flat keys in GTs (`revolving_open_count`, `revolving_open_total`, etc.)
+    assert canon.get('revolving_open_count') == gt.get('revolving_open_count')
+    assert canon.get('revolving_open_total') == gt.get('revolving_open_total')
+    assert canon.get('installment_open_count') == gt.get('installment_open_count')
+    assert canon.get('installment_open_total') == gt.get('installment_open_total')
