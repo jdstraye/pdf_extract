@@ -1,9 +1,6 @@
 {
   "rec": {
-    "filename": "user_692_credit_summary_2025-09-01_105038.pdf",
-    "source": "data/pdf_analysis/user_692_credit_summary_2025-09-01_105038.pdf",
     "credit_score": 726,
-    "credit_score_color": "neutral",
     "monthly_payments": 473,
     "credit_freeze": 0,
     "fraud_alert": 0,
@@ -27,9 +24,6 @@
     "collections_closed": 0,
     "inquiries_last_6_months": 0,
     "late_pays_gt2yr": 40,
-    "red_credit_factors_count": 4,
-    "green_credit_factors_count": 1,
-    "black_credit_factors_count": 4,
     "credit_factors": [
       {
         "factor": "40 RE Lates in 2-4 yrs",
@@ -76,6 +70,13 @@
         "color": "black",
         "hex": "#212529"
       }
-    ]
+    ],
+    "filename": "user_692_credit_summary_2025-09-01_105038.pdf",
+    "source": "data/pdf_analysis/user_692_credit_summary_2025-09-01_105038.pdf",
+    "credit_score_color": "neutral",
+    "late_pays_2yr": 0,
+    "red_credit_factors_count": 4,
+    "green_credit_factors_count": 1,
+    "black_credit_factors_count": 4
   }
 }
