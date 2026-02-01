@@ -26,7 +26,7 @@ DETAILS = [
     'miscellaneous_accounts_open', 'miscellaneous_accounts_open_count', 'miscellaneous_accounts_open_total',
     'public_records', 'public_records_details',
     'collections', 'collections_open', 'collections_closed', 'collections_open_count', 'collections_closed_count',
-    'inquiries_last_6_months', 'inquiries_6mo', 'late_pays', 'late_pays_lt2yr', 'late_pays_gt2yr'
+    'inquiries_lt6mo', 'late_pays_lt2yr', 'late_pays_gt2yr'
 ]
 
 for p in files:
