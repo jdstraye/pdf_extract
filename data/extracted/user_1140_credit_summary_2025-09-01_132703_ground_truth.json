@@ -153,5 +153,6 @@
   "line_of_credit_accounts_open_count": 0,
   "line_of_credit_accounts_open_total": 0,
   "miscellaneous_accounts_open_count": 0,
-  "miscellaneous_accounts_open_total": 0
+  "miscellaneous_accounts_open_total": 0,
+  "credit_card_open_totals_color": null
 }
