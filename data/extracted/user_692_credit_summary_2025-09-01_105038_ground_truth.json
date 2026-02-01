@@ -78,7 +78,7 @@
       }
     ],
     "monthly_payments_color": null,
-    "inquiries_last_6_months": 0,
-    "credit_card_open_totals_color": null
+    "credit_card_open_totals_color": null,
+    "inquiries_lt6mo": 0
   }
 }

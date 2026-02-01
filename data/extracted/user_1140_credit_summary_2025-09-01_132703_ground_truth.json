@@ -144,12 +144,12 @@
       }
     ],
     "monthly_payments_color": null,
-    "inquiries_last_6_months": 1,
     "public_records_details": {
       "detail": "Bankruptcy Discharged CH-7Discharged CH-7",
       "date": "2016-10-11",
       "color": "red"
     },
-    "credit_card_open_totals_color": null
+    "credit_card_open_totals_color": null,
+    "inquiries_lt6mo": 1
   }
 }

@@ -73,7 +73,6 @@
     }
   ],
   "monthly_payments_color": null,
-  "inquiries_last_6_months": 0,
   "credit_score_bbox": [
     53,
     71,
@@ -152,5 +151,6 @@
       "hex": "#dd5435"
     }
   ],
-  "credit_card_open_totals_color": null
+  "credit_card_open_totals_color": null,
+  "inquiries_lt6mo": 0
 }
