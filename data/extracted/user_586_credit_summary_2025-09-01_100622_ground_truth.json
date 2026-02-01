@@ -152,5 +152,6 @@
     "balance": 54777,
     "limit": 124380,
     "Payment": 1640
-  }
+  },
+  "credit_card_open_totals_color": null
 }
