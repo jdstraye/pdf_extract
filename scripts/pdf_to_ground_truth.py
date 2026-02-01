@@ -224,10 +224,17 @@ def attach_spans_to_gt(gt_json_path: Path, pdf_path: Path) -> Path:
                         break
                 elif value_type == "int":
                     if txt.isdigit():
-                        gt["inquiries_lt6mo"] = int(txt)
+                        val = int(txt)
+                        gt["inquiries_lt6mo"] = val
                         gt["inquiries_lt6mo_bbox"] = nxt.get("bbox")
                         gt["inquiries_lt6mo_page"] = nxt.get("page")
                         gt["inquiries_lt6mo_spans"] = nxt.get("spans")
+                        # For backward compatibility, also populate legacy keys when present in GT
+                        if 'inquiries_last_6_months' in gt:
+                            gt['inquiries_last_6_months'] = val
+                            gt['inquiries_last_6_months_bbox'] = nxt.get('bbox')
+                            gt['inquiries_last_6_months_page'] = nxt.get('page')
+                            gt['inquiries_last_6_months_spans'] = nxt.get('spans')
                         break
 
         # Note: previously we removed some phrase-based heuristics; the above checks are conservative and

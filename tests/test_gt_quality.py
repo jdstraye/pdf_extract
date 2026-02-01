@@ -8,8 +8,14 @@ from scripts.pdf_to_ground_truth import build_text_only_gt
 # Allowed nested structures (only these may be dicts at top-level)
 ALLOWED_NESTED = {'credit_card_open_totals', 'public_records_details'}
 
+# Legacy aliases to ignore when deriving canonical keyset
+LEGACY_ALIASES = {'inquiries_last_6_months'}
+
 # Suffixes to ignore when comparing keys/order
 META_SUFFIXES = ('_bbox', '_page', '_spans')
+
+# Top-level keys to ignore when validating keyset/order (transient or diagnostic fields)
+IGNORE_TOP_KEYS = {'pdf_file', 'all_lines_obj'}
 
 GT_DIR = Path('data/extracted')
 
@@ -85,7 +91,7 @@ def test_gt_keyset_and_order_matches_pdf():
     master_set = set(master_keys)
     for p in files:
         gt = _load_gt(p)
-        gt_extra = [k for k in list(gt.keys()) if not k.endswith(META_SUFFIXES) and k not in ALLOWED_NESTED]
+        gt_extra = [k for k in list(gt.keys()) if not k.endswith(META_SUFFIXES) and k not in ALLOWED_NESTED and k not in LEGACY_ALIASES and k not in IGNORE_TOP_KEYS]
         for k in gt_extra:
             if k not in master_set:
                 master_set.add(k)
@@ -96,7 +102,7 @@ def test_gt_keyset_and_order_matches_pdf():
 
     for p in files:
         gt = _load_gt(p)
-        gt_keys = [k for k in list(gt.keys()) if not k.endswith(META_SUFFIXES) and k not in ALLOWED_NESTED]
+        gt_keys = [k for k in list(gt.keys()) if not k.endswith(META_SUFFIXES) and k not in ALLOWED_NESTED and k not in IGNORE_TOP_KEYS]
         assert set(gt_keys) == set(master_keys), f"GT {p.name} has keyset mismatch. Expected {sorted(master_keys)} vs {sorted(set(gt_keys))}"
         # check order: the GT keys should follow the PDF canonical order for that file
         expected_order = canonical_orders[p.name]

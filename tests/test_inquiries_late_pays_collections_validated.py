@@ -30,8 +30,11 @@ def test_inquiries_and_late_pays_and_collections(uid):
         gt = gt['rec']
 
     # inquiries: when GT specifies a value, require extractor to match
-    if gt.get('inquiries_last_6_months') is not None:
-        assert canon.get('inquiries_last_6_months') == gt.get('inquiries_last_6_months')
+    # Prefer canonical `inquiries_lt6mo`, fall back to legacy `inquiries_last_6_months` in GTs
+    gt_inq = gt.get('inquiries_lt6mo') if gt.get('inquiries_lt6mo') is not None else gt.get('inquiries_last_6_months')
+    if gt_inq is not None:
+        # Extractor/canonicalizer may emit either the canonical key or the legacy key; accept either
+        assert (canon.get('inquiries_lt6mo') == gt_inq) or (canon.get('inquiries_last_6_months') == gt_inq)
     # late pays: compare flattened key when present
     if gt.get('late_pays_gt2yr') is not None:
         assert canon.get('late_pays_gt2yr') == gt.get('late_pays_gt2yr')
