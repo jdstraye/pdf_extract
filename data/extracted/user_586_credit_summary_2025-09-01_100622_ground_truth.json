@@ -17,14 +17,6 @@
   "monthly_payments": 3663,
   "real_estate_open_count": 1,
   "real_estate_open_total": 212712,
-  "line_of_credit_accounts_open": {
-    "count": 0,
-    "amount": 0
-  },
-  "miscellaneous_accounts_open": {
-    "count": 0,
-    "amount": 0
-  },
   "late_pays_lt2yr": 11,
   "late_pays_gt2yr": 0,
   "red_credit_factors_count": 7,
@@ -157,8 +149,8 @@
     }
   ],
   "monthly_payments_color": null,
-  "late_pays": {
-    "last_2_years": 11,
-    "last_over_2_years": 0
-  }
+  "line_of_credit_accounts_open_count": 0,
+  "line_of_credit_accounts_open_total": 0,
+  "miscellaneous_accounts_open_count": 0,
+  "miscellaneous_accounts_open_total": 0
 }
