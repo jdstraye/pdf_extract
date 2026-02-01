@@ -23,7 +23,7 @@
   "collections_open": 0,
   "collections_closed": 0,
   "public_records": 0,
-  "inquiries_last_6_months": 0,
+  "inquiries_lt6mo": 0,
   "monthly_payments": 1787,
   "red_credit_factors_count": 2,
   "green_credit_factors_count": 9,
@@ -104,5 +104,17 @@
     }
   ],
   "monthly_payments_color": null,
-  "credit_card_open_totals_color": null
+  "pdf_file": "data/pdf_analysis/user_1131_credit_summary_2025-09-01_132805.pdf",
+  "all_lines_obj": [],
+  "credit_card_open_totals_color": null,
+  "credit_card_open_totals": {
+    "balance": 31428,
+    "Percent": 100,
+    "limit": 31300,
+    "Payment": 1321
+  },
+  "late_pays": {
+    "last_2_years": 3,
+    "last_over_2_years": 1
+  }
 }
