@@ -30,6 +30,7 @@
   "credit_freeze": 0,
   "fraud_alert": 0,
   "deceased": 0,
+  "inquiries_lt6mo": 0,
   "credit_factors": [
     {
       "factor": "No Open 1k+ Lines",
@@ -151,6 +152,5 @@
       "hex": "#dd5435"
     }
   ],
-  "credit_card_open_totals_color": null,
-  "inquiries_lt6mo": 0
+  "credit_card_open_totals_color": null
 }

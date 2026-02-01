@@ -30,6 +30,7 @@
     "credit_freeze": 0,
     "fraud_alert": 0,
     "deceased": 0,
+    "inquiries_lt6mo": 0,
     "credit_factors": [
       {
         "factor": "40 RE Lates in 2-4 yrs",
@@ -78,7 +79,6 @@
       }
     ],
     "monthly_payments_color": null,
-    "credit_card_open_totals_color": null,
-    "inquiries_lt6mo": 0
+    "credit_card_open_totals_color": null
   }
 }

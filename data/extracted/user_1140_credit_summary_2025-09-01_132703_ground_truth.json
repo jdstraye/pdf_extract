@@ -31,6 +31,7 @@
     "credit_freeze": 0,
     "fraud_alert": 0,
     "deceased": 0,
+    "inquiries_lt6mo": 1,
     "credit_factors": [
       {
         "factor": "1 Over Limit Accnt",
@@ -149,7 +150,6 @@
       "date": "2016-10-11",
       "color": "red"
     },
-    "credit_card_open_totals_color": null,
-    "inquiries_lt6mo": 1
+    "credit_card_open_totals_color": null
   }
 }
