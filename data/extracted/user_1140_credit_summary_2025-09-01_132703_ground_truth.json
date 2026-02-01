@@ -24,7 +24,6 @@
     "collections_open": 0,
     "collections_closed": 0,
     "public_records": 1,
-    "inquiries_last_6_months": 1,
     "monthly_payments": 2167,
     "red_credit_factors_count": 8,
     "green_credit_factors_count": 7,
@@ -145,6 +144,7 @@
       }
     ],
     "monthly_payments_color": null,
+    "inquiries_last_6_months": 1,
     "public_records_details": {
       "detail": "Bankruptcy Discharged CH-7Discharged CH-7",
       "date": "2016-10-11",

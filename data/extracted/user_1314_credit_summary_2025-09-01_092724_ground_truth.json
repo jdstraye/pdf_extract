@@ -23,7 +23,6 @@
   "collections_open": 12,
   "collections_closed": 10,
   "public_records": 0,
-  "inquiries_lt6mo": 2,
   "monthly_payments": 1036,
   "red_credit_factors_count": 11,
   "green_credit_factors_count": 14,
@@ -31,6 +30,7 @@
   "credit_freeze": false,
   "fraud_alert": false,
   "deceased": false,
+  "inquiries_lt6mo": 2,
   "credit_factors": [
     {
       "factor": "6 Charged Off Accts",

@@ -23,7 +23,6 @@
   "collections_open": 0,
   "collections_closed": 0,
   "public_records": 0,
-  "inquiries_last_6_months": 0,
   "monthly_payments": 0,
   "red_credit_factors_count": 6,
   "green_credit_factors_count": 0,
@@ -74,6 +73,7 @@
     }
   ],
   "monthly_payments_color": null,
+  "inquiries_last_6_months": 0,
   "credit_score_bbox": [
     53,
     71,

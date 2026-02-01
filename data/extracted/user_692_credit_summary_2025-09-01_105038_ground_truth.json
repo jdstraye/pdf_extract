@@ -23,7 +23,6 @@
     "collections_open": 0,
     "collections_closed": 0,
     "public_records": 0,
-    "inquiries_last_6_months": 0,
     "monthly_payments": 473,
     "red_credit_factors_count": 4,
     "green_credit_factors_count": 1,
@@ -79,6 +78,7 @@
       }
     ],
     "monthly_payments_color": null,
+    "inquiries_last_6_months": 0,
     "credit_card_open_totals_color": null
   }
 }

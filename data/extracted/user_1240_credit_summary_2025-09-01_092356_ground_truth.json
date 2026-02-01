@@ -22,7 +22,6 @@
   "collections_open": 4,
   "collections_closed": 1,
   "public_records": 0,
-  "inquiries_lt6mo": 0,
   "monthly_payments": 25,
   "red_credit_factors_count": 6,
   "green_credit_factors_count": 12,
@@ -30,6 +29,7 @@
   "credit_freeze": 0,
   "fraud_alert": 0,
   "deceased": 0,
+  "inquiries_lt6mo": 0,
   "credit_factors": [
     {
       "factor": "$54756 Unpaid Collection(s)",
