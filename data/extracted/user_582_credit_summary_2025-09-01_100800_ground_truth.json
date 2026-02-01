@@ -1,4 +1,16 @@
 {
+  "late_pays_lt2yr": 18,
+  "late_pays_gt2yr": 1,
+  "revolving_open_count": 6,
+  "revolving_open_total": 33292,
+  "installment_open_count": 8,
+  "installment_open_total": 33831,
+  "real_estate_open_count": 0,
+  "real_estate_open_total": 0,
+  "line_of_credit_accounts_open_count": 0,
+  "line_of_credit_accounts_open_total": 0,
+  "miscellaneous_accounts_open_count": 0,
+  "miscellaneous_accounts_open_total": 0,
   "filename": "user_582_credit_summary_2025-09-01_100800.pdf",
   "source": "data/pdf_analysis/user_582_credit_summary_2025-09-01_100800.pdf",
   "credit_score": 546,
@@ -11,10 +23,14 @@
   "collections_open": 4,
   "collections_closed": 0,
   "public_records": 0,
-  "revolving_open_count": 6,
-  "revolving_open_total": 33292,
-  "installment_open_count": 8,
-  "installment_open_total": 33831,
+  "inquiries_lt6mo": 0,
+  "monthly_payments": 954,
+  "red_credit_factors_count": 7,
+  "green_credit_factors_count": 14,
+  "black_credit_factors_count": 3,
+  "credit_freeze": 0,
+  "fraud_alert": 0,
+  "deceased": 0,
   "credit_factors": [
     {
       "factor": "2 Charged Off Accts",
@@ -137,27 +153,15 @@
       "hex": "#212529"
     }
   ],
-  "inquiries_last_6_months": 0,
-  "credit_freeze": 0,
-  "fraud_alert": 0,
-  "deceased": 0,
-  "monthly_payments": 954,
-  "real_estate_open_count": 0,
-  "real_estate_open_total": 0,
-  "line_of_credit_accounts_open_count": 0,
-  "line_of_credit_accounts_open_total": 0,
-  "miscellaneous_accounts_open_count": 0,
-  "miscellaneous_accounts_open_total": 0,
-  "late_pays_2yr": 18,
-  "late_pays_gt2yr": 1,
-  "red_credit_factors_count": 7,
-  "green_credit_factors_count": 14,
-  "black_credit_factors_count": 3,
+  "monthly_payments_color": null,
   "credit_card_open_totals": {
     "color": "red",
     "balance": 33292,
     "limit": 27790,
     "Percent": 120,
     "Payment": 908
-  }
+  },
+  "credit_card_open_totals_color": null,
+  "pdf_file": "data/pdf_analysis/user_582_credit_summary_2025-09-01_100800.pdf",
+  "all_lines_obj": []
 }

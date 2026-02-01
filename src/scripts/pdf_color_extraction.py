@@ -392,52 +392,17 @@ def extract_pdf_all_fields(doc_or_path: Any, page_limit: int = 2, include_spans:
                     rec['credit_score'] = int(t)
                 except Exception:
                     pass
-                # try to capture color from nearby spans (if requested)
-                if include_spans:
-                    for k in range(max(0, j - 2), min(len(all_lines), j + 3)):
-                        ln2 = all_lines[k]
-                        spans = ln2.get('spans') or []
-                        # prefer a span that contains the numeric score text
-                        preferred = None
-                        for s in spans:
-                            if s.get('text') and t in s.get('text'):
-                                preferred = s
-                                break
-                        # otherwise prefer any span with rgb/hex
-                        if not preferred:
-                            for s in spans:
-                                if s.get('rgb') or s.get('hex'):
-                                    preferred = s
-                                    break
-                        if preferred:
-                            if preferred.get('rgb'):
-                                rec['credit_score_color'] = map_color_to_cat(tuple(preferred.get('rgb')))
-                            elif preferred.get('hex'):
-                                rgb = hex_to_rgb(preferred.get('hex'))
-                                if rgb:
-                                    rec['credit_score_color'] = map_color_to_cat(rgb)
-                            if rec.get('credit_score_color'):
-                                rec['credit_score_bbox'] = ln2.get('bbox')
-                                rec['credit_score_page'] = ln2.get('page')
-                                rec['credit_score_spans'] = spans
-                                break
-                break
-        if rec.get('credit_score') is not None:
-            break
-    # fallback: if a numeric line exists at top (first few lines) that looks like a score and not many digits
-    if 'credit_score' not in rec or rec.get('credit_score') is None:
-        for ln in all_lines[:6]:
-            t = _line_text(ln).strip()
-            if t.isdigit() and 300 <= int(t) <= 850:
-                rec['credit_score'] = int(t)
-                # attach color and spans from this numeric line when requested
-                if include_spans:
-                    spans = ln.get('spans') or []
+                # try to capture color from nearby spans (prefer spans even when include_spans is False)
+                for k in range(max(0, j - 2), min(len(all_lines), j + 3)):
+                    ln2 = all_lines[k]
+                    spans = ln2.get('spans') or []
+                    # prefer a span that contains the numeric score text
                     preferred = None
                     for s in spans:
                         if s.get('text') and t in s.get('text'):
                             preferred = s
                             break
+                    # otherwise prefer any span with rgb/hex
                     if not preferred:
                         for s in spans:
                             if s.get('rgb') or s.get('hex'):
@@ -450,10 +415,44 @@ def extract_pdf_all_fields(doc_or_path: Any, page_limit: int = 2, include_spans:
                             rgb = hex_to_rgb(preferred.get('hex'))
                             if rgb:
                                 rec['credit_score_color'] = map_color_to_cat(rgb)
-                        if rec.get('credit_score_color'):
-                            rec['credit_score_bbox'] = ln.get('bbox')
-                            rec['credit_score_page'] = ln.get('page')
+                        # attach bbox/page/spans only when requested
+                        if rec.get('credit_score_color') and include_spans:
+                            rec['credit_score_bbox'] = ln2.get('bbox')
+                            rec['credit_score_page'] = ln2.get('page')
                             rec['credit_score_spans'] = spans
+                        break
+                break
+        if rec.get('credit_score') is not None:
+            break
+    # fallback: if a numeric line exists at top (first few lines) that looks like a score and not many digits
+    if 'credit_score' not in rec or rec.get('credit_score') is None:
+        for ln in all_lines[:6]:
+            t = _line_text(ln).strip()
+            if t.isdigit() and 300 <= int(t) <= 850:
+                rec['credit_score'] = int(t)
+                # attach color from this numeric line if spans are available (do not require include_spans)
+                spans = ln.get('spans') or []
+                preferred = None
+                for s in spans:
+                    if s.get('text') and t in s.get('text'):
+                        preferred = s
+                        break
+                if not preferred:
+                    for s in spans:
+                        if s.get('rgb') or s.get('hex'):
+                            preferred = s
+                            break
+                if preferred:
+                    if preferred.get('rgb'):
+                        rec['credit_score_color'] = map_color_to_cat(tuple(preferred.get('rgb')))
+                    elif preferred.get('hex'):
+                        rgb = hex_to_rgb(preferred.get('hex'))
+                        if rgb:
+                            rec['credit_score_color'] = map_color_to_cat(rgb)
+                    if rec.get('credit_score_color') and include_spans:
+                        rec['credit_score_bbox'] = ln.get('bbox')
+                        rec['credit_score_page'] = ln.get('page')
+                        rec['credit_score_spans'] = spans
                 break
 
     # Monthly payments (fallback numeric search)
@@ -601,16 +600,40 @@ def extract_pdf_all_fields(doc_or_path: Any, page_limit: int = 2, include_spans:
         txt = _line_text(ln).lower()
         for key, outkey in category_map:
             if key in txt:
+                # handle explicit 'No ... Accounts' cases
+                if re.search(r'no .*accounts', txt):
+                    # only set 'no accounts' when we haven't already found a concrete count/amount
+                    if outkey not in rec:
+                        rec[outkey] = {'count': 0, 'amount': 0}
+                        if outkey == 'revolving_accounts_open':
+                            rec['revolving_open_count'] = 0
+                            rec['revolving_open_total'] = 0
+                        elif outkey == 'installment_accounts_open':
+                            rec['installment_open_count'] = 0
+                            rec['installment_open_total'] = 0
+                        elif outkey == 'real_estate_open':
+                            rec['real_estate_open_count'] = 0
+                            rec['real_estate_open_total'] = 0
+                        elif outkey == 'line_of_credit_accounts_open':
+                            rec['line_of_credit_accounts_open_count'] = 0
+                            rec['line_of_credit_accounts_open_total'] = 0
+                        elif outkey == 'miscellaneous_accounts_open':
+                            rec['miscellaneous_accounts_open_count'] = 0
+                            rec['miscellaneous_accounts_open_total'] = 0
+                    break
                 # try parse a count/amount pair in the same line first
                 m_pair = re.search(r'(\d+\s*/\s*\$?\s*[0-9,]+)', txt)
                 if m_pair:
                     count, amt = parse_count_amount_pair(m_pair.group(1))
                 else:
                     count, amt = None, None
-                # if not found, inspect the next few lines for a pair pattern
+                # if not found, inspect the next few lines for a pair pattern or explicit 'No ...'
                 if count is None and amt is None:
-                    for nxt in all_lines[i + 1 : i + 5]:
+                    for nxt in all_lines[i + 1 : i + 8]:
                         nt = _line_text(nxt)
+                        if re.search(r'no .*accounts', nt.lower()):
+                            count, amt = 0, 0
+                            break
                         m_pair = re.search(r'(\d+\s*/\s*\$?\s*[0-9,]+)', nt)
                         if m_pair:
                             count, amt = parse_count_amount_pair(m_pair.group(1))
@@ -639,14 +662,168 @@ def extract_pdf_all_fields(doc_or_path: Any, page_limit: int = 2, include_spans:
     for i, ln in enumerate(all_lines):
         t = _line_text(ln).lower()
         if 'collections' in t:
-            for nxt in all_lines[i + 1 : i + 4]:
+            found = False
+            # look for inline 'n / m'
+            for nxt in all_lines[i + 1 : i + 6]:
                 cc_text = _line_text(nxt)
                 a, b = parse_count_count_pair(cc_text)
                 if a is not None or b is not None:
                     rec['collections'] = {'open': a, 'closed': b}
                     rec['collections_open'] = a
                     rec['collections_closed'] = b
+                    found = True
                     break
+            if not found:
+                # fallback: check next two non-empty lines as separate numbers
+                vals = []
+                for nxt in all_lines[i + 1 : i + 6]:
+                    nt = _line_text(nxt).strip()
+                    if nt and nt.isdigit():
+                        vals.append(int(nt))
+                    if len(vals) >= 2:
+                        break
+                if vals:
+                    a = vals[0] if len(vals) >= 1 else None
+                    b = vals[1] if len(vals) >= 2 else None
+                    if a is not None or b is not None:
+                        rec['collections'] = {'open': a, 'closed': b}
+                        rec['collections_open'] = a
+                        rec['collections_closed'] = b
+                        found = True
+            # leave as-is if not found (do not set to 0 implicitly)
+
+    # Public Records: capture count and optional detail lines (e.g., bankruptcy + date)
+    for i, ln in enumerate(all_lines):
+        t = _line_text(ln)
+        if 'public record' in t.lower():
+            # compose a small window of following lines to parse numeric count and details
+            window_lines = [ _line_text(n) for n in all_lines[i : i + 6] ]
+            window = '\n'.join(window_lines)
+            c, details = parse_public_records(window)
+            if c is not None:
+                rec['public_records'] = c
+            # look for an adjacent detail line mentioning bankruptcy or discharged and a date
+            for nxt in all_lines[i + 1 : i + 6]:
+                nt = _line_text(nxt).strip()
+                if not nt:
+                    continue
+                if re.search(r'bankrupt|discharg', nt, flags=re.IGNORECASE):
+                    detail = nt
+                    # try to extract date like 'MM/DD/YYYY' and normalize to YYYY-MM-DD
+                    mdate = re.search(r'(\d{1,2}/\d{1,2}/\d{4})', nt)
+                    date = None
+                    if mdate:
+                        mm,dd,yy = mdate.group(1).split('/')
+                        try:
+                            date = f"{int(yy):04d}-{int(mm):02d}-{int(dd):02d}"
+                        except Exception:
+                            date = None
+                    pd = {'detail': re.sub(r'\s+-\s*\d{1,2}/\d{1,2}/\d{4}$','',detail).strip()}
+                    if date:
+                        pd['date'] = date
+                    # assign a nominal color for bankruptcy items
+                    pd['color'] = 'red'
+                    rec['public_records_details'] = pd
+            # do not break; allow later 'Public Records' sections to be scanned for additional details
+    # Inquiries: parse counts near the 'Inquires' heading into inquiries_last_6_months (and alias inquiries_6mo)
+    for i, ln in enumerate(all_lines):
+        txt = _line_text(ln)
+        if 'inquir' in txt.lower():
+            total = 0
+            found_any = False
+            # quick check: next non-empty line may be a bare digit representing total
+            for nxt in all_lines[i + 1 : i + 6]:
+                nt = _line_text(nxt).strip()
+                if nt.isdigit():
+                    total = int(nt)
+                    found_any = True
+                    break
+            if not found_any:
+                for nxt in all_lines[i + 1 : i + 20]:
+                    nt = _line_text(nxt)
+                    m = re.search(r"(\d+)\s+inq", nt, flags=re.IGNORECASE)
+                    if m:
+                        n = int(m.group(1))
+                        found_any = True
+                        # consider time windows expressed as months to be within 6 months
+                        if re.search(r"\b(\d+\s*-\s*\d+\s*mo|\d+\s*mo|last\s*\d+\s*mo|last\s*6\s*months)\b", nt, flags=re.IGNORECASE) or re.search(r"last\s*6\s*months", txt, flags=re.IGNORECASE):
+                            total += n
+                        else:
+                            # if 'Last' not explicit but the timeframe mentions months, count it
+                            if re.search(r"mo|month", nt, flags=re.IGNORECASE):
+                                total += n
+                            else:
+                                # if no timeframe info, include as conservative default
+                                total += n
+            if found_any or re.search(r"last\s*6\s*months", txt, flags=re.IGNORECASE):
+                rec['inquiries_last_6_months'] = total
+                rec['inquiries_6mo'] = total
+
+    # Late pays: parse lines near 'Late Pays' to compute last_2_years and last_over_2_years
+    for i, ln in enumerate(all_lines):
+        txt = _line_text(ln).lower()
+        if 'late pay' in txt or 'lates +2yr' in txt or 'lates +2yr' in txt:
+            l2 = 0
+            lgt2 = 0
+            # quick check: look for an immediate 'X / Y' summary line after the heading
+            summary_found = False
+            if i + 1 < len(all_lines):
+                nxt0 = _line_text(all_lines[i + 1]).strip()
+                m_xy = re.search(r"^(\d+)\s*/\s*(\d+)$", nxt0)
+                if m_xy:
+                    l2 = int(m_xy.group(1))
+                    lgt2 = int(m_xy.group(2))
+                    summary_found = True
+            # scan following lines for specific patterns and aggregate (only when no summary present for this heading)
+            if not summary_found:
+                for nxt in all_lines[i + 1 : i + 40]:
+                    nt = _line_text(nxt)
+                    # explicit patterns like '2 Rev Lates in 4-6 mo' or '1 RE Late in 6-12 mo' or '40 RE Lates in 2-4 yrs'
+                    m2 = re.search(r'(\d+)\s+(?:\w+\s+)*late[s]?\s+.*\bin\b\s*(\d+)(?:\s*-\s*(\d+))?\s*(mo|yr|yrs)?', nt, flags=re.IGNORECASE)
+                    if m2:
+                        num = int(m2.group(1))
+                        unit = (m2.group(4) or '').lower()
+                        if 'mo' in unit or re.search(r'\bmo\b', nt, flags=re.IGNORECASE):
+                            l2 += num
+                        else:
+                            lgt2 += num
+                        continue
+                    # capture 'Lates +2yr: X' and sum all occurrences
+                    m_all = re.findall(r'lates\s*\+2yr\s*:\s*([0-9]+)', nt, flags=re.IGNORECASE)
+                    if m_all:
+                        for s in m_all:
+                            try:
+                                lgt2 += int(s)
+                            except Exception:
+                                pass
+                        continue
+            if l2 is not None or lgt2 is not None:
+                # if a summary was found, prefer it and mark that we've seen a summary so later headings do not override
+                if summary_found:
+                    rec['late_pays'] = {'last_2_years': l2, 'last_over_2_years': lgt2}
+                    rec['late_pays_gt2yr'] = lgt2
+                    rec['late_pays_lt2yr'] = l2
+                    rec['_late_pays_summary_seen'] = True
+                else:
+                    # skip accumulation if an authoritative summary was already seen elsewhere
+                    if rec.get('_late_pays_summary_seen'):
+                        continue
+                    prev = rec.get('late_pays') or {}
+                    prev_l2 = prev.get('last_2_years') or 0
+                    prev_lgt2 = prev.get('last_over_2_years') or 0
+                    new_l2 = prev_l2 + (l2 or 0)
+                    new_lgt2 = prev_lgt2 + (lgt2 or 0)
+                    rec['late_pays'] = {'last_2_years': new_l2, 'last_over_2_years': new_lgt2}
+                    rec['late_pays_gt2yr'] = new_lgt2
+                    rec['late_pays_lt2yr'] = new_l2
+
+
+    # ensure flat late_pays keys are present when nested late_pays dict exists
+    if 'late_pays' in rec and isinstance(rec['late_pays'], dict):
+        lp = rec['late_pays']
+        # keep numeric zeros intact (do not convert to None)
+        rec['late_pays_lt2yr'] = lp.get('last_2_years')
+        rec['late_pays_gt2yr'] = lp.get('last_over_2_years')
 
     # Credit card totals: normalize any 'amounts' captured into structured fields when possible
     if 'credit_card_open_totals' in rec and isinstance(rec['credit_card_open_totals'], dict):
@@ -744,6 +921,9 @@ def extract_pdf_all_fields(doc_or_path: Any, page_limit: int = 2, include_spans:
         rec["candidate_scores"] = []
         for cf in rec.get("credit_factors", []):
             rec["candidate_scores"].append({"factor": cf.get("factor"), "score": compute_candidate_score(cf)})
+
+    # cleanup internal markers used during parsing
+    rec.pop('_late_pays_summary_seen', None)
 
     return rec
 

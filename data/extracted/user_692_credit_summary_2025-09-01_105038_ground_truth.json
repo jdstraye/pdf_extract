@@ -1,36 +1,36 @@
 {
   "rec": {
-    "filename": "user_692_credit_summary_2025-09-01_105038.pdf",
-    "source": "data/pdf_analysis/user_692_credit_summary_2025-09-01_105038.pdf",
-    "credit_score": 726,
-    "credit_score_color": "neutral",
-    "monthly_payments": 473,
-    "credit_freeze": 0,
-    "fraud_alert": 0,
-    "deceased": 0,
-    "age": 27,
-    "address": [
-      "4830 Flanders Way, Denver, CO 80249"
-    ],
+    "late_pays_lt2yr": 0,
+    "late_pays_gt2yr": 40,
     "revolving_open_count": 2,
     "revolving_open_total": 74,
+    "installment_open_count": 6,
+    "installment_open_total": 28857,
     "real_estate_open_count": 0,
     "real_estate_open_total": 0,
     "line_of_credit_accounts_open_count": 0,
     "line_of_credit_accounts_open_total": 0,
-    "installment_open_count": 6,
-    "installment_open_total": 28857,
     "miscellaneous_accounts_open_count": 0,
     "miscellaneous_accounts_open_total": 0,
-    "public_records": 0,
+    "filename": "user_692_credit_summary_2025-09-01_105038.pdf",
+    "source": "data/pdf_analysis/user_692_credit_summary_2025-09-01_105038.pdf",
+    "credit_score": 726,
+    "credit_score_color": "neutral",
+    "age": 27,
+    "address": [
+      "4830 Flanders Way, Denver, CO 80249"
+    ],
     "collections_open": 0,
     "collections_closed": 0,
+    "public_records": 0,
     "inquiries_last_6_months": 0,
-    "late_pays_2yr": 0,
-    "late_pays_gt2yr": 40,
+    "monthly_payments": 473,
     "red_credit_factors_count": 4,
     "green_credit_factors_count": 1,
     "black_credit_factors_count": 4,
+    "credit_freeze": 0,
+    "fraud_alert": 0,
+    "deceased": 0,
     "credit_factors": [
       {
         "factor": "40 RE Lates in 2-4 yrs",
@@ -77,6 +77,8 @@
         "color": "black",
         "hex": "#212529"
       }
-    ]
+    ],
+    "monthly_payments_color": null,
+    "credit_card_open_totals_color": null
   }
 }

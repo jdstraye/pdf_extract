@@ -1,14 +1,16 @@
 #!/usr/bin/env python3
-"""Generate GT diffs report and write to .reports/gt_diff_report.json"""
+"""Generate GT diffs report and write to /tmp/gt_diff_report.json"""
 import json, re, sys
 from pathlib import Path
 from collections import Counter
+import tempfile, datetime
 
 from src.scripts.pdf_color_extraction import extract_pdf_all_fields
 from scripts.pdf_to_ground_truth import build_text_only_gt
 
 GT_DIR = Path('data/extracted')
-OUT_DIR = Path('.reports')
+TMP_DIR = Path(tempfile.gettempdir()) / f'gt_diff_reports_{datetime.datetime.utcnow().strftime("%Y%m%dT%H%M%SZ")}'
+OUT_DIR = TMP_DIR
 OUT_FILE = OUT_DIR / 'gt_diff_report.json'
 
 print('GT dir:', GT_DIR)
@@ -74,10 +76,10 @@ def _normalize_aliases(d):
         d.pop('pdf_file', None)
     if 'late_pays' in d and isinstance(d['late_pays'], dict):
         lp = d['late_pays']
-        d['late_pays_2yr'] = lp.get('last_2_years')
+        d['late_pays_lt2yr'] = lp.get('last_2_years')
         d['late_pays_gt2yr'] = lp.get('last_over_2_years')
-    if 'late_pays_2yr' in d and 'late_pays' not in d:
-        d['late_pays'] = {'last_2_years': d.get('late_pays_2yr'), 'last_over_2_years': d.get('late_pays_gt2yr')}
+        # remove nested representation — comparisons should only use flat keys
+        d.pop('late_pays', None)
     if 'credit_card_open_totals_no_retail' in d and 'credit_card_open_totals' not in d:
         d['credit_card_open_totals'] = d.pop('credit_card_open_totals_no_retail')
     if 'credit_card_open_totals' in d and isinstance(d['credit_card_open_totals'], dict):

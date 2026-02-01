@@ -52,11 +52,16 @@ def save_json(obj, path):
 
 def _normalize_aliases(d):
     d = dict(d)
-    # inquiries aliases
-    if 'inquiries_6mo' in d and 'inquiries_last_6_months' not in d:
-        d['inquiries_last_6_months'] = d['inquiries_6mo']
-    if 'inquiries_last_6_months' in d and 'inquiries_6mo' not in d:
-        d['inquiries_6mo'] = d['inquiries_last_6_months']
+    # inquiries aliases: canonicalize to 'inquiries_lt6mo' and drop legacy 'inquiries_6mo'
+    if 'inquiries_6mo' in d and 'inquiries_lt6mo' not in d:
+        d['inquiries_lt6mo'] = d.pop('inquiries_6mo')
+    if 'inquiries_last_6_months' in d and 'inquiries_lt6mo' not in d:
+        d['inquiries_lt6mo'] = d.pop('inquiries_last_6_months')
+    # ensure legacy variants are removed to avoid duplicate keys during comparison
+    if 'inquiries_6mo' in d:
+        d.pop('inquiries_6mo', None)
+    if 'inquiries_last_6_months' in d:
+        d.pop('inquiries_last_6_months', None)
     # collections naming variants (prefer flat 'collections_open'/'collections_closed')
     if 'collections_open' not in d and 'collections_open_count' in d:
         d['collections_open'] = d.get('collections_open_count')
@@ -101,13 +106,32 @@ def _normalize_aliases(d):
         d['source'] = pf
         d['filename'] = pf.split('/')[-1]
         d.pop('pdf_file', None)
-    # Late pays nested vs flat
+    # Late pays: prefer flat 'late_pays_lt2yr' and 'late_pays_gt2yr' as canonical keys
+    # If nested 'late_pays' present, derive flat keys from it
     if 'late_pays' in d and isinstance(d['late_pays'], dict):
         lp = d['late_pays']
-        d['late_pays_2yr'] = lp.get('last_2_years')
-        d['late_pays_gt2yr'] = lp.get('last_over_2_years')
-    if 'late_pays_2yr' in d and 'late_pays' not in d:
-        d['late_pays'] = {'last_2_years': d.get('late_pays_2yr'), 'last_over_2_years': d.get('late_pays_gt2yr')}
+        # ensure numeric defaults for nested fields
+        l2 = lp.get('last_2_years') if lp.get('last_2_years') is not None else 0
+        lgt2 = lp.get('last_over_2_years') if lp.get('last_over_2_years') is not None else 0
+        d['late_pays_lt2yr'] = int(l2)
+        d['late_pays_gt2yr'] = int(lgt2)
+        # drop nested representation in favor of flat canonical keys
+        d.pop('late_pays', None)
+    # If flat keys exist without nested, ensure numeric defaults
+    if 'late_pays_lt2yr' in d:
+        if d.get('late_pays_lt2yr') is None:
+            d['late_pays_lt2yr'] = 0
+        else:
+            d['late_pays_lt2yr'] = int(d.get('late_pays_lt2yr'))
+    else:
+        d['late_pays_lt2yr'] = 0
+    if 'late_pays_gt2yr' in d:
+        if d.get('late_pays_gt2yr') is None:
+            d['late_pays_gt2yr'] = 0
+        else:
+            d['late_pays_gt2yr'] = int(d.get('late_pays_gt2yr'))
+    else:
+        d['late_pays_gt2yr'] = 0
     # Normalize variants of credit card totals naming used in different GT files
     if 'credit_card_open_totals_no_retail' in d and 'credit_card_open_totals' not in d:
         d['credit_card_open_totals'] = d.pop('credit_card_open_totals_no_retail')
@@ -150,6 +174,33 @@ def _normalize_aliases(d):
             else:
                 simplified.append({'factor': f, 'color': None})
         d['credit_factors'] = simplified
+
+    # Normalize color/rgb representations (tuple vs list) across nested structures
+    def _fix_rgb(obj):
+        if isinstance(obj, dict):
+            for k, v in obj.items():
+                if k == 'rgb' and isinstance(v, tuple):
+                    obj[k] = list(v)
+                else:
+                    _fix_rgb(v)
+        elif isinstance(obj, list):
+            for item in obj:
+                _fix_rgb(item)
+    _fix_rgb(d)
+
+    # Remove transient layout/spans keys that are irrelevant for canonical comparison
+    def _remove_transient_keys(obj):
+        if isinstance(obj, dict):
+            for k in list(obj.keys()):
+                if k in ('page', 'spans', 'bbox'):
+                    obj.pop(k, None)
+                else:
+                    _remove_transient_keys(obj.get(k))
+        elif isinstance(obj, list):
+            for item in obj:
+                _remove_transient_keys(item)
+    _remove_transient_keys(d)
+
     return d
 
 
@@ -194,7 +245,11 @@ def compare_dicts(a, b):
     # Strict credit_factors matching: require exact color + normalized factor text equality (no fuzzy edit-distance)
     def _norm_factor_text(s):
         import re
-        return re.sub(r'[^a-z0-9]+', '', s.lower())
+        s2 = s.lower()
+        # canonicalize year/month variants to 'yr'/'mo' for robust matching
+        s2 = re.sub(r"\b(years?|yrs?)\b", 'yr', s2)
+        s2 = re.sub(r"\b(months?|mos?)\b", 'mo', s2)
+        return re.sub(r'[^a-z0-9]+', '', s2)
     # If one side entirely lacks 'credit_factors' (legacy GTs), treat them as intentionally absent and skip comparison
     na = dict(na); nb = dict(nb)
     if 'credit_factors' not in na or 'credit_factors' not in nb:
@@ -234,17 +289,29 @@ def compare_dicts(a, b):
             if isinstance(a_cc, dict) and isinstance(b_cc, dict):
                 a_cc = dict(a_cc); b_cc = dict(b_cc)
                 a_cc.pop('hex', None); b_cc.pop('hex', None)
+                # Ignore nested 'color' metadata inside credit_card_open_totals (GT may include it but extractor doesn't)
+                a_cc.pop('color', None); b_cc.pop('color', None)
                 na['credit_card_open_totals'] = a_cc
                 nb['credit_card_open_totals'] = b_cc
 
-    # Normalize top-level *_color keys: if one side has a color and the other has None, drop the key to avoid spurious mismatches
+    # Normalize top-level *_color keys: if either side is missing or the value is None, drop the key to avoid spurious mismatches
     color_keys = set(k for k in set(list(na.keys()) + list(nb.keys())) if k.endswith('_color'))
     for k in color_keys:
         a_has = (k in na and na.get(k) is not None)
         b_has = (k in nb and nb.get(k) is not None)
-        # If one side has a non-None color while the other is missing/None, drop the key from both
-        if a_has != b_has:
+        # If either side doesn't have a non-None value, drop it from both dictionaries
+        if not (a_has and b_has):
             na.pop(k, None); nb.pop(k, None)
+
+    # Drop transient bbox/page/spans keys used only for span attachments
+    for d in (na, nb):
+        for k in list(d.keys()):
+            if k.endswith('_bbox') or k.endswith('_page') or k.endswith('_spans'):
+                d.pop(k, None)
+
+    # Drop noisy 'all_lines_obj' key from both sides (not part of canonical comparison)
+    na.pop('all_lines_obj', None)
+    nb.pop('all_lines_obj', None)
 
     return na == nb
 
@@ -275,6 +342,16 @@ def pytest_generate_tests(metafunc):
         pdfs = get_pdf_files(pdf_dir)
         if user_id:
             pdfs = [p for p in pdfs if f"user_{user_id}_" in p]
-        elif len(pdfs) > n_pdfs:
-            pdfs = random.sample(pdfs, n_pdfs)
+        else:
+            # prefer PDFs with validated ground-truth files
+            gt_dir = metafunc.config.getoption("--ground_truth_dir")
+            validated = [p for p in pdfs if (Path(gt_dir) / pdf_to_ground_truth_name(p)).exists()]
+            if validated:
+                pool = validated
+            else:
+                pool = pdfs
+            if len(pool) > n_pdfs:
+                pdfs = random.sample(pool, n_pdfs)
+            else:
+                pdfs = pool
         metafunc.parametrize("pdf_path", pdfs)

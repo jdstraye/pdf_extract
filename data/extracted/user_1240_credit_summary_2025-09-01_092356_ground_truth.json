@@ -1,0 +1,7129 @@
+{
+  "late_pays_lt2yr": 11,
+  "late_pays_gt2yr": 0,
+  "revolving_open_count": 5,
+  "revolving_open_total": 40971,
+  "installment_open_count": 4,
+  "installment_open_total": 27315,
+  "real_estate_open_count": 1,
+  "real_estate_open_total": 0,
+  "line_of_credit_accounts_open_count": 1,
+  "line_of_credit_accounts_open_total": 0,
+  "miscellaneous_accounts_open_count": 1,
+  "miscellaneous_accounts_open_total": 0,
+  "filename": "user_1240_credit_summary_2025-09-01_092356.pdf",
+  "source": "data/pdf_analysis/user_1240_credit_summary_2025-09-01_092356.pdf",
+  "credit_score": 577,
+  "credit_score_color": "red",
+  "age": 40,
+  "address": [
+    "3120 Jasper Trl, Aubrey, TX 76227"
+  ],
+  "collections_open": 4,
+  "collections_closed": 1,
+  "public_records": 0,
+  "inquiries_lt6mo": 0,
+  "monthly_payments": 25,
+  "red_credit_factors_count": 6,
+  "green_credit_factors_count": 12,
+  "black_credit_factors_count": 3,
+  "credit_freeze": 0,
+  "fraud_alert": 0,
+  "deceased": 0,
+  "credit_factors": [
+    {
+      "factor": "$54756 Unpaid Collection(s)",
+      "hex": "#428f4e",
+      "color": "green"
+    },
+    {
+      "factor": "6 RE Lates in 4-6 mo",
+      "hex": "#428f4e",
+      "color": "green"
+    },
+    {
+      "factor": "4 RE Lates in 6-12 mo",
+      "hex": "#428f4e",
+      "color": "green"
+    },
+    {
+      "factor": "2 Over Limit Accnt",
+      "hex": "#428f4e",
+      "color": "green"
+    },
+    {
+      "factor": "Total Rev Usage > 90%",
+      "hex": "#428f4e",
+      "color": "green"
+    },
+    {
+      "factor": "Past Due Not Late",
+      "hex": "#428f4e",
+      "color": "green"
+    },
+    {
+      "factor": "Pay $32371 so Accts < 40%",
+      "hex": "#dc3545",
+      "color": "red"
+    },
+    {
+      "factor": "4 Chrgd Off Rev Accts",
+      "hex": "#dc3545",
+      "color": "red"
+    },
+    {
+      "factor": "1 Charged Off Accts",
+      "hex": "#dc3545",
+      "color": "red"
+    },
+    {
+      "factor": "2 New Accnts Last 60 Days",
+      "hex": "#dc3545",
+      "color": "red"
+    },
+    {
+      "factor": "1 Rev Late in 12-24 mo",
+      "hex": "#dc3545",
+      "color": "red"
+    },
+    {
+      "factor": "Less than 5 yrs",
+      "hex": "#dc3545",
+      "color": "red"
+    },
+    {
+      "factor": "7k+ line for 4+yrs",
+      "hex": "#428f4e",
+      "color": "green"
+    },
+    {
+      "factor": "Ok Open Rev Depth",
+      "hex": "#428f4e",
+      "color": "green"
+    },
+    {
+      "factor": "3+ Closed Rev Accnts",
+      "hex": "#428f4e",
+      "color": "green"
+    },
+    {
+      "factor": "Good Closed Rev Depth",
+      "hex": "#428f4e",
+      "color": "green"
+    },
+    {
+      "factor": "Closed Accnts Over 10k",
+      "hex": "#428f4e",
+      "color": "green"
+    },
+    {
+      "factor": "Paid Off 200k+ RE/RE",
+      "hex": "#428f4e",
+      "color": "green"
+    },
+    {
+      "factor": "No Open Mortgage",
+      "hex": "#212529",
+      "color": "black"
+    },
+    {
+      "factor": "Seasoned Closed Accounts",
+      "hex": "#212529",
+      "color": "black"
+    },
+    {
+      "factor": "Fraud Alert",
+      "hex": "#212529",
+      "color": "black"
+    }
+  ],
+  "monthly_payments_color": null,
+  "pdf_file": "data/pdf_analysis/user_1240_credit_summary_2025-09-01_092356.pdf",
+  "all_lines_obj": [
+    {
+      "page": 0,
+      "spans": [
+        {
+          "text": "Tina Armstrong's Credit Summary",
+          "rgb": [
+            33,
+            37,
+            41
+          ],
+          "hex": "#212529"
+        }
+      ],
+      "bbox": [
+        53,
+        32,
+        264,
+        50
+      ]
+    },
+    {
+      "page": 0,
+      "spans": [
+        {
+          "text": "577",
+          "rgb": [
+            173,
+            48,
+            46
+          ],
+          "hex": "#ad302e"
+        }
+      ],
+      "bbox": [
+        53,
+        71,
+        77,
+        90
+      ]
+    },
+    {
+      "page": 0,
+      "spans": [
+        {
+          "text": "$25/mo",
+          "rgb": [
+            33,
+            37,
+            41
+          ],
+          "hex": "#212529"
+        }
+      ],
+      "bbox": [
+        167,
+        71,
+        215,
+        90
+      ]
+    },
+    {
+      "page": 0,
+      "spans": [
+        {
+          "text": "No",
+          "rgb": [
+            33,
+            37,
+            41
+          ],
+          "hex": "#212529"
+        }
+      ],
+      "bbox": [
+        280,
+        71,
+        299,
+        90
+      ]
+    },
+    {
+      "page": 0,
+      "spans": [
+        {
+          "text": "Yes",
+          "rgb": [
+            33,
+            37,
+            41
+          ],
+          "hex": "#212529"
+        }
+      ],
+      "bbox": [
+        394,
+        71,
+        418,
+        90
+      ]
+    },
+    {
+      "page": 0,
+      "spans": [
+        {
+          "text": "No",
+          "rgb": [
+            33,
+            37,
+            41
+          ],
+          "hex": "#212529"
+        }
+      ],
+      "bbox": [
+        507,
+        71,
+        526,
+        90
+      ]
+    },
+    {
+      "page": 0,
+      "spans": [
+        {
+          "text": "Credit Score",
+          "rgb": [
+            33,
+            37,
+            41
+          ],
+          "hex": "#212529"
+        }
+      ],
+      "bbox": [
+        53,
+        93,
+        114,
+        108
+      ]
+    },
+    {
+      "page": 0,
+      "spans": [
+        {
+          "text": "Payments",
+          "rgb": [
+            33,
+            37,
+            41
+          ],
+          "hex": "#212529"
+        }
+      ],
+      "bbox": [
+        167,
+        93,
+        216,
+        108
+      ]
+    },
+    {
+      "page": 0,
+      "spans": [
+        {
+          "text": "Credit Freeze",
+          "rgb": [
+            33,
+            37,
+            41
+          ],
+          "hex": "#212529"
+        }
+      ],
+      "bbox": [
+        280,
+        93,
+        347,
+        108
+      ]
+    },
+    {
+      "page": 0,
+      "spans": [
+        {
+          "text": "Fraud Alert",
+          "rgb": [
+            33,
+            37,
+            41
+          ],
+          "hex": "#212529"
+        }
+      ],
+      "bbox": [
+        394,
+        93,
+        448,
+        108
+      ]
+    },
+    {
+      "page": 0,
+      "spans": [
+        {
+          "text": "Deceased",
+          "rgb": [
+            33,
+            37,
+            41
+          ],
+          "hex": "#212529"
+        }
+      ],
+      "bbox": [
+        507,
+        93,
+        556,
+        108
+      ]
+    },
+    {
+      "page": 0,
+      "spans": [
+        {
+          "text": "Credit Report Details",
+          "rgb": [
+            33,
+            37,
+            41
+          ],
+          "hex": "#212529"
+        }
+      ],
+      "bbox": [
+        53,
+        131,
+        183,
+        149
+      ]
+    },
+    {
+      "page": 0,
+      "spans": [
+        {
+          "text": "Report Date: 09/01/2025",
+          "rgb": [
+            55,
+            65,
+            81
+          ],
+          "hex": "#374151"
+        }
+      ],
+      "bbox": [
+        56,
+        171,
+        158,
+        184
+      ]
+    },
+    {
+      "page": 0,
+      "spans": [
+        {
+          "text": "Credit Report",
+          "rgb": [
+            55,
+            65,
+            81
+          ],
+          "hex": "#374151"
+        }
+      ],
+      "bbox": [
+        212,
+        171,
+        270,
+        184
+      ]
+    },
+    {
+      "page": 0,
+      "spans": [
+        {
+          "text": "Name: Tina Armstrong",
+          "rgb": [
+            33,
+            37,
+            41
+          ],
+          "hex": "#212529"
+        }
+      ],
+      "bbox": [
+        56,
+        194,
+        147,
+        206
+      ]
+    },
+    {
+      "page": 0,
+      "spans": [
+        {
+          "text": "CRYSTAL KEISHAWN WHITE",
+          "rgb": [
+            33,
+            37,
+            41
+          ],
+          "hex": "#212529"
+        }
+      ],
+      "bbox": [
+        212,
+        194,
+        336,
+        206
+      ]
+    },
+    {
+      "page": 0,
+      "spans": [
+        {
+          "text": "Age: 40",
+          "rgb": [
+            33,
+            37,
+            41
+          ],
+          "hex": "#212529"
+        }
+      ],
+      "bbox": [
+        56,
+        216,
+        87,
+        229
+      ]
+    },
+    {
+      "page": 0,
+      "spans": [
+        {
+          "text": "3120 JASPER TRL",
+          "rgb": [
+            33,
+            37,
+            41
+          ],
+          "hex": "#212529"
+        }
+      ],
+      "bbox": [
+        56,
+        239,
+        133,
+        252
+      ]
+    },
+    {
+      "page": 0,
+      "spans": [
+        {
+          "text": "3120 JASPER TRL",
+          "rgb": [
+            33,
+            37,
+            41
+          ],
+          "hex": "#212529"
+        }
+      ],
+      "bbox": [
+        212,
+        239,
+        289,
+        252
+      ]
+    },
+    {
+      "page": 0,
+      "spans": [
+        {
+          "text": "AUBREY, TX. 76227",
+          "rgb": [
+            33,
+            37,
+            41
+          ],
+          "hex": "#212529"
+        }
+      ],
+      "bbox": [
+        56,
+        262,
+        140,
+        274
+      ]
+    },
+    {
+      "page": 0,
+      "spans": [
+        {
+          "text": "AUBREY, TX. 76227",
+          "rgb": [
+            33,
+            37,
+            41
+          ],
+          "hex": "#212529"
+        }
+      ],
+      "bbox": [
+        212,
+        262,
+        296,
+        274
+      ]
+    },
+    {
+      "page": 0,
+      "spans": [
+        {
+          "text": "Categories",
+          "rgb": [
+            55,
+            65,
+            81
+          ],
+          "hex": "#374151"
+        }
+      ],
+      "bbox": [
+        56,
+        304,
+        103,
+        317
+      ]
+    },
+    {
+      "page": 0,
+      "spans": [
+        {
+          "text": "# / Balance",
+          "rgb": [
+            55,
+            65,
+            81
+          ],
+          "hex": "#374151"
+        }
+      ],
+      "bbox": [
+        212,
+        304,
+        259,
+        317
+      ]
+    },
+    {
+      "page": 0,
+      "spans": [
+        {
+          "text": "Revolving Accounts (Open)",
+          "rgb": [
+            33,
+            37,
+            41
+          ],
+          "hex": "#212529"
+        }
+      ],
+      "bbox": [
+        56,
+        327,
+        166,
+        339
+      ]
+    },
+    {
+      "page": 0,
+      "spans": [
+        {
+          "text": "5 / $40,971",
+          "rgb": [
+            33,
+            37,
+            41
+          ],
+          "hex": "#212529"
+        }
+      ],
+      "bbox": [
+        212,
+        327,
+        257,
+        339
+      ]
+    },
+    {
+      "page": 0,
+      "spans": [
+        {
+          "text": "Real Estate (Open)",
+          "rgb": [
+            33,
+            37,
+            41
+          ],
+          "hex": "#212529"
+        }
+      ],
+      "bbox": [
+        56,
+        350,
+        133,
+        362
+      ]
+    },
+    {
+      "page": 0,
+      "spans": [
+        {
+          "text": "1 / $0",
+          "rgb": [
+            33,
+            37,
+            41
+          ],
+          "hex": "#212529"
+        }
+      ],
+      "bbox": [
+        212,
+        350,
+        235,
+        362
+      ]
+    },
+    {
+      "page": 0,
+      "spans": [
+        {
+          "text": "Line of Credit Accounts (Open)",
+          "rgb": [
+            33,
+            37,
+            41
+          ],
+          "hex": "#212529"
+        }
+      ],
+      "bbox": [
+        56,
+        372,
+        180,
+        385
+      ]
+    },
+    {
+      "page": 0,
+      "spans": [
+        {
+          "text": "1 / $0",
+          "rgb": [
+            33,
+            37,
+            41
+          ],
+          "hex": "#212529"
+        }
+      ],
+      "bbox": [
+        212,
+        372,
+        235,
+        385
+      ]
+    },
+    {
+      "page": 0,
+      "spans": [
+        {
+          "text": "Installment Accounts (Open)",
+          "rgb": [
+            33,
+            37,
+            41
+          ],
+          "hex": "#212529"
+        }
+      ],
+      "bbox": [
+        56,
+        395,
+        170,
+        407
+      ]
+    },
+    {
+      "page": 0,
+      "spans": [
+        {
+          "text": "4 / $27,315",
+          "rgb": [
+            33,
+            37,
+            41
+          ],
+          "hex": "#212529"
+        }
+      ],
+      "bbox": [
+        212,
+        395,
+        257,
+        407
+      ]
+    },
+    {
+      "page": 0,
+      "spans": [
+        {
+          "text": "Miscellaneous Accounts (Open)",
+          "rgb": [
+            33,
+            37,
+            41
+          ],
+          "hex": "#212529"
+        }
+      ],
+      "bbox": [
+        56,
+        418,
+        183,
+        430
+      ]
+    },
+    {
+      "page": 0,
+      "spans": [
+        {
+          "text": "1 / $0",
+          "rgb": [
+            33,
+            37,
+            41
+          ],
+          "hex": "#212529"
+        }
+      ],
+      "bbox": [
+        212,
+        418,
+        235,
+        430
+      ]
+    },
+    {
+      "page": 0,
+      "spans": [
+        {
+          "text": "Credit Alerts",
+          "rgb": [
+            55,
+            65,
+            81
+          ],
+          "hex": "#374151"
+        }
+      ],
+      "bbox": [
+        56,
+        460,
+        110,
+        473
+      ]
+    },
+    {
+      "page": 0,
+      "spans": [
+        {
+          "text": "#",
+          "rgb": [
+            55,
+            65,
+            81
+          ],
+          "hex": "#374151"
+        }
+      ],
+      "bbox": [
+        212,
+        460,
+        217,
+        473
+      ]
+    },
+    {
+      "page": 0,
+      "spans": [
+        {
+          "text": "Public Records",
+          "rgb": [
+            33,
+            37,
+            41
+          ],
+          "hex": "#212529"
+        }
+      ],
+      "bbox": [
+        56,
+        483,
+        117,
+        495
+      ]
+    },
+    {
+      "page": 0,
+      "spans": [
+        {
+          "text": "0",
+          "rgb": [
+            33,
+            37,
+            41
+          ],
+          "hex": "#212529"
+        }
+      ],
+      "bbox": [
+        212,
+        483,
+        217,
+        495
+      ]
+    },
+    {
+      "page": 0,
+      "spans": [
+        {
+          "text": "Collections (Open/Closed)",
+          "rgb": [
+            33,
+            37,
+            41
+          ],
+          "hex": "#212529"
+        }
+      ],
+      "bbox": [
+        56,
+        506,
+        161,
+        518
+      ]
+    },
+    {
+      "page": 0,
+      "spans": [
+        {
+          "text": "4 / 1",
+          "rgb": [
+            33,
+            37,
+            41
+          ],
+          "hex": "#212529"
+        }
+      ],
+      "bbox": [
+        212,
+        506,
+        230,
+        518
+      ]
+    },
+    {
+      "page": 0,
+      "spans": [
+        {
+          "text": "Inquires (Last 6 Months)",
+          "rgb": [
+            33,
+            37,
+            41
+          ],
+          "hex": "#212529"
+        }
+      ],
+      "bbox": [
+        56,
+        528,
+        153,
+        541
+      ]
+    },
+    {
+      "page": 0,
+      "spans": [
+        {
+          "text": "0",
+          "rgb": [
+            33,
+            37,
+            41
+          ],
+          "hex": "#212529"
+        }
+      ],
+      "bbox": [
+        212,
+        528,
+        217,
+        541
+      ]
+    },
+    {
+      "page": 0,
+      "spans": [
+        {
+          "text": "Late Pays (Last 2/2+ Years)",
+          "rgb": [
+            33,
+            37,
+            41
+          ],
+          "hex": "#212529"
+        }
+      ],
+      "bbox": [
+        56,
+        551,
+        168,
+        563
+      ]
+    },
+    {
+      "page": 0,
+      "spans": [
+        {
+          "text": "11 / 0",
+          "rgb": [
+            33,
+            37,
+            41
+          ],
+          "hex": "#212529"
+        }
+      ],
+      "bbox": [
+        212,
+        551,
+        235,
+        563
+      ]
+    },
+    {
+      "page": 0,
+      "spans": [
+        {
+          "text": "Credit Factors",
+          "rgb": [
+            33,
+            37,
+            41
+          ],
+          "hex": "#212529"
+        }
+      ],
+      "bbox": [
+        382,
+        131,
+        470,
+        149
+      ]
+    },
+    {
+      "page": 0,
+      "spans": [
+        {
+          "text": "$54756 Unpaid Collection(s)",
+          "rgb": [
+            66,
+            143,
+            78
+          ],
+          "hex": "#428f4e"
+        }
+      ],
+      "bbox": [
+        382,
+        165,
+        521,
+        180
+      ]
+    },
+    {
+      "page": 0,
+      "spans": [
+        {
+          "text": "6 RE Lates in 4-6 mo",
+          "rgb": [
+            66,
+            143,
+            78
+          ],
+          "hex": "#428f4e"
+        }
+      ],
+      "bbox": [
+        382,
+        182,
+        486,
+        197
+      ]
+    },
+    {
+      "page": 0,
+      "spans": [
+        {
+          "text": "4 RE Lates in 6-12 mo",
+          "rgb": [
+            66,
+            143,
+            78
+          ],
+          "hex": "#428f4e"
+        }
+      ],
+      "bbox": [
+        382,
+        199,
+        492,
+        214
+      ]
+    },
+    {
+      "page": 0,
+      "spans": [
+        {
+          "text": "2 Over Limit Accnt",
+          "rgb": [
+            66,
+            143,
+            78
+          ],
+          "hex": "#428f4e"
+        }
+      ],
+      "bbox": [
+        382,
+        216,
+        472,
+        231
+      ]
+    },
+    {
+      "page": 0,
+      "spans": [
+        {
+          "text": "Total Rev Usage > 90%",
+          "rgb": [
+            66,
+            143,
+            78
+          ],
+          "hex": "#428f4e"
+        }
+      ],
+      "bbox": [
+        382,
+        233,
+        499,
+        248
+      ]
+    },
+    {
+      "page": 0,
+      "spans": [
+        {
+          "text": "Past Due Not Late",
+          "rgb": [
+            66,
+            143,
+            78
+          ],
+          "hex": "#428f4e"
+        }
+      ],
+      "bbox": [
+        382,
+        250,
+        472,
+        265
+      ]
+    },
+    {
+      "page": 0,
+      "spans": [
+        {
+          "text": "Pay $32371 so Accts < 40%",
+          "rgb": [
+            220,
+            53,
+            69
+          ],
+          "hex": "#dc3545"
+        }
+      ],
+      "bbox": [
+        382,
+        267,
+        520,
+        282
+      ]
+    },
+    {
+      "page": 0,
+      "spans": [
+        {
+          "text": "4 Chrgd Off Rev Accts",
+          "rgb": [
+            220,
+            53,
+            69
+          ],
+          "hex": "#dc3545"
+        }
+      ],
+      "bbox": [
+        382,
+        284,
+        492,
+        299
+      ]
+    },
+    {
+      "page": 0,
+      "spans": [
+        {
+          "text": "1 Charged Off Accts",
+          "rgb": [
+            220,
+            53,
+            69
+          ],
+          "hex": "#dc3545"
+        }
+      ],
+      "bbox": [
+        382,
+        301,
+        481,
+        316
+      ]
+    },
+    {
+      "page": 0,
+      "spans": [
+        {
+          "text": "2 New Accnts Last 60 Days",
+          "rgb": [
+            220,
+            53,
+            69
+          ],
+          "hex": "#dc3545"
+        }
+      ],
+      "bbox": [
+        382,
+        318,
+        517,
+        333
+      ]
+    },
+    {
+      "page": 0,
+      "spans": [
+        {
+          "text": "1 Rev Late in 12-24 mo",
+          "rgb": [
+            220,
+            53,
+            69
+          ],
+          "hex": "#dc3545"
+        }
+      ],
+      "bbox": [
+        382,
+        335,
+        497,
+        350
+      ]
+    },
+    {
+      "page": 0,
+      "spans": [
+        {
+          "text": "Less than 5 yrs",
+          "rgb": [
+            220,
+            53,
+            69
+          ],
+          "hex": "#dc3545"
+        }
+      ],
+      "bbox": [
+        382,
+        352,
+        457,
+        368
+      ]
+    },
+    {
+      "page": 0,
+      "spans": [
+        {
+          "text": "7k+ line for 4+yrs",
+          "rgb": [
+            66,
+            143,
+            78
+          ],
+          "hex": "#428f4e"
+        }
+      ],
+      "bbox": [
+        382,
+        369,
+        467,
+        385
+      ]
+    },
+    {
+      "page": 0,
+      "spans": [
+        {
+          "text": "Ok Open Rev Depth",
+          "rgb": [
+            66,
+            143,
+            78
+          ],
+          "hex": "#428f4e"
+        }
+      ],
+      "bbox": [
+        382,
+        386,
+        481,
+        402
+      ]
+    },
+    {
+      "page": 0,
+      "spans": [
+        {
+          "text": "3+ Closed Rev Accnts",
+          "rgb": [
+            66,
+            143,
+            78
+          ],
+          "hex": "#428f4e"
+        }
+      ],
+      "bbox": [
+        382,
+        403,
+        491,
+        419
+      ]
+    },
+    {
+      "page": 0,
+      "spans": [
+        {
+          "text": "Good Closed Rev Depth",
+          "rgb": [
+            66,
+            143,
+            78
+          ],
+          "hex": "#428f4e"
+        }
+      ],
+      "bbox": [
+        382,
+        420,
+        501,
+        436
+      ]
+    },
+    {
+      "page": 0,
+      "spans": [
+        {
+          "text": "Closed Accnts Over 10k",
+          "rgb": [
+            66,
+            143,
+            78
+          ],
+          "hex": "#428f4e"
+        }
+      ],
+      "bbox": [
+        382,
+        437,
+        500,
+        453
+      ]
+    },
+    {
+      "page": 0,
+      "spans": [
+        {
+          "text": "Paid Off 200k+ RE/RE",
+          "rgb": [
+            66,
+            143,
+            78
+          ],
+          "hex": "#428f4e"
+        }
+      ],
+      "bbox": [
+        382,
+        454,
+        492,
+        470
+      ]
+    },
+    {
+      "page": 0,
+      "spans": [
+        {
+          "text": "No Open Mortgage",
+          "rgb": [
+            33,
+            37,
+            41
+          ],
+          "hex": "#212529"
+        }
+      ],
+      "bbox": [
+        382,
+        471,
+        476,
+        487
+      ]
+    },
+    {
+      "page": 0,
+      "spans": [
+        {
+          "text": "Seasoned Closed Accounts",
+          "rgb": [
+            33,
+            37,
+            41
+          ],
+          "hex": "#212529"
+        }
+      ],
+      "bbox": [
+        382,
+        488,
+        517,
+        504
+      ]
+    },
+    {
+      "page": 0,
+      "spans": [
+        {
+          "text": "Fraud Alert",
+          "rgb": [
+            33,
+            37,
+            41
+          ],
+          "hex": "#212529"
+        }
+      ],
+      "bbox": [
+        382,
+        505,
+        437,
+        521
+      ]
+    },
+    {
+      "page": 1,
+      "spans": [
+        {
+          "text": "Credit Alerts",
+          "rgb": [
+            33,
+            37,
+            41
+          ],
+          "hex": "#212529"
+        }
+      ],
+      "bbox": [
+        56,
+        32,
+        134,
+        50
+      ]
+    },
+    {
+      "page": 1,
+      "spans": [
+        {
+          "text": "Collections/Charge Offs",
+          "rgb": [
+            55,
+            65,
+            81
+          ],
+          "hex": "#374151"
+        }
+      ],
+      "bbox": [
+        56,
+        72,
+        159,
+        84
+      ]
+    },
+    {
+      "page": 1,
+      "spans": [
+        {
+          "text": "Remarks",
+          "rgb": [
+            55,
+            65,
+            81
+          ],
+          "hex": "#374151"
+        }
+      ],
+      "bbox": [
+        206,
+        72,
+        244,
+        84
+      ]
+    },
+    {
+      "page": 1,
+      "spans": [
+        {
+          "text": "Status",
+          "rgb": [
+            55,
+            65,
+            81
+          ],
+          "hex": "#374151"
+        }
+      ],
+      "bbox": [
+        405,
+        72,
+        432,
+        84
+      ]
+    },
+    {
+      "page": 1,
+      "spans": [
+        {
+          "text": "Age",
+          "rgb": [
+            55,
+            65,
+            81
+          ],
+          "hex": "#374151"
+        }
+      ],
+      "bbox": [
+        493,
+        72,
+        510,
+        84
+      ]
+    },
+    {
+      "page": 1,
+      "spans": [
+        {
+          "text": "Balance",
+          "rgb": [
+            55,
+            65,
+            81
+          ],
+          "hex": "#374151"
+        }
+      ],
+      "bbox": [
+        526,
+        72,
+        561,
+        84
+      ]
+    },
+    {
+      "page": 1,
+      "spans": [
+        {
+          "text": "NAVY FEDERAL CREDIT ",
+          "rgb": [
+            33,
+            37,
+            41
+          ],
+          "hex": "#212529"
+        }
+      ],
+      "bbox": [
+        56,
+        95,
+        163,
+        107
+      ]
+    },
+    {
+      "page": 1,
+      "spans": [
+        {
+          "text": "Charged off account. Fixed rate. ",
+          "rgb": [
+            33,
+            37,
+            41
+          ],
+          "hex": "#212529"
+        }
+      ],
+      "bbox": [
+        206,
+        95,
+        337,
+        107
+      ]
+    },
+    {
+      "page": 1,
+      "spans": [
+        {
+          "text": "Open",
+          "rgb": [
+            33,
+            37,
+            41
+          ],
+          "hex": "#212529"
+        }
+      ],
+      "bbox": [
+        405,
+        95,
+        427,
+        107
+      ]
+    },
+    {
+      "page": 1,
+      "spans": [
+        {
+          "text": "2021",
+          "rgb": [
+            33,
+            37,
+            41
+          ],
+          "hex": "#212529"
+        }
+      ],
+      "bbox": [
+        490,
+        95,
+        510,
+        107
+      ]
+    },
+    {
+      "page": 1,
+      "spans": [
+        {
+          "text": "$20,627",
+          "rgb": [
+            33,
+            37,
+            41
+          ],
+          "hex": "#212529"
+        }
+      ],
+      "bbox": [
+        528,
+        95,
+        561,
+        107
+      ]
+    },
+    {
+      "page": 1,
+      "spans": [
+        {
+          "text": "NAVY FEDERAL CREDIT ",
+          "rgb": [
+            33,
+            37,
+            41
+          ],
+          "hex": "#212529"
+        }
+      ],
+      "bbox": [
+        56,
+        117,
+        163,
+        130
+      ]
+    },
+    {
+      "page": 1,
+      "spans": [
+        {
+          "text": "Charged off account. Account closed by credit grantor. ",
+          "rgb": [
+            33,
+            37,
+            41
+          ],
+          "hex": "#212529"
+        }
+      ],
+      "bbox": [
+        206,
+        117,
+        426,
+        130
+      ]
+    },
+    {
+      "page": 1,
+      "spans": [
+        {
+          "text": "Open",
+          "rgb": [
+            33,
+            37,
+            41
+          ],
+          "hex": "#212529"
+        }
+      ],
+      "bbox": [
+        405,
+        117,
+        427,
+        130
+      ]
+    },
+    {
+      "page": 1,
+      "spans": [
+        {
+          "text": "2021",
+          "rgb": [
+            33,
+            37,
+            41
+          ],
+          "hex": "#212529"
+        }
+      ],
+      "bbox": [
+        490,
+        117,
+        510,
+        130
+      ]
+    },
+    {
+      "page": 1,
+      "spans": [
+        {
+          "text": "$9,159",
+          "rgb": [
+            33,
+            37,
+            41
+          ],
+          "hex": "#212529"
+        }
+      ],
+      "bbox": [
+        533,
+        117,
+        561,
+        130
+      ]
+    },
+    {
+      "page": 1,
+      "spans": [
+        {
+          "text": "NAVY FEDERAL CREDIT ",
+          "rgb": [
+            33,
+            37,
+            41
+          ],
+          "hex": "#212529"
+        }
+      ],
+      "bbox": [
+        56,
+        140,
+        163,
+        152
+      ]
+    },
+    {
+      "page": 1,
+      "spans": [
+        {
+          "text": "Charged off account. Account closed by credit grantor. ",
+          "rgb": [
+            33,
+            37,
+            41
+          ],
+          "hex": "#212529"
+        }
+      ],
+      "bbox": [
+        206,
+        140,
+        426,
+        152
+      ]
+    },
+    {
+      "page": 1,
+      "spans": [
+        {
+          "text": "Open",
+          "rgb": [
+            33,
+            37,
+            41
+          ],
+          "hex": "#212529"
+        }
+      ],
+      "bbox": [
+        405,
+        140,
+        427,
+        152
+      ]
+    },
+    {
+      "page": 1,
+      "spans": [
+        {
+          "text": "2020",
+          "rgb": [
+            33,
+            37,
+            41
+          ],
+          "hex": "#212529"
+        }
+      ],
+      "bbox": [
+        490,
+        140,
+        510,
+        152
+      ]
+    },
+    {
+      "page": 1,
+      "spans": [
+        {
+          "text": "$12,485",
+          "rgb": [
+            33,
+            37,
+            41
+          ],
+          "hex": "#212529"
+        }
+      ],
+      "bbox": [
+        528,
+        140,
+        561,
+        152
+      ]
+    },
+    {
+      "page": 1,
+      "spans": [
+        {
+          "text": "TBOM/FORTIVA",
+          "rgb": [
+            33,
+            37,
+            41
+          ],
+          "hex": "#212529"
+        }
+      ],
+      "bbox": [
+        56,
+        163,
+        124,
+        175
+      ]
+    },
+    {
+      "page": 1,
+      "spans": [
+        {
+          "text": "Consumer disputes after resolution. Charged off account. ",
+          "rgb": [
+            33,
+            37,
+            41
+          ],
+          "hex": "#212529"
+        }
+      ],
+      "bbox": [
+        206,
+        163,
+        437,
+        175
+      ]
+    },
+    {
+      "page": 1,
+      "spans": [
+        {
+          "text": "Closed - 7/31/25",
+          "rgb": [
+            33,
+            37,
+            41
+          ],
+          "hex": "#212529"
+        }
+      ],
+      "bbox": [
+        405,
+        163,
+        471,
+        175
+      ]
+    },
+    {
+      "page": 1,
+      "spans": [
+        {
+          "text": "2024",
+          "rgb": [
+            33,
+            37,
+            41
+          ],
+          "hex": "#212529"
+        }
+      ],
+      "bbox": [
+        490,
+        163,
+        510,
+        175
+      ]
+    },
+    {
+      "page": 1,
+      "spans": [
+        {
+          "text": "$0",
+          "rgb": [
+            33,
+            37,
+            41
+          ],
+          "hex": "#212529"
+        }
+      ],
+      "bbox": [
+        551,
+        163,
+        561,
+        175
+      ]
+    },
+    {
+      "page": 1,
+      "spans": [
+        {
+          "text": "NAVY FEDERAL CREDIT ",
+          "rgb": [
+            33,
+            37,
+            41
+          ],
+          "hex": "#212529"
+        }
+      ],
+      "bbox": [
+        56,
+        185,
+        163,
+        198
+      ]
+    },
+    {
+      "page": 1,
+      "spans": [
+        {
+          "text": "Account closed by credit grantor. ",
+          "rgb": [
+            33,
+            37,
+            41
+          ],
+          "hex": "#212529"
+        }
+      ],
+      "bbox": [
+        206,
+        185,
+        340,
+        198
+      ]
+    },
+    {
+      "page": 1,
+      "spans": [
+        {
+          "text": "Closed - 7/5/25",
+          "rgb": [
+            33,
+            37,
+            41
+          ],
+          "hex": "#212529"
+        }
+      ],
+      "bbox": [
+        405,
+        185,
+        466,
+        198
+      ]
+    },
+    {
+      "page": 1,
+      "spans": [
+        {
+          "text": "2020",
+          "rgb": [
+            33,
+            37,
+            41
+          ],
+          "hex": "#212529"
+        }
+      ],
+      "bbox": [
+        490,
+        185,
+        510,
+        198
+      ]
+    },
+    {
+      "page": 1,
+      "spans": [
+        {
+          "text": "$12,485",
+          "rgb": [
+            33,
+            37,
+            41
+          ],
+          "hex": "#212529"
+        }
+      ],
+      "bbox": [
+        528,
+        185,
+        561,
+        198
+      ]
+    },
+    {
+      "page": 1,
+      "spans": [
+        {
+          "text": "Late Pays",
+          "rgb": [
+            55,
+            65,
+            81
+          ],
+          "hex": "#374151"
+        }
+      ],
+      "bbox": [
+        56,
+        228,
+        98,
+        240
+      ]
+    },
+    {
+      "page": 1,
+      "spans": [
+        {
+          "text": "Account",
+          "rgb": [
+            55,
+            65,
+            81
+          ],
+          "hex": "#374151"
+        }
+      ],
+      "bbox": [
+        317,
+        228,
+        353,
+        240
+      ]
+    },
+    {
+      "page": 1,
+      "spans": [
+        {
+          "text": "Status",
+          "rgb": [
+            55,
+            65,
+            81
+          ],
+          "hex": "#374151"
+        }
+      ],
+      "bbox": [
+        439,
+        228,
+        466,
+        240
+      ]
+    },
+    {
+      "page": 1,
+      "spans": [
+        {
+          "text": "Past Due",
+          "rgb": [
+            55,
+            65,
+            81
+          ],
+          "hex": "#374151"
+        }
+      ],
+      "bbox": [
+        519,
+        228,
+        558,
+        240
+      ]
+    },
+    {
+      "page": 1,
+      "spans": [
+        {
+          "text": "30 - 12/23",
+          "rgb": [
+            33,
+            37,
+            41
+          ],
+          "hex": "#212529"
+        }
+      ],
+      "bbox": [
+        56,
+        250,
+        97,
+        263
+      ]
+    },
+    {
+      "page": 1,
+      "spans": [
+        {
+          "text": "NAVY FEDERAL CREDIT ",
+          "rgb": [
+            33,
+            37,
+            41
+          ],
+          "hex": "#212529"
+        }
+      ],
+      "bbox": [
+        317,
+        250,
+        424,
+        263
+      ]
+    },
+    {
+      "page": 1,
+      "spans": [
+        {
+          "text": "Open",
+          "rgb": [
+            33,
+            37,
+            41
+          ],
+          "hex": "#212529"
+        }
+      ],
+      "bbox": [
+        439,
+        250,
+        461,
+        263
+      ]
+    },
+    {
+      "page": 1,
+      "spans": [
+        {
+          "text": "120 - 06/25, 120 - 05/25, 120 - 04/25, 120 - 03/25, 90 - 02/25",
+          "rgb": [
+            33,
+            37,
+            41
+          ],
+          "hex": "#212529"
+        }
+      ],
+      "bbox": [
+        56,
+        273,
+        299,
+        286
+      ]
+    },
+    {
+      "page": 1,
+      "spans": [
+        {
+          "text": "ED FINANCIAL/ESA",
+          "rgb": [
+            33,
+            37,
+            41
+          ],
+          "hex": "#212529"
+        }
+      ],
+      "bbox": [
+        317,
+        273,
+        400,
+        286
+      ]
+    },
+    {
+      "page": 1,
+      "spans": [
+        {
+          "text": "Open",
+          "rgb": [
+            33,
+            37,
+            41
+          ],
+          "hex": "#212529"
+        }
+      ],
+      "bbox": [
+        439,
+        273,
+        461,
+        286
+      ]
+    },
+    {
+      "page": 1,
+      "spans": [
+        {
+          "text": "120 - 06/25, 120 - 05/25, 120 - 04/25, 120 - 03/25, 90 - 02/25",
+          "rgb": [
+            33,
+            37,
+            41
+          ],
+          "hex": "#212529"
+        }
+      ],
+      "bbox": [
+        56,
+        296,
+        299,
+        308
+      ]
+    },
+    {
+      "page": 1,
+      "spans": [
+        {
+          "text": "ED FINANCIAL/ESA",
+          "rgb": [
+            33,
+            37,
+            41
+          ],
+          "hex": "#212529"
+        }
+      ],
+      "bbox": [
+        317,
+        296,
+        400,
+        308
+      ]
+    },
+    {
+      "page": 1,
+      "spans": [
+        {
+          "text": "Open",
+          "rgb": [
+            33,
+            37,
+            41
+          ],
+          "hex": "#212529"
+        }
+      ],
+      "bbox": [
+        439,
+        296,
+        461,
+        308
+      ]
+    },
+    {
+      "page": 2,
+      "spans": [
+        {
+          "text": "Open Accounts",
+          "rgb": [
+            33,
+            37,
+            41
+          ],
+          "hex": "#212529"
+        }
+      ],
+      "bbox": [
+        56,
+        32,
+        152,
+        50
+      ]
+    },
+    {
+      "page": 2,
+      "spans": [
+        {
+          "text": "Revolving Accounts",
+          "rgb": [
+            55,
+            65,
+            81
+          ],
+          "hex": "#374151"
+        }
+      ],
+      "bbox": [
+        56,
+        72,
+        143,
+        84
+      ]
+    },
+    {
+      "page": 2,
+      "spans": [
+        {
+          "text": "Balance",
+          "rgb": [
+            55,
+            65,
+            81
+          ],
+          "hex": "#374151"
+        }
+      ],
+      "bbox": [
+        333,
+        72,
+        368,
+        84
+      ]
+    },
+    {
+      "page": 2,
+      "spans": [
+        {
+          "text": "Limit",
+          "rgb": [
+            55,
+            65,
+            81
+          ],
+          "hex": "#374151"
+        }
+      ],
+      "bbox": [
+        398,
+        72,
+        419,
+        84
+      ]
+    },
+    {
+      "page": 2,
+      "spans": [
+        {
+          "text": "%",
+          "rgb": [
+            55,
+            65,
+            81
+          ],
+          "hex": "#374151"
+        }
+      ],
+      "bbox": [
+        439,
+        72,
+        447,
+        84
+      ]
+    },
+    {
+      "page": 2,
+      "spans": [
+        {
+          "text": "Payment Resp",
+          "rgb": [
+            55,
+            65,
+            81
+          ],
+          "hex": "#374151"
+        }
+      ],
+      "bbox": [
+        461,
+        72,
+        527,
+        84
+      ]
+    },
+    {
+      "page": 2,
+      "spans": [
+        {
+          "text": "Age",
+          "rgb": [
+            55,
+            65,
+            81
+          ],
+          "hex": "#374151"
+        }
+      ],
+      "bbox": [
+        544,
+        72,
+        561,
+        84
+      ]
+    },
+    {
+      "page": 2,
+      "spans": [
+        {
+          "text": "NAVY FEDERAL CREDIT  (Line of Credit)",
+          "rgb": [
+            33,
+            37,
+            41
+          ],
+          "hex": "#212529"
+        }
+      ],
+      "bbox": [
+        56,
+        95,
+        225,
+        107
+      ]
+    },
+    {
+      "page": 2,
+      "spans": [
+        {
+          "text": "$0",
+          "rgb": [
+            33,
+            37,
+            41
+          ],
+          "hex": "#212529"
+        }
+      ],
+      "bbox": [
+        358,
+        95,
+        368,
+        107
+      ]
+    },
+    {
+      "page": 2,
+      "spans": [
+        {
+          "text": "$500",
+          "rgb": [
+            33,
+            37,
+            41
+          ],
+          "hex": "#212529"
+        }
+      ],
+      "bbox": [
+        399,
+        95,
+        419,
+        107
+      ]
+    },
+    {
+      "page": 2,
+      "spans": [
+        {
+          "text": "0%",
+          "rgb": [
+            33,
+            37,
+            41
+          ],
+          "hex": "#212529"
+        }
+      ],
+      "bbox": [
+        434,
+        95,
+        447,
+        107
+      ]
+    },
+    {
+      "page": 2,
+      "spans": [
+        {
+          "text": "$0",
+          "rgb": [
+            33,
+            37,
+            41
+          ],
+          "hex": "#212529"
+        }
+      ],
+      "bbox": [
+        488,
+        95,
+        498,
+        107
+      ]
+    },
+    {
+      "page": 2,
+      "spans": [
+        {
+          "text": "I",
+          "rgb": [
+            33,
+            37,
+            41
+          ],
+          "hex": "#212529"
+        }
+      ],
+      "bbox": [
+        524,
+        95,
+        527,
+        107
+      ]
+    },
+    {
+      "page": 2,
+      "spans": [
+        {
+          "text": "2019",
+          "rgb": [
+            33,
+            37,
+            41
+          ],
+          "hex": "#212529"
+        }
+      ],
+      "bbox": [
+        541,
+        95,
+        561,
+        107
+      ]
+    },
+    {
+      "page": 2,
+      "spans": [
+        {
+          "text": "OPENSKY CAPITAL BANK (Credit Card)",
+          "rgb": [
+            33,
+            37,
+            41
+          ],
+          "hex": "#212529"
+        }
+      ],
+      "bbox": [
+        56,
+        117,
+        221,
+        130
+      ]
+    },
+    {
+      "page": 2,
+      "spans": [
+        {
+          "text": "$0",
+          "rgb": [
+            33,
+            37,
+            41
+          ],
+          "hex": "#212529"
+        }
+      ],
+      "bbox": [
+        358,
+        117,
+        368,
+        130
+      ]
+    },
+    {
+      "page": 2,
+      "spans": [
+        {
+          "text": "$500",
+          "rgb": [
+            33,
+            37,
+            41
+          ],
+          "hex": "#212529"
+        }
+      ],
+      "bbox": [
+        399,
+        117,
+        419,
+        130
+      ]
+    },
+    {
+      "page": 2,
+      "spans": [
+        {
+          "text": "0%",
+          "rgb": [
+            33,
+            37,
+            41
+          ],
+          "hex": "#212529"
+        }
+      ],
+      "bbox": [
+        434,
+        117,
+        447,
+        130
+      ]
+    },
+    {
+      "page": 2,
+      "spans": [
+        {
+          "text": "$0",
+          "rgb": [
+            33,
+            37,
+            41
+          ],
+          "hex": "#212529"
+        }
+      ],
+      "bbox": [
+        488,
+        117,
+        498,
+        130
+      ]
+    },
+    {
+      "page": 2,
+      "spans": [
+        {
+          "text": "I",
+          "rgb": [
+            33,
+            37,
+            41
+          ],
+          "hex": "#212529"
+        }
+      ],
+      "bbox": [
+        524,
+        117,
+        527,
+        130
+      ]
+    },
+    {
+      "page": 2,
+      "spans": [
+        {
+          "text": "2025",
+          "rgb": [
+            33,
+            37,
+            41
+          ],
+          "hex": "#212529"
+        }
+      ],
+      "bbox": [
+        541,
+        117,
+        561,
+        130
+      ]
+    },
+    {
+      "page": 2,
+      "spans": [
+        {
+          "text": "LEAD BANK (Secured Credit Card)",
+          "rgb": [
+            33,
+            37,
+            41
+          ],
+          "hex": "#212529"
+        }
+      ],
+      "bbox": [
+        56,
+        140,
+        197,
+        152
+      ]
+    },
+    {
+      "page": 2,
+      "spans": [
+        {
+          "text": "$0",
+          "rgb": [
+            33,
+            37,
+            41
+          ],
+          "hex": "#212529"
+        }
+      ],
+      "bbox": [
+        358,
+        140,
+        368,
+        152
+      ]
+    },
+    {
+      "page": 2,
+      "spans": [
+        {
+          "text": "$200",
+          "rgb": [
+            33,
+            37,
+            41
+          ],
+          "hex": "#212529"
+        }
+      ],
+      "bbox": [
+        399,
+        140,
+        419,
+        152
+      ]
+    },
+    {
+      "page": 2,
+      "spans": [
+        {
+          "text": "0%",
+          "rgb": [
+            33,
+            37,
+            41
+          ],
+          "hex": "#212529"
+        }
+      ],
+      "bbox": [
+        434,
+        140,
+        447,
+        152
+      ]
+    },
+    {
+      "page": 2,
+      "spans": [
+        {
+          "text": "$0",
+          "rgb": [
+            33,
+            37,
+            41
+          ],
+          "hex": "#212529"
+        }
+      ],
+      "bbox": [
+        488,
+        140,
+        498,
+        152
+      ]
+    },
+    {
+      "page": 2,
+      "spans": [
+        {
+          "text": "I",
+          "rgb": [
+            33,
+            37,
+            41
+          ],
+          "hex": "#212529"
+        }
+      ],
+      "bbox": [
+        524,
+        140,
+        527,
+        152
+      ]
+    },
+    {
+      "page": 2,
+      "spans": [
+        {
+          "text": "2025",
+          "rgb": [
+            33,
+            37,
+            41
+          ],
+          "hex": "#212529"
+        }
+      ],
+      "bbox": [
+        541,
+        140,
+        561,
+        152
+      ]
+    },
+    {
+      "page": 2,
+      "spans": [
+        {
+          "text": "Ava Financial Inc (Credit Card)",
+          "rgb": [
+            33,
+            37,
+            41
+          ],
+          "hex": "#212529"
+        }
+      ],
+      "bbox": [
+        56,
+        163,
+        179,
+        175
+      ]
+    },
+    {
+      "page": 2,
+      "spans": [
+        {
+          "text": "$0",
+          "rgb": [
+            33,
+            37,
+            41
+          ],
+          "hex": "#212529"
+        }
+      ],
+      "bbox": [
+        358,
+        163,
+        368,
+        175
+      ]
+    },
+    {
+      "page": 2,
+      "spans": [
+        {
+          "text": "$500",
+          "rgb": [
+            33,
+            37,
+            41
+          ],
+          "hex": "#212529"
+        }
+      ],
+      "bbox": [
+        399,
+        163,
+        419,
+        175
+      ]
+    },
+    {
+      "page": 2,
+      "spans": [
+        {
+          "text": "0%",
+          "rgb": [
+            33,
+            37,
+            41
+          ],
+          "hex": "#212529"
+        }
+      ],
+      "bbox": [
+        434,
+        163,
+        447,
+        175
+      ]
+    },
+    {
+      "page": 2,
+      "spans": [
+        {
+          "text": "$0",
+          "rgb": [
+            33,
+            37,
+            41
+          ],
+          "hex": "#212529"
+        }
+      ],
+      "bbox": [
+        488,
+        163,
+        498,
+        175
+      ]
+    },
+    {
+      "page": 2,
+      "spans": [
+        {
+          "text": "I",
+          "rgb": [
+            33,
+            37,
+            41
+          ],
+          "hex": "#212529"
+        }
+      ],
+      "bbox": [
+        524,
+        163,
+        527,
+        175
+      ]
+    },
+    {
+      "page": 2,
+      "spans": [
+        {
+          "text": "2024",
+          "rgb": [
+            33,
+            37,
+            41
+          ],
+          "hex": "#212529"
+        }
+      ],
+      "bbox": [
+        541,
+        163,
+        561,
+        175
+      ]
+    },
+    {
+      "page": 2,
+      "spans": [
+        {
+          "text": "NAVY FEDERAL CREDIT  (Credit Card)",
+          "rgb": [
+            33,
+            37,
+            41
+          ],
+          "hex": "#212529"
+        }
+      ],
+      "bbox": [
+        56,
+        185,
+        218,
+        198
+      ]
+    },
+    {
+      "page": 2,
+      "spans": [
+        {
+          "text": "$9,159",
+          "rgb": [
+            33,
+            37,
+            41
+          ],
+          "hex": "#212529"
+        }
+      ],
+      "bbox": [
+        340,
+        185,
+        368,
+        198
+      ]
+    },
+    {
+      "page": 2,
+      "spans": [
+        {
+          "text": "$9,000",
+          "rgb": [
+            33,
+            37,
+            41
+          ],
+          "hex": "#212529"
+        },
+        {
+          "text": " 102%",
+          "rgb": [
+            220,
+            53,
+            69
+          ],
+          "hex": "#dc3545"
+        }
+      ],
+      "bbox": [
+        392,
+        185,
+        447,
+        198
+      ]
+    },
+    {
+      "page": 2,
+      "spans": [
+        {
+          "text": "$0",
+          "rgb": [
+            33,
+            37,
+            41
+          ],
+          "hex": "#212529"
+        }
+      ],
+      "bbox": [
+        488,
+        185,
+        498,
+        198
+      ]
+    },
+    {
+      "page": 2,
+      "spans": [
+        {
+          "text": "I",
+          "rgb": [
+            33,
+            37,
+            41
+          ],
+          "hex": "#212529"
+        }
+      ],
+      "bbox": [
+        524,
+        185,
+        527,
+        198
+      ]
+    },
+    {
+      "page": 2,
+      "spans": [
+        {
+          "text": "2021",
+          "rgb": [
+            33,
+            37,
+            41
+          ],
+          "hex": "#212529"
+        }
+      ],
+      "bbox": [
+        541,
+        185,
+        561,
+        198
+      ]
+    },
+    {
+      "page": 2,
+      "spans": [
+        {
+          "text": "NAVY FEDERAL CREDIT  (Credit Card)",
+          "rgb": [
+            33,
+            37,
+            41
+          ],
+          "hex": "#212529"
+        }
+      ],
+      "bbox": [
+        56,
+        208,
+        218,
+        220
+      ]
+    },
+    {
+      "page": 2,
+      "spans": [
+        {
+          "text": "$12,485",
+          "rgb": [
+            33,
+            37,
+            41
+          ],
+          "hex": "#212529"
+        }
+      ],
+      "bbox": [
+        335,
+        208,
+        368,
+        220
+      ]
+    },
+    {
+      "page": 2,
+      "spans": [
+        {
+          "text": "$12,500",
+          "rgb": [
+            33,
+            37,
+            41
+          ],
+          "hex": "#212529"
+        },
+        {
+          "text": " 100%",
+          "rgb": [
+            220,
+            53,
+            69
+          ],
+          "hex": "#dc3545"
+        }
+      ],
+      "bbox": [
+        387,
+        208,
+        447,
+        220
+      ]
+    },
+    {
+      "page": 2,
+      "spans": [
+        {
+          "text": "$0",
+          "rgb": [
+            33,
+            37,
+            41
+          ],
+          "hex": "#212529"
+        }
+      ],
+      "bbox": [
+        488,
+        208,
+        498,
+        220
+      ]
+    },
+    {
+      "page": 2,
+      "spans": [
+        {
+          "text": "I",
+          "rgb": [
+            33,
+            37,
+            41
+          ],
+          "hex": "#212529"
+        }
+      ],
+      "bbox": [
+        524,
+        208,
+        527,
+        220
+      ]
+    },
+    {
+      "page": 2,
+      "spans": [
+        {
+          "text": "2020",
+          "rgb": [
+            33,
+            37,
+            41
+          ],
+          "hex": "#212529"
+        }
+      ],
+      "bbox": [
+        541,
+        208,
+        561,
+        220
+      ]
+    },
+    {
+      "page": 2,
+      "spans": [
+        {
+          "text": "NEBRASKA FURNITURE M (Retail Account)",
+          "rgb": [
+            33,
+            37,
+            41
+          ],
+          "hex": "#212529"
+        }
+      ],
+      "bbox": [
+        56,
+        231,
+        236,
+        243
+      ]
+    },
+    {
+      "page": 2,
+      "spans": [
+        {
+          "text": "$1,267",
+          "rgb": [
+            33,
+            37,
+            41
+          ],
+          "hex": "#212529"
+        }
+      ],
+      "bbox": [
+        340,
+        231,
+        368,
+        243
+      ]
+    },
+    {
+      "page": 2,
+      "spans": [
+        {
+          "text": "$1,870",
+          "rgb": [
+            220,
+            53,
+            69
+          ],
+          "hex": "#dc3545"
+        }
+      ],
+      "bbox": [
+        392,
+        231,
+        419,
+        243
+      ]
+    },
+    {
+      "page": 2,
+      "spans": [
+        {
+          "text": "68%",
+          "rgb": [
+            220,
+            53,
+            69
+          ],
+          "hex": "#dc3545"
+        }
+      ],
+      "bbox": [
+        429,
+        231,
+        447,
+        243
+      ]
+    },
+    {
+      "page": 2,
+      "spans": [
+        {
+          "text": "$0",
+          "rgb": [
+            33,
+            37,
+            41
+          ],
+          "hex": "#212529"
+        }
+      ],
+      "bbox": [
+        488,
+        231,
+        498,
+        243
+      ]
+    },
+    {
+      "page": 2,
+      "spans": [
+        {
+          "text": "J",
+          "rgb": [
+            33,
+            37,
+            41
+          ],
+          "hex": "#212529"
+        }
+      ],
+      "bbox": [
+        522,
+        231,
+        527,
+        243
+      ]
+    },
+    {
+      "page": 2,
+      "spans": [
+        {
+          "text": "2021",
+          "rgb": [
+            220,
+            53,
+            69
+          ],
+          "hex": "#dc3545"
+        }
+      ],
+      "bbox": [
+        541,
+        231,
+        561,
+        243
+      ]
+    },
+    {
+      "page": 2,
+      "spans": [
+        {
+          "text": "NEBRASKA FURNITURE M (Retail Account)",
+          "rgb": [
+            33,
+            37,
+            41
+          ],
+          "hex": "#212529"
+        }
+      ],
+      "bbox": [
+        56,
+        253,
+        236,
+        266
+      ]
+    },
+    {
+      "page": 2,
+      "spans": [
+        {
+          "text": "$5,575",
+          "rgb": [
+            33,
+            37,
+            41
+          ],
+          "hex": "#212529"
+        }
+      ],
+      "bbox": [
+        340,
+        253,
+        368,
+        266
+      ]
+    },
+    {
+      "page": 2,
+      "spans": [
+        {
+          "text": "$1,500 372%",
+          "rgb": [
+            220,
+            53,
+            69
+          ],
+          "hex": "#dc3545"
+        }
+      ],
+      "bbox": [
+        392,
+        253,
+        447,
+        266
+      ]
+    },
+    {
+      "page": 2,
+      "spans": [
+        {
+          "text": "$0",
+          "rgb": [
+            33,
+            37,
+            41
+          ],
+          "hex": "#212529"
+        }
+      ],
+      "bbox": [
+        488,
+        253,
+        498,
+        266
+      ]
+    },
+    {
+      "page": 2,
+      "spans": [
+        {
+          "text": "I",
+          "rgb": [
+            33,
+            37,
+            41
+          ],
+          "hex": "#212529"
+        }
+      ],
+      "bbox": [
+        524,
+        253,
+        527,
+        266
+      ]
+    },
+    {
+      "page": 2,
+      "spans": [
+        {
+          "text": "2019",
+          "rgb": [
+            220,
+            53,
+            69
+          ],
+          "hex": "#dc3545"
+        }
+      ],
+      "bbox": [
+        541,
+        253,
+        561,
+        266
+      ]
+    },
+    {
+      "page": 2,
+      "spans": [
+        {
+          "text": "NAVY FEDERAL CREDIT  (Credit Card)",
+          "rgb": [
+            33,
+            37,
+            41
+          ],
+          "hex": "#212529"
+        }
+      ],
+      "bbox": [
+        56,
+        276,
+        218,
+        288
+      ]
+    },
+    {
+      "page": 2,
+      "spans": [
+        {
+          "text": "$12,485",
+          "rgb": [
+            33,
+            37,
+            41
+          ],
+          "hex": "#212529"
+        }
+      ],
+      "bbox": [
+        335,
+        276,
+        368,
+        288
+      ]
+    },
+    {
+      "page": 2,
+      "spans": [
+        {
+          "text": "$12,500 100%",
+          "rgb": [
+            220,
+            53,
+            69
+          ],
+          "hex": "#dc3545"
+        }
+      ],
+      "bbox": [
+        387,
+        276,
+        447,
+        288
+      ]
+    },
+    {
+      "page": 2,
+      "spans": [
+        {
+          "text": "$0",
+          "rgb": [
+            33,
+            37,
+            41
+          ],
+          "hex": "#212529"
+        }
+      ],
+      "bbox": [
+        488,
+        276,
+        498,
+        288
+      ]
+    },
+    {
+      "page": 2,
+      "spans": [
+        {
+          "text": "I",
+          "rgb": [
+            33,
+            37,
+            41
+          ],
+          "hex": "#212529"
+        }
+      ],
+      "bbox": [
+        524,
+        276,
+        527,
+        288
+      ]
+    },
+    {
+      "page": 2,
+      "spans": [
+        {
+          "text": "2020",
+          "rgb": [
+            220,
+            53,
+            69
+          ],
+          "hex": "#dc3545"
+        }
+      ],
+      "bbox": [
+        541,
+        276,
+        561,
+        288
+      ]
+    },
+    {
+      "page": 2,
+      "spans": [
+        {
+          "text": "Credit Card Open Totals: (No Retail)",
+          "rgb": [
+            220,
+            53,
+            69
+          ],
+          "hex": "#dc3545"
+        }
+      ],
+      "bbox": [
+        56,
+        299,
+        210,
+        311
+      ]
+    },
+    {
+      "page": 2,
+      "spans": [
+        {
+          "text": "$40,971",
+          "rgb": [
+            220,
+            53,
+            69
+          ],
+          "hex": "#dc3545"
+        }
+      ],
+      "bbox": [
+        335,
+        299,
+        368,
+        311
+      ]
+    },
+    {
+      "page": 2,
+      "spans": [
+        {
+          "text": "$35,200 116%",
+          "rgb": [
+            220,
+            53,
+            69
+          ],
+          "hex": "#dc3545"
+        }
+      ],
+      "bbox": [
+        387,
+        299,
+        447,
+        311
+      ]
+    },
+    {
+      "page": 2,
+      "spans": [
+        {
+          "text": "$0",
+          "rgb": [
+            220,
+            53,
+            69
+          ],
+          "hex": "#dc3545"
+        }
+      ],
+      "bbox": [
+        488,
+        299,
+        498,
+        311
+      ]
+    },
+    {
+      "page": 2,
+      "spans": [
+        {
+          "text": "Line of Credit Accounts",
+          "rgb": [
+            55,
+            65,
+            81
+          ],
+          "hex": "#374151"
+        }
+      ],
+      "bbox": [
+        56,
+        341,
+        158,
+        354
+      ]
+    },
+    {
+      "page": 2,
+      "spans": [
+        {
+          "text": "Balance",
+          "rgb": [
+            55,
+            65,
+            81
+          ],
+          "hex": "#374151"
+        }
+      ],
+      "bbox": [
+        333,
+        341,
+        368,
+        354
+      ]
+    },
+    {
+      "page": 2,
+      "spans": [
+        {
+          "text": "Limit",
+          "rgb": [
+            55,
+            65,
+            81
+          ],
+          "hex": "#374151"
+        }
+      ],
+      "bbox": [
+        398,
+        341,
+        419,
+        354
+      ]
+    },
+    {
+      "page": 2,
+      "spans": [
+        {
+          "text": "Payment Resp",
+          "rgb": [
+            55,
+            65,
+            81
+          ],
+          "hex": "#374151"
+        }
+      ],
+      "bbox": [
+        461,
+        341,
+        527,
+        354
+      ]
+    },
+    {
+      "page": 2,
+      "spans": [
+        {
+          "text": "Age",
+          "rgb": [
+            55,
+            65,
+            81
+          ],
+          "hex": "#374151"
+        }
+      ],
+      "bbox": [
+        544,
+        341,
+        561,
+        354
+      ]
+    },
+    {
+      "page": 2,
+      "spans": [
+        {
+          "text": "NAVY FEDERAL CREDIT  (Line of Credit)",
+          "rgb": [
+            33,
+            37,
+            41
+          ],
+          "hex": "#212529"
+        }
+      ],
+      "bbox": [
+        56,
+        364,
+        225,
+        376
+      ]
+    },
+    {
+      "page": 2,
+      "spans": [
+        {
+          "text": "$0",
+          "rgb": [
+            33,
+            37,
+            41
+          ],
+          "hex": "#212529"
+        }
+      ],
+      "bbox": [
+        358,
+        364,
+        368,
+        376
+      ]
+    },
+    {
+      "page": 2,
+      "spans": [
+        {
+          "text": "$500",
+          "rgb": [
+            33,
+            37,
+            41
+          ],
+          "hex": "#212529"
+        }
+      ],
+      "bbox": [
+        399,
+        364,
+        419,
+        376
+      ]
+    },
+    {
+      "page": 2,
+      "spans": [
+        {
+          "text": "$0",
+          "rgb": [
+            33,
+            37,
+            41
+          ],
+          "hex": "#212529"
+        }
+      ],
+      "bbox": [
+        488,
+        364,
+        498,
+        376
+      ]
+    },
+    {
+      "page": 2,
+      "spans": [
+        {
+          "text": "I",
+          "rgb": [
+            33,
+            37,
+            41
+          ],
+          "hex": "#212529"
+        }
+      ],
+      "bbox": [
+        524,
+        364,
+        527,
+        376
+      ]
+    },
+    {
+      "page": 2,
+      "spans": [
+        {
+          "text": "2019",
+          "rgb": [
+            33,
+            37,
+            41
+          ],
+          "hex": "#212529"
+        }
+      ],
+      "bbox": [
+        541,
+        364,
+        561,
+        376
+      ]
+    },
+    {
+      "page": 2,
+      "spans": [
+        {
+          "text": "Totals",
+          "rgb": [
+            33,
+            37,
+            41
+          ],
+          "hex": "#212529"
+        }
+      ],
+      "bbox": [
+        56,
+        387,
+        83,
+        399
+      ]
+    },
+    {
+      "page": 2,
+      "spans": [
+        {
+          "text": "$0",
+          "rgb": [
+            33,
+            37,
+            41
+          ],
+          "hex": "#212529"
+        }
+      ],
+      "bbox": [
+        358,
+        387,
+        368,
+        399
+      ]
+    },
+    {
+      "page": 2,
+      "spans": [
+        {
+          "text": "$0",
+          "rgb": [
+            33,
+            37,
+            41
+          ],
+          "hex": "#212529"
+        }
+      ],
+      "bbox": [
+        409,
+        387,
+        419,
+        399
+      ]
+    },
+    {
+      "page": 2,
+      "spans": [
+        {
+          "text": "$0",
+          "rgb": [
+            33,
+            37,
+            41
+          ],
+          "hex": "#212529"
+        }
+      ],
+      "bbox": [
+        488,
+        387,
+        498,
+        399
+      ]
+    },
+    {
+      "page": 2,
+      "spans": [
+        {
+          "text": "Real Estate Accounts",
+          "rgb": [
+            55,
+            65,
+            81
+          ],
+          "hex": "#374151"
+        }
+      ],
+      "bbox": [
+        56,
+        429,
+        148,
+        442
+      ]
+    },
+    {
+      "page": 2,
+      "spans": [
+        {
+          "text": "Balance",
+          "rgb": [
+            55,
+            65,
+            81
+          ],
+          "hex": "#374151"
+        }
+      ],
+      "bbox": [
+        333,
+        429,
+        368,
+        442
+      ]
+    },
+    {
+      "page": 2,
+      "spans": [
+        {
+          "text": "Limit",
+          "rgb": [
+            55,
+            65,
+            81
+          ],
+          "hex": "#374151"
+        }
+      ],
+      "bbox": [
+        398,
+        429,
+        419,
+        442
+      ]
+    },
+    {
+      "page": 2,
+      "spans": [
+        {
+          "text": "Payment Resp",
+          "rgb": [
+            55,
+            65,
+            81
+          ],
+          "hex": "#374151"
+        }
+      ],
+      "bbox": [
+        461,
+        429,
+        527,
+        442
+      ]
+    },
+    {
+      "page": 2,
+      "spans": [
+        {
+          "text": "Age",
+          "rgb": [
+            55,
+            65,
+            81
+          ],
+          "hex": "#374151"
+        }
+      ],
+      "bbox": [
+        544,
+        429,
+        561,
+        442
+      ]
+    },
+    {
+      "page": 2,
+      "spans": [
+        {
+          "text": "No Real Estate Accounts",
+          "rgb": [
+            33,
+            37,
+            41
+          ],
+          "hex": "#212529"
+        }
+      ],
+      "bbox": [
+        56,
+        452,
+        156,
+        464
+      ]
+    },
+    {
+      "page": 2,
+      "spans": [
+        {
+          "text": "Installment Accounts",
+          "rgb": [
+            55,
+            65,
+            81
+          ],
+          "hex": "#374151"
+        }
+      ],
+      "bbox": [
+        56,
+        494,
+        147,
+        507
+      ]
+    },
+    {
+      "page": 2,
+      "spans": [
+        {
+          "text": "Balance",
+          "rgb": [
+            55,
+            65,
+            81
+          ],
+          "hex": "#374151"
+        }
+      ],
+      "bbox": [
+        333,
+        494,
+        368,
+        507
+      ]
+    },
+    {
+      "page": 2,
+      "spans": [
+        {
+          "text": "Limit",
+          "rgb": [
+            55,
+            65,
+            81
+          ],
+          "hex": "#374151"
+        }
+      ],
+      "bbox": [
+        398,
+        494,
+        419,
+        507
+      ]
+    },
+    {
+      "page": 2,
+      "spans": [
+        {
+          "text": "Payment Resp",
+          "rgb": [
+            55,
+            65,
+            81
+          ],
+          "hex": "#374151"
+        }
+      ],
+      "bbox": [
+        461,
+        494,
+        527,
+        507
+      ]
+    },
+    {
+      "page": 2,
+      "spans": [
+        {
+          "text": "Age",
+          "rgb": [
+            55,
+            65,
+            81
+          ],
+          "hex": "#374151"
+        }
+      ],
+      "bbox": [
+        544,
+        494,
+        561,
+        507
+      ]
+    },
+    {
+      "page": 2,
+      "spans": [
+        {
+          "text": "FIRST CENTURY BANK N (Secured)",
+          "rgb": [
+            33,
+            37,
+            41
+          ],
+          "hex": "#212529"
+        }
+      ],
+      "bbox": [
+        56,
+        517,
+        206,
+        529
+      ]
+    },
+    {
+      "page": 2,
+      "spans": [
+        {
+          "text": "$493",
+          "rgb": [
+            33,
+            37,
+            41
+          ],
+          "hex": "#212529"
+        }
+      ],
+      "bbox": [
+        348,
+        517,
+        368,
+        529
+      ]
+    },
+    {
+      "page": 2,
+      "spans": [
+        {
+          "text": "$511",
+          "rgb": [
+            33,
+            37,
+            41
+          ],
+          "hex": "#212529"
+        }
+      ],
+      "bbox": [
+        399,
+        517,
+        419,
+        529
+      ]
+    },
+    {
+      "page": 2,
+      "spans": [
+        {
+          "text": "$25",
+          "rgb": [
+            33,
+            37,
+            41
+          ],
+          "hex": "#212529"
+        }
+      ],
+      "bbox": [
+        483,
+        517,
+        498,
+        529
+      ]
+    },
+    {
+      "page": 2,
+      "spans": [
+        {
+          "text": "I",
+          "rgb": [
+            33,
+            37,
+            41
+          ],
+          "hex": "#212529"
+        }
+      ],
+      "bbox": [
+        524,
+        517,
+        527,
+        529
+      ]
+    },
+    {
+      "page": 2,
+      "spans": [
+        {
+          "text": "2025",
+          "rgb": [
+            33,
+            37,
+            41
+          ],
+          "hex": "#212529"
+        }
+      ],
+      "bbox": [
+        541,
+        517,
+        561,
+        529
+      ]
+    },
+    {
+      "page": 2,
+      "spans": [
+        {
+          "text": "ED FINANCIAL/ESA (Education Loan)",
+          "rgb": [
+            33,
+            37,
+            41
+          ],
+          "hex": "#212529"
+        }
+      ],
+      "bbox": [
+        56,
+        540,
+        210,
+        552
+      ]
+    },
+    {
+      "page": 2,
+      "spans": [
+        {
+          "text": "$3,971",
+          "rgb": [
+            33,
+            37,
+            41
+          ],
+          "hex": "#212529"
+        }
+      ],
+      "bbox": [
+        340,
+        540,
+        368,
+        552
+      ]
+    },
+    {
+      "page": 2,
+      "spans": [
+        {
+          "text": "$3,625",
+          "rgb": [
+            33,
+            37,
+            41
+          ],
+          "hex": "#212529"
+        }
+      ],
+      "bbox": [
+        392,
+        540,
+        419,
+        552
+      ]
+    },
+    {
+      "page": 2,
+      "spans": [
+        {
+          "text": "$0",
+          "rgb": [
+            33,
+            37,
+            41
+          ],
+          "hex": "#212529"
+        }
+      ],
+      "bbox": [
+        488,
+        540,
+        498,
+        552
+      ]
+    },
+    {
+      "page": 2,
+      "spans": [
+        {
+          "text": "I",
+          "rgb": [
+            33,
+            37,
+            41
+          ],
+          "hex": "#212529"
+        }
+      ],
+      "bbox": [
+        524,
+        540,
+        527,
+        552
+      ]
+    },
+    {
+      "page": 2,
+      "spans": [
+        {
+          "text": "2023",
+          "rgb": [
+            33,
+            37,
+            41
+          ],
+          "hex": "#212529"
+        }
+      ],
+      "bbox": [
+        541,
+        540,
+        561,
+        552
+      ]
+    },
+    {
+      "page": 2,
+      "spans": [
+        {
+          "text": "ED FINANCIAL/ESA (Education Loan)",
+          "rgb": [
+            33,
+            37,
+            41
+          ],
+          "hex": "#212529"
+        }
+      ],
+      "bbox": [
+        56,
+        562,
+        210,
+        575
+      ]
+    },
+    {
+      "page": 2,
+      "spans": [
+        {
+          "text": "$2,224",
+          "rgb": [
+            33,
+            37,
+            41
+          ],
+          "hex": "#212529"
+        }
+      ],
+      "bbox": [
+        340,
+        562,
+        368,
+        575
+      ]
+    },
+    {
+      "page": 2,
+      "spans": [
+        {
+          "text": "$2,115",
+          "rgb": [
+            33,
+            37,
+            41
+          ],
+          "hex": "#212529"
+        }
+      ],
+      "bbox": [
+        392,
+        562,
+        419,
+        575
+      ]
+    },
+    {
+      "page": 2,
+      "spans": [
+        {
+          "text": "$0",
+          "rgb": [
+            33,
+            37,
+            41
+          ],
+          "hex": "#212529"
+        }
+      ],
+      "bbox": [
+        488,
+        562,
+        498,
+        575
+      ]
+    },
+    {
+      "page": 2,
+      "spans": [
+        {
+          "text": "I",
+          "rgb": [
+            33,
+            37,
+            41
+          ],
+          "hex": "#212529"
+        }
+      ],
+      "bbox": [
+        524,
+        562,
+        527,
+        575
+      ]
+    },
+    {
+      "page": 2,
+      "spans": [
+        {
+          "text": "2023",
+          "rgb": [
+            33,
+            37,
+            41
+          ],
+          "hex": "#212529"
+        }
+      ],
+      "bbox": [
+        541,
+        562,
+        561,
+        575
+      ]
+    },
+    {
+      "page": 2,
+      "spans": [
+        {
+          "text": "NAVY FEDERAL CREDIT  (Secured)",
+          "rgb": [
+            33,
+            37,
+            41
+          ],
+          "hex": "#212529"
+        }
+      ],
+      "bbox": [
+        56,
+        585,
+        205,
+        597
+      ]
+    },
+    {
+      "page": 2,
+      "spans": [
+        {
+          "text": "$20,627",
+          "rgb": [
+            33,
+            37,
+            41
+          ],
+          "hex": "#212529"
+        }
+      ],
+      "bbox": [
+        335,
+        585,
+        368,
+        597
+      ]
+    },
+    {
+      "page": 2,
+      "spans": [
+        {
+          "text": "$20,627",
+          "rgb": [
+            33,
+            37,
+            41
+          ],
+          "hex": "#212529"
+        }
+      ],
+      "bbox": [
+        387,
+        585,
+        419,
+        597
+      ]
+    },
+    {
+      "page": 2,
+      "spans": [
+        {
+          "text": "$0",
+          "rgb": [
+            33,
+            37,
+            41
+          ],
+          "hex": "#212529"
+        }
+      ],
+      "bbox": [
+        488,
+        585,
+        498,
+        597
+      ]
+    },
+    {
+      "page": 2,
+      "spans": [
+        {
+          "text": "I",
+          "rgb": [
+            33,
+            37,
+            41
+          ],
+          "hex": "#212529"
+        }
+      ],
+      "bbox": [
+        524,
+        585,
+        527,
+        597
+      ]
+    },
+    {
+      "page": 2,
+      "spans": [
+        {
+          "text": "2021",
+          "rgb": [
+            33,
+            37,
+            41
+          ],
+          "hex": "#212529"
+        }
+      ],
+      "bbox": [
+        541,
+        585,
+        561,
+        597
+      ]
+    },
+    {
+      "page": 2,
+      "spans": [
+        {
+          "text": "Totals",
+          "rgb": [
+            33,
+            37,
+            41
+          ],
+          "hex": "#212529"
+        }
+      ],
+      "bbox": [
+        56,
+        608,
+        83,
+        620
+      ]
+    },
+    {
+      "page": 2,
+      "spans": [
+        {
+          "text": "$27,315",
+          "rgb": [
+            33,
+            37,
+            41
+          ],
+          "hex": "#212529"
+        }
+      ],
+      "bbox": [
+        335,
+        608,
+        368,
+        620
+      ]
+    },
+    {
+      "page": 2,
+      "spans": [
+        {
+          "text": "$26,878",
+          "rgb": [
+            33,
+            37,
+            41
+          ],
+          "hex": "#212529"
+        }
+      ],
+      "bbox": [
+        387,
+        608,
+        419,
+        620
+      ]
+    },
+    {
+      "page": 2,
+      "spans": [
+        {
+          "text": "$25",
+          "rgb": [
+            33,
+            37,
+            41
+          ],
+          "hex": "#212529"
+        }
+      ],
+      "bbox": [
+        483,
+        608,
+        498,
+        620
+      ]
+    },
+    {
+      "page": 2,
+      "spans": [
+        {
+          "text": "Miscellaneous Accounts",
+          "rgb": [
+            55,
+            65,
+            81
+          ],
+          "hex": "#374151"
+        }
+      ],
+      "bbox": [
+        56,
+        650,
+        161,
+        663
+      ]
+    },
+    {
+      "page": 2,
+      "spans": [
+        {
+          "text": "Balance",
+          "rgb": [
+            55,
+            65,
+            81
+          ],
+          "hex": "#374151"
+        }
+      ],
+      "bbox": [
+        333,
+        650,
+        368,
+        663
+      ]
+    },
+    {
+      "page": 2,
+      "spans": [
+        {
+          "text": "Limit",
+          "rgb": [
+            55,
+            65,
+            81
+          ],
+          "hex": "#374151"
+        }
+      ],
+      "bbox": [
+        398,
+        650,
+        419,
+        663
+      ]
+    },
+    {
+      "page": 2,
+      "spans": [
+        {
+          "text": "Payment Resp",
+          "rgb": [
+            55,
+            65,
+            81
+          ],
+          "hex": "#374151"
+        }
+      ],
+      "bbox": [
+        461,
+        650,
+        527,
+        663
+      ]
+    },
+    {
+      "page": 2,
+      "spans": [
+        {
+          "text": "Age",
+          "rgb": [
+            55,
+            65,
+            81
+          ],
+          "hex": "#374151"
+        }
+      ],
+      "bbox": [
+        544,
+        650,
+        561,
+        663
+      ]
+    },
+    {
+      "page": 2,
+      "spans": [
+        {
+          "text": "Ava Financial Inc (Credit Card)",
+          "rgb": [
+            33,
+            37,
+            41
+          ],
+          "hex": "#212529"
+        }
+      ],
+      "bbox": [
+        56,
+        673,
+        179,
+        685
+      ]
+    },
+    {
+      "page": 2,
+      "spans": [
+        {
+          "text": "$0",
+          "rgb": [
+            33,
+            37,
+            41
+          ],
+          "hex": "#212529"
+        }
+      ],
+      "bbox": [
+        358,
+        673,
+        368,
+        685
+      ]
+    },
+    {
+      "page": 2,
+      "spans": [
+        {
+          "text": "$500",
+          "rgb": [
+            33,
+            37,
+            41
+          ],
+          "hex": "#212529"
+        }
+      ],
+      "bbox": [
+        399,
+        673,
+        419,
+        685
+      ]
+    },
+    {
+      "page": 2,
+      "spans": [
+        {
+          "text": "$0",
+          "rgb": [
+            33,
+            37,
+            41
+          ],
+          "hex": "#212529"
+        }
+      ],
+      "bbox": [
+        488,
+        673,
+        498,
+        685
+      ]
+    },
+    {
+      "page": 2,
+      "spans": [
+        {
+          "text": "I",
+          "rgb": [
+            33,
+            37,
+            41
+          ],
+          "hex": "#212529"
+        }
+      ],
+      "bbox": [
+        524,
+        673,
+        527,
+        685
+      ]
+    },
+    {
+      "page": 2,
+      "spans": [
+        {
+          "text": "2024",
+          "rgb": [
+            33,
+            37,
+            41
+          ],
+          "hex": "#212529"
+        }
+      ],
+      "bbox": [
+        541,
+        673,
+        561,
+        685
+      ]
+    },
+    {
+      "page": 2,
+      "spans": [
+        {
+          "text": "Totals",
+          "rgb": [
+            33,
+            37,
+            41
+          ],
+          "hex": "#212529"
+        }
+      ],
+      "bbox": [
+        56,
+        696,
+        83,
+        708
+      ]
+    },
+    {
+      "page": 2,
+      "spans": [
+        {
+          "text": "$0",
+          "rgb": [
+            33,
+            37,
+            41
+          ],
+          "hex": "#212529"
+        }
+      ],
+      "bbox": [
+        358,
+        696,
+        368,
+        708
+      ]
+    },
+    {
+      "page": 2,
+      "spans": [
+        {
+          "text": "$500",
+          "rgb": [
+            33,
+            37,
+            41
+          ],
+          "hex": "#212529"
+        }
+      ],
+      "bbox": [
+        399,
+        696,
+        419,
+        708
+      ]
+    },
+    {
+      "page": 2,
+      "spans": [
+        {
+          "text": "$0",
+          "rgb": [
+            33,
+            37,
+            41
+          ],
+          "hex": "#212529"
+        }
+      ],
+      "bbox": [
+        488,
+        696,
+        498,
+        708
+      ]
+    },
+    {
+      "page": 3,
+      "spans": [
+        {
+          "text": "Closed Accounts",
+          "rgb": [
+            33,
+            37,
+            41
+          ],
+          "hex": "#212529"
+        }
+      ],
+      "bbox": [
+        56,
+        32,
+        162,
+        50
+      ]
+    },
+    {
+      "page": 3,
+      "spans": [
+        {
+          "text": "Revolving Accounts",
+          "rgb": [
+            55,
+            65,
+            81
+          ],
+          "hex": "#374151"
+        }
+      ],
+      "bbox": [
+        56,
+        72,
+        143,
+        84
+      ]
+    },
+    {
+      "page": 3,
+      "spans": [
+        {
+          "text": "Balance",
+          "rgb": [
+            55,
+            65,
+            81
+          ],
+          "hex": "#374151"
+        }
+      ],
+      "bbox": [
+        333,
+        72,
+        368,
+        84
+      ]
+    },
+    {
+      "page": 3,
+      "spans": [
+        {
+          "text": "Limit",
+          "rgb": [
+            55,
+            65,
+            81
+          ],
+          "hex": "#374151"
+        }
+      ],
+      "bbox": [
+        398,
+        72,
+        419,
+        84
+      ]
+    },
+    {
+      "page": 3,
+      "spans": [
+        {
+          "text": "%",
+          "rgb": [
+            55,
+            65,
+            81
+          ],
+          "hex": "#374151"
+        }
+      ],
+      "bbox": [
+        439,
+        72,
+        447,
+        84
+      ]
+    },
+    {
+      "page": 3,
+      "spans": [
+        {
+          "text": "Payment Resp",
+          "rgb": [
+            55,
+            65,
+            81
+          ],
+          "hex": "#374151"
+        }
+      ],
+      "bbox": [
+        461,
+        72,
+        527,
+        84
+      ]
+    },
+    {
+      "page": 3,
+      "spans": [
+        {
+          "text": "Age",
+          "rgb": [
+            55,
+            65,
+            81
+          ],
+          "hex": "#374151"
+        }
+      ],
+      "bbox": [
+        544,
+        72,
+        561,
+        84
+      ]
+    },
+    {
+      "page": 3,
+      "spans": [
+        {
+          "text": "SYNCB/ROOMS TO GO (Retail Account)",
+          "rgb": [
+            33,
+            37,
+            41
+          ],
+          "hex": "#212529"
+        }
+      ],
+      "bbox": [
+        56,
+        95,
+        222,
+        107
+      ]
+    },
+    {
+      "page": 3,
+      "spans": [
+        {
+          "text": "$0",
+          "rgb": [
+            33,
+            37,
+            41
+          ],
+          "hex": "#212529"
+        }
+      ],
+      "bbox": [
+        358,
+        95,
+        368,
+        107
+      ]
+    },
+    {
+      "page": 3,
+      "spans": [
+        {
+          "text": "$250",
+          "rgb": [
+            33,
+            37,
+            41
+          ],
+          "hex": "#212529"
+        }
+      ],
+      "bbox": [
+        399,
+        95,
+        419,
+        107
+      ]
+    },
+    {
+      "page": 3,
+      "spans": [
+        {
+          "text": "0%",
+          "rgb": [
+            33,
+            37,
+            41
+          ],
+          "hex": "#212529"
+        }
+      ],
+      "bbox": [
+        434,
+        95,
+        447,
+        107
+      ]
+    },
+    {
+      "page": 3,
+      "spans": [
+        {
+          "text": "$0",
+          "rgb": [
+            33,
+            37,
+            41
+          ],
+          "hex": "#212529"
+        }
+      ],
+      "bbox": [
+        488,
+        95,
+        498,
+        107
+      ]
+    },
+    {
+      "page": 3,
+      "spans": [
+        {
+          "text": "I",
+          "rgb": [
+            33,
+            37,
+            41
+          ],
+          "hex": "#212529"
+        }
+      ],
+      "bbox": [
+        524,
+        95,
+        527,
+        107
+      ]
+    },
+    {
+      "page": 3,
+      "spans": [
+        {
+          "text": "2019",
+          "rgb": [
+            33,
+            37,
+            41
+          ],
+          "hex": "#212529"
+        }
+      ],
+      "bbox": [
+        541,
+        95,
+        561,
+        107
+      ]
+    },
+    {
+      "page": 3,
+      "spans": [
+        {
+          "text": "TBOM/FORTIVA (Credit Card)",
+          "rgb": [
+            33,
+            37,
+            41
+          ],
+          "hex": "#212529"
+        }
+      ],
+      "bbox": [
+        56,
+        117,
+        178,
+        130
+      ]
+    },
+    {
+      "page": 3,
+      "spans": [
+        {
+          "text": "$0",
+          "rgb": [
+            33,
+            37,
+            41
+          ],
+          "hex": "#212529"
+        }
+      ],
+      "bbox": [
+        358,
+        117,
+        368,
+        130
+      ]
+    },
+    {
+      "page": 3,
+      "spans": [
+        {
+          "text": "$4,000",
+          "rgb": [
+            33,
+            37,
+            41
+          ],
+          "hex": "#212529"
+        }
+      ],
+      "bbox": [
+        392,
+        117,
+        419,
+        130
+      ]
+    },
+    {
+      "page": 3,
+      "spans": [
+        {
+          "text": "0%",
+          "rgb": [
+            33,
+            37,
+            41
+          ],
+          "hex": "#212529"
+        }
+      ],
+      "bbox": [
+        434,
+        117,
+        447,
+        130
+      ]
+    },
+    {
+      "page": 3,
+      "spans": [
+        {
+          "text": "$0",
+          "rgb": [
+            33,
+            37,
+            41
+          ],
+          "hex": "#212529"
+        }
+      ],
+      "bbox": [
+        488,
+        117,
+        498,
+        130
+      ]
+    },
+    {
+      "page": 3,
+      "spans": [
+        {
+          "text": "I",
+          "rgb": [
+            33,
+            37,
+            41
+          ],
+          "hex": "#212529"
+        }
+      ],
+      "bbox": [
+        524,
+        117,
+        527,
+        130
+      ]
+    },
+    {
+      "page": 3,
+      "spans": [
+        {
+          "text": "2024",
+          "rgb": [
+            33,
+            37,
+            41
+          ],
+          "hex": "#212529"
+        }
+      ],
+      "bbox": [
+        541,
+        117,
+        561,
+        130
+      ]
+    },
+    {
+      "page": 3,
+      "spans": [
+        {
+          "text": "TBOMRETAIL (Credit Card)",
+          "rgb": [
+            33,
+            37,
+            41
+          ],
+          "hex": "#212529"
+        }
+      ],
+      "bbox": [
+        56,
+        140,
+        168,
+        152
+      ]
+    },
+    {
+      "page": 3,
+      "spans": [
+        {
+          "text": "$0",
+          "rgb": [
+            33,
+            37,
+            41
+          ],
+          "hex": "#212529"
+        }
+      ],
+      "bbox": [
+        358,
+        140,
+        368,
+        152
+      ]
+    },
+    {
+      "page": 3,
+      "spans": [
+        {
+          "text": "$3,200",
+          "rgb": [
+            33,
+            37,
+            41
+          ],
+          "hex": "#212529"
+        }
+      ],
+      "bbox": [
+        392,
+        140,
+        419,
+        152
+      ]
+    },
+    {
+      "page": 3,
+      "spans": [
+        {
+          "text": "0%",
+          "rgb": [
+            33,
+            37,
+            41
+          ],
+          "hex": "#212529"
+        }
+      ],
+      "bbox": [
+        434,
+        140,
+        447,
+        152
+      ]
+    },
+    {
+      "page": 3,
+      "spans": [
+        {
+          "text": "$0",
+          "rgb": [
+            33,
+            37,
+            41
+          ],
+          "hex": "#212529"
+        }
+      ],
+      "bbox": [
+        488,
+        140,
+        498,
+        152
+      ]
+    },
+    {
+      "page": 3,
+      "spans": [
+        {
+          "text": "I",
+          "rgb": [
+            33,
+            37,
+            41
+          ],
+          "hex": "#212529"
+        }
+      ],
+      "bbox": [
+        524,
+        140,
+        527,
+        152
+      ]
+    },
+    {
+      "page": 3,
+      "spans": [
+        {
+          "text": "2020",
+          "rgb": [
+            33,
+            37,
+            41
+          ],
+          "hex": "#212529"
+        }
+      ],
+      "bbox": [
+        541,
+        140,
+        561,
+        152
+      ]
+    },
+    {
+      "page": 3,
+      "spans": [
+        {
+          "text": "NAVY FEDERAL CREDIT  (Credit Card)",
+          "rgb": [
+            33,
+            37,
+            41
+          ],
+          "hex": "#212529"
+        }
+      ],
+      "bbox": [
+        56,
+        163,
+        218,
+        175
+      ]
+    },
+    {
+      "page": 3,
+      "spans": [
+        {
+          "text": "$0",
+          "rgb": [
+            33,
+            37,
+            41
+          ],
+          "hex": "#212529"
+        }
+      ],
+      "bbox": [
+        358,
+        163,
+        368,
+        175
+      ]
+    },
+    {
+      "page": 3,
+      "spans": [
+        {
+          "text": "$1,000",
+          "rgb": [
+            33,
+            37,
+            41
+          ],
+          "hex": "#212529"
+        }
+      ],
+      "bbox": [
+        392,
+        163,
+        419,
+        175
+      ]
+    },
+    {
+      "page": 3,
+      "spans": [
+        {
+          "text": "0%",
+          "rgb": [
+            33,
+            37,
+            41
+          ],
+          "hex": "#212529"
+        }
+      ],
+      "bbox": [
+        434,
+        163,
+        447,
+        175
+      ]
+    },
+    {
+      "page": 3,
+      "spans": [
+        {
+          "text": "$20",
+          "rgb": [
+            33,
+            37,
+            41
+          ],
+          "hex": "#212529"
+        }
+      ],
+      "bbox": [
+        483,
+        163,
+        498,
+        175
+      ]
+    },
+    {
+      "page": 3,
+      "spans": [
+        {
+          "text": "I",
+          "rgb": [
+            33,
+            37,
+            41
+          ],
+          "hex": "#212529"
+        }
+      ],
+      "bbox": [
+        524,
+        163,
+        527,
+        175
+      ]
+    },
+    {
+      "page": 3,
+      "spans": [
+        {
+          "text": "2021",
+          "rgb": [
+            33,
+            37,
+            41
+          ],
+          "hex": "#212529"
+        }
+      ],
+      "bbox": [
+        541,
+        163,
+        561,
+        175
+      ]
+    },
+    {
+      "page": 3,
+      "spans": [
+        {
+          "text": "Totals",
+          "rgb": [
+            33,
+            37,
+            41
+          ],
+          "hex": "#212529"
+        }
+      ],
+      "bbox": [
+        56,
+        185,
+        83,
+        198
+      ]
+    },
+    {
+      "page": 3,
+      "spans": [
+        {
+          "text": "$0",
+          "rgb": [
+            33,
+            37,
+            41
+          ],
+          "hex": "#212529"
+        }
+      ],
+      "bbox": [
+        358,
+        185,
+        368,
+        198
+      ]
+    },
+    {
+      "page": 3,
+      "spans": [
+        {
+          "text": "$8,200",
+          "rgb": [
+            33,
+            37,
+            41
+          ],
+          "hex": "#212529"
+        }
+      ],
+      "bbox": [
+        392,
+        185,
+        419,
+        198
+      ]
+    },
+    {
+      "page": 3,
+      "spans": [
+        {
+          "text": "0%",
+          "rgb": [
+            33,
+            37,
+            41
+          ],
+          "hex": "#212529"
+        }
+      ],
+      "bbox": [
+        434,
+        185,
+        447,
+        198
+      ]
+    },
+    {
+      "page": 3,
+      "spans": [
+        {
+          "text": "$20",
+          "rgb": [
+            33,
+            37,
+            41
+          ],
+          "hex": "#212529"
+        }
+      ],
+      "bbox": [
+        483,
+        185,
+        498,
+        198
+      ]
+    },
+    {
+      "page": 3,
+      "spans": [
+        {
+          "text": "Line of Credit Accounts",
+          "rgb": [
+            55,
+            65,
+            81
+          ],
+          "hex": "#374151"
+        }
+      ],
+      "bbox": [
+        56,
+        228,
+        158,
+        240
+      ]
+    },
+    {
+      "page": 3,
+      "spans": [
+        {
+          "text": "Balance",
+          "rgb": [
+            55,
+            65,
+            81
+          ],
+          "hex": "#374151"
+        }
+      ],
+      "bbox": [
+        333,
+        228,
+        368,
+        240
+      ]
+    },
+    {
+      "page": 3,
+      "spans": [
+        {
+          "text": "Limit",
+          "rgb": [
+            55,
+            65,
+            81
+          ],
+          "hex": "#374151"
+        }
+      ],
+      "bbox": [
+        398,
+        228,
+        419,
+        240
+      ]
+    },
+    {
+      "page": 3,
+      "spans": [
+        {
+          "text": "Payment Resp",
+          "rgb": [
+            55,
+            65,
+            81
+          ],
+          "hex": "#374151"
+        }
+      ],
+      "bbox": [
+        461,
+        228,
+        527,
+        240
+      ]
+    },
+    {
+      "page": 3,
+      "spans": [
+        {
+          "text": "Age",
+          "rgb": [
+            55,
+            65,
+            81
+          ],
+          "hex": "#374151"
+        }
+      ],
+      "bbox": [
+        544,
+        228,
+        561,
+        240
+      ]
+    },
+    {
+      "page": 3,
+      "spans": [
+        {
+          "text": "No Line of Credit Accounts",
+          "rgb": [
+            33,
+            37,
+            41
+          ],
+          "hex": "#212529"
+        }
+      ],
+      "bbox": [
+        56,
+        250,
+        163,
+        263
+      ]
+    },
+    {
+      "page": 3,
+      "spans": [
+        {
+          "text": "Real Estate Accounts",
+          "rgb": [
+            55,
+            65,
+            81
+          ],
+          "hex": "#374151"
+        }
+      ],
+      "bbox": [
+        56,
+        293,
+        148,
+        305
+      ]
+    },
+    {
+      "page": 3,
+      "spans": [
+        {
+          "text": "Balance",
+          "rgb": [
+            55,
+            65,
+            81
+          ],
+          "hex": "#374151"
+        }
+      ],
+      "bbox": [
+        333,
+        293,
+        368,
+        305
+      ]
+    },
+    {
+      "page": 3,
+      "spans": [
+        {
+          "text": "Limit",
+          "rgb": [
+            55,
+            65,
+            81
+          ],
+          "hex": "#374151"
+        }
+      ],
+      "bbox": [
+        398,
+        293,
+        419,
+        305
+      ]
+    },
+    {
+      "page": 3,
+      "spans": [
+        {
+          "text": "Payment Resp",
+          "rgb": [
+            55,
+            65,
+            81
+          ],
+          "hex": "#374151"
+        }
+      ],
+      "bbox": [
+        461,
+        293,
+        527,
+        305
+      ]
+    },
+    {
+      "page": 3,
+      "spans": [
+        {
+          "text": "Age",
+          "rgb": [
+            55,
+            65,
+            81
+          ],
+          "hex": "#374151"
+        }
+      ],
+      "bbox": [
+        544,
+        293,
+        561,
+        305
+      ]
+    },
+    {
+      "page": 3,
+      "spans": [
+        {
+          "text": "DHI MORTGAGE (FHA Real Estate Mortgage)",
+          "rgb": [
+            33,
+            37,
+            41
+          ],
+          "hex": "#212529"
+        }
+      ],
+      "bbox": [
+        56,
+        316,
+        243,
+        328
+      ]
+    },
+    {
+      "page": 3,
+      "spans": [
+        {
+          "text": "$0",
+          "rgb": [
+            33,
+            37,
+            41
+          ],
+          "hex": "#212529"
+        }
+      ],
+      "bbox": [
+        358,
+        316,
+        368,
+        328
+      ]
+    },
+    {
+      "page": 3,
+      "spans": [
+        {
+          "text": "$422,771",
+          "rgb": [
+            33,
+            37,
+            41
+          ],
+          "hex": "#212529"
+        }
+      ],
+      "bbox": [
+        382,
+        316,
+        419,
+        328
+      ]
+    },
+    {
+      "page": 3,
+      "spans": [
+        {
+          "text": "$2,811",
+          "rgb": [
+            33,
+            37,
+            41
+          ],
+          "hex": "#212529"
+        }
+      ],
+      "bbox": [
+        471,
+        316,
+        498,
+        328
+      ]
+    },
+    {
+      "page": 3,
+      "spans": [
+        {
+          "text": "I",
+          "rgb": [
+            33,
+            37,
+            41
+          ],
+          "hex": "#212529"
+        }
+      ],
+      "bbox": [
+        524,
+        316,
+        527,
+        328
+      ]
+    },
+    {
+      "page": 3,
+      "spans": [
+        {
+          "text": "2022",
+          "rgb": [
+            33,
+            37,
+            41
+          ],
+          "hex": "#212529"
+        }
+      ],
+      "bbox": [
+        541,
+        316,
+        561,
+        328
+      ]
+    },
+    {
+      "page": 3,
+      "spans": [
+        {
+          "text": "Totals",
+          "rgb": [
+            33,
+            37,
+            41
+          ],
+          "hex": "#212529"
+        }
+      ],
+      "bbox": [
+        56,
+        338,
+        83,
+        351
+      ]
+    },
+    {
+      "page": 3,
+      "spans": [
+        {
+          "text": "$0",
+          "rgb": [
+            33,
+            37,
+            41
+          ],
+          "hex": "#212529"
+        }
+      ],
+      "bbox": [
+        358,
+        338,
+        368,
+        351
+      ]
+    },
+    {
+      "page": 3,
+      "spans": [
+        {
+          "text": "$422,771",
+          "rgb": [
+            33,
+            37,
+            41
+          ],
+          "hex": "#212529"
+        }
+      ],
+      "bbox": [
+        382,
+        338,
+        419,
+        351
+      ]
+    },
+    {
+      "page": 3,
+      "spans": [
+        {
+          "text": "$2,811",
+          "rgb": [
+            33,
+            37,
+            41
+          ],
+          "hex": "#212529"
+        }
+      ],
+      "bbox": [
+        471,
+        338,
+        498,
+        351
+      ]
+    },
+    {
+      "page": 3,
+      "spans": [
+        {
+          "text": "Installment Accounts",
+          "rgb": [
+            55,
+            65,
+            81
+          ],
+          "hex": "#374151"
+        }
+      ],
+      "bbox": [
+        56,
+        381,
+        147,
+        393
+      ]
+    },
+    {
+      "page": 3,
+      "spans": [
+        {
+          "text": "Balance",
+          "rgb": [
+            55,
+            65,
+            81
+          ],
+          "hex": "#374151"
+        }
+      ],
+      "bbox": [
+        333,
+        381,
+        368,
+        393
+      ]
+    },
+    {
+      "page": 3,
+      "spans": [
+        {
+          "text": "Limit",
+          "rgb": [
+            55,
+            65,
+            81
+          ],
+          "hex": "#374151"
+        }
+      ],
+      "bbox": [
+        398,
+        381,
+        419,
+        393
+      ]
+    },
+    {
+      "page": 3,
+      "spans": [
+        {
+          "text": "Payment Resp",
+          "rgb": [
+            55,
+            65,
+            81
+          ],
+          "hex": "#374151"
+        }
+      ],
+      "bbox": [
+        461,
+        381,
+        527,
+        393
+      ]
+    },
+    {
+      "page": 3,
+      "spans": [
+        {
+          "text": "Age",
+          "rgb": [
+            55,
+            65,
+            81
+          ],
+          "hex": "#374151"
+        }
+      ],
+      "bbox": [
+        544,
+        381,
+        561,
+        393
+      ]
+    },
+    {
+      "page": 3,
+      "spans": [
+        {
+          "text": "FIRST CENTURY BANK N (Secured)",
+          "rgb": [
+            33,
+            37,
+            41
+          ],
+          "hex": "#212529"
+        }
+      ],
+      "bbox": [
+        56,
+        404,
+        206,
+        416
+      ]
+    },
+    {
+      "page": 3,
+      "spans": [
+        {
+          "text": "$493",
+          "rgb": [
+            33,
+            37,
+            41
+          ],
+          "hex": "#212529"
+        }
+      ],
+      "bbox": [
+        348,
+        404,
+        368,
+        416
+      ]
+    },
+    {
+      "page": 3,
+      "spans": [
+        {
+          "text": "$511",
+          "rgb": [
+            33,
+            37,
+            41
+          ],
+          "hex": "#212529"
+        }
+      ],
+      "bbox": [
+        399,
+        404,
+        419,
+        416
+      ]
+    },
+    {
+      "page": 3,
+      "spans": [
+        {
+          "text": "$25",
+          "rgb": [
+            33,
+            37,
+            41
+          ],
+          "hex": "#212529"
+        }
+      ],
+      "bbox": [
+        483,
+        404,
+        498,
+        416
+      ]
+    },
+    {
+      "page": 3,
+      "spans": [
+        {
+          "text": "I",
+          "rgb": [
+            33,
+            37,
+            41
+          ],
+          "hex": "#212529"
+        }
+      ],
+      "bbox": [
+        524,
+        404,
+        527,
+        416
+      ]
+    },
+    {
+      "page": 3,
+      "spans": [
+        {
+          "text": "2025",
+          "rgb": [
+            33,
+            37,
+            41
+          ],
+          "hex": "#212529"
+        }
+      ],
+      "bbox": [
+        541,
+        404,
+        561,
+        416
+      ]
+    },
+    {
+      "page": 3,
+      "spans": [
+        {
+          "text": "ED FINANCIAL/ESA (Education Loan)",
+          "rgb": [
+            33,
+            37,
+            41
+          ],
+          "hex": "#212529"
+        }
+      ],
+      "bbox": [
+        56,
+        426,
+        210,
+        439
+      ]
+    },
+    {
+      "page": 3,
+      "spans": [
+        {
+          "text": "$3,971",
+          "rgb": [
+            33,
+            37,
+            41
+          ],
+          "hex": "#212529"
+        }
+      ],
+      "bbox": [
+        340,
+        426,
+        368,
+        439
+      ]
+    },
+    {
+      "page": 3,
+      "spans": [
+        {
+          "text": "$3,625",
+          "rgb": [
+            33,
+            37,
+            41
+          ],
+          "hex": "#212529"
+        }
+      ],
+      "bbox": [
+        392,
+        426,
+        419,
+        439
+      ]
+    },
+    {
+      "page": 3,
+      "spans": [
+        {
+          "text": "$0",
+          "rgb": [
+            33,
+            37,
+            41
+          ],
+          "hex": "#212529"
+        }
+      ],
+      "bbox": [
+        488,
+        426,
+        498,
+        439
+      ]
+    },
+    {
+      "page": 3,
+      "spans": [
+        {
+          "text": "I",
+          "rgb": [
+            33,
+            37,
+            41
+          ],
+          "hex": "#212529"
+        }
+      ],
+      "bbox": [
+        524,
+        426,
+        527,
+        439
+      ]
+    },
+    {
+      "page": 3,
+      "spans": [
+        {
+          "text": "2023",
+          "rgb": [
+            33,
+            37,
+            41
+          ],
+          "hex": "#212529"
+        }
+      ],
+      "bbox": [
+        541,
+        426,
+        561,
+        439
+      ]
+    },
+    {
+      "page": 3,
+      "spans": [
+        {
+          "text": "ED FINANCIAL/ESA (Education Loan)",
+          "rgb": [
+            33,
+            37,
+            41
+          ],
+          "hex": "#212529"
+        }
+      ],
+      "bbox": [
+        56,
+        449,
+        210,
+        461
+      ]
+    },
+    {
+      "page": 3,
+      "spans": [
+        {
+          "text": "$2,224",
+          "rgb": [
+            33,
+            37,
+            41
+          ],
+          "hex": "#212529"
+        }
+      ],
+      "bbox": [
+        340,
+        449,
+        368,
+        461
+      ]
+    },
+    {
+      "page": 3,
+      "spans": [
+        {
+          "text": "$2,115",
+          "rgb": [
+            33,
+            37,
+            41
+          ],
+          "hex": "#212529"
+        }
+      ],
+      "bbox": [
+        392,
+        449,
+        419,
+        461
+      ]
+    },
+    {
+      "page": 3,
+      "spans": [
+        {
+          "text": "$0",
+          "rgb": [
+            33,
+            37,
+            41
+          ],
+          "hex": "#212529"
+        }
+      ],
+      "bbox": [
+        488,
+        449,
+        498,
+        461
+      ]
+    },
+    {
+      "page": 3,
+      "spans": [
+        {
+          "text": "I",
+          "rgb": [
+            33,
+            37,
+            41
+          ],
+          "hex": "#212529"
+        }
+      ],
+      "bbox": [
+        524,
+        449,
+        527,
+        461
+      ]
+    },
+    {
+      "page": 3,
+      "spans": [
+        {
+          "text": "2023",
+          "rgb": [
+            33,
+            37,
+            41
+          ],
+          "hex": "#212529"
+        }
+      ],
+      "bbox": [
+        541,
+        449,
+        561,
+        461
+      ]
+    },
+    {
+      "page": 3,
+      "spans": [
+        {
+          "text": "NAVY FEDERAL CREDIT  (Secured)",
+          "rgb": [
+            33,
+            37,
+            41
+          ],
+          "hex": "#212529"
+        }
+      ],
+      "bbox": [
+        56,
+        472,
+        205,
+        484
+      ]
+    },
+    {
+      "page": 3,
+      "spans": [
+        {
+          "text": "$20,627",
+          "rgb": [
+            33,
+            37,
+            41
+          ],
+          "hex": "#212529"
+        }
+      ],
+      "bbox": [
+        335,
+        472,
+        368,
+        484
+      ]
+    },
+    {
+      "page": 3,
+      "spans": [
+        {
+          "text": "$20,627",
+          "rgb": [
+            33,
+            37,
+            41
+          ],
+          "hex": "#212529"
+        }
+      ],
+      "bbox": [
+        387,
+        472,
+        419,
+        484
+      ]
+    },
+    {
+      "page": 3,
+      "spans": [
+        {
+          "text": "$0",
+          "rgb": [
+            33,
+            37,
+            41
+          ],
+          "hex": "#212529"
+        }
+      ],
+      "bbox": [
+        488,
+        472,
+        498,
+        484
+      ]
+    },
+    {
+      "page": 3,
+      "spans": [
+        {
+          "text": "I",
+          "rgb": [
+            33,
+            37,
+            41
+          ],
+          "hex": "#212529"
+        }
+      ],
+      "bbox": [
+        524,
+        472,
+        527,
+        484
+      ]
+    },
+    {
+      "page": 3,
+      "spans": [
+        {
+          "text": "2021",
+          "rgb": [
+            33,
+            37,
+            41
+          ],
+          "hex": "#212529"
+        }
+      ],
+      "bbox": [
+        541,
+        472,
+        561,
+        484
+      ]
+    },
+    {
+      "page": 3,
+      "spans": [
+        {
+          "text": "Totals",
+          "rgb": [
+            33,
+            37,
+            41
+          ],
+          "hex": "#212529"
+        }
+      ],
+      "bbox": [
+        56,
+        494,
+        83,
+        507
+      ]
+    },
+    {
+      "page": 3,
+      "spans": [
+        {
+          "text": "$27,315",
+          "rgb": [
+            33,
+            37,
+            41
+          ],
+          "hex": "#212529"
+        }
+      ],
+      "bbox": [
+        335,
+        494,
+        368,
+        507
+      ]
+    },
+    {
+      "page": 3,
+      "spans": [
+        {
+          "text": "$26,878",
+          "rgb": [
+            33,
+            37,
+            41
+          ],
+          "hex": "#212529"
+        }
+      ],
+      "bbox": [
+        387,
+        494,
+        419,
+        507
+      ]
+    },
+    {
+      "page": 3,
+      "spans": [
+        {
+          "text": "$25",
+          "rgb": [
+            33,
+            37,
+            41
+          ],
+          "hex": "#212529"
+        }
+      ],
+      "bbox": [
+        483,
+        494,
+        498,
+        507
+      ]
+    },
+    {
+      "page": 3,
+      "spans": [
+        {
+          "text": "Miscellaneous Accounts",
+          "rgb": [
+            55,
+            65,
+            81
+          ],
+          "hex": "#374151"
+        }
+      ],
+      "bbox": [
+        56,
+        537,
+        161,
+        549
+      ]
+    },
+    {
+      "page": 3,
+      "spans": [
+        {
+          "text": "Balance",
+          "rgb": [
+            55,
+            65,
+            81
+          ],
+          "hex": "#374151"
+        }
+      ],
+      "bbox": [
+        333,
+        537,
+        368,
+        549
+      ]
+    },
+    {
+      "page": 3,
+      "spans": [
+        {
+          "text": "Limit",
+          "rgb": [
+            55,
+            65,
+            81
+          ],
+          "hex": "#374151"
+        }
+      ],
+      "bbox": [
+        398,
+        537,
+        419,
+        549
+      ]
+    },
+    {
+      "page": 3,
+      "spans": [
+        {
+          "text": "Payment Resp",
+          "rgb": [
+            55,
+            65,
+            81
+          ],
+          "hex": "#374151"
+        }
+      ],
+      "bbox": [
+        461,
+        537,
+        527,
+        549
+      ]
+    },
+    {
+      "page": 3,
+      "spans": [
+        {
+          "text": "Age",
+          "rgb": [
+            55,
+            65,
+            81
+          ],
+          "hex": "#374151"
+        }
+      ],
+      "bbox": [
+        544,
+        537,
+        561,
+        549
+      ]
+    },
+    {
+      "page": 3,
+      "spans": [
+        {
+          "text": "No Miscellaneous Accounts",
+          "rgb": [
+            33,
+            37,
+            41
+          ],
+          "hex": "#212529"
+        }
+      ],
+      "bbox": [
+        56,
+        559,
+        167,
+        572
+      ]
+    }
+  ],
+  "credit_card_open_totals": {
+    "balance": 40971,
+    "Percent": 116,
+    "limit": 35200,
+    "Payment": 0
+  },
+  "credit_card_open_totals_color": null
+}

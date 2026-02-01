@@ -47,7 +47,7 @@ def build_text_only_gt(rec: dict, include_spans: bool = False) -> dict:
         source['credit_score_color'] = cs.get('color')
 
     # copy top-level known fields (include credit_card_open_totals)
-    for k in ('filename','source','credit_score','credit_score_color','age','address','collections_open','collections_closed','public_records','revolving_open_count','revolving_open_total','installment_open_count','installment_open_total','inquiries_last_6_months','monthly_payments','real_estate_open_count','real_estate_open_total','late_pays_2yr','late_pays_gt2yr','red_credit_factors_count','green_credit_factors_count','black_credit_factors_count','credit_freeze','fraud_alert','deceased','credit_card_open_totals'):
+    for k in ('filename','source','credit_score','credit_score_color','age','address','collections_open','collections_closed','public_records','public_records_details','revolving_open_count','revolving_open_total','installment_open_count','installment_open_total','inquiries_lt6mo','monthly_payments','real_estate_open_count','real_estate_open_total','line_of_credit_accounts_open','miscellaneous_accounts_open','late_pays_lt2yr','late_pays_gt2yr','red_credit_factors_count','green_credit_factors_count','black_credit_factors_count','credit_freeze','fraud_alert','deceased','credit_card_open_totals'):
         if k in source:
             out[k] = source[k]
             # when spans were requested, include any attached bbox/page/spans for these top-level fields
@@ -56,6 +56,11 @@ def build_text_only_gt(rec: dict, include_spans: bool = False) -> dict:
                     sk = f"{k}{suff}"
                     if sk in source:
                         out[sk] = source[sk]
+    # Accept legacy aliases and canonicalize to 'inquiries_lt6mo'
+    if 'inquiries_last_6_months' in source and 'inquiries_lt6mo' not in out:
+        out['inquiries_lt6mo'] = source.get('inquiries_last_6_months')
+    if 'inquiries_lt6mo' in source and 'inquiries_lt6mo' not in out:
+        out['inquiries_lt6mo'] = source.get('inquiries_lt6mo')
     # canonicalize credit_factors to minimal shape
     cfs = source.get('credit_factors', [])
     out['credit_factors'] = []
@@ -103,6 +108,28 @@ def build_text_only_gt(rec: dict, include_spans: bool = False) -> dict:
     for sk in source:
         if sk.endswith('_color') and sk not in out:
             out[sk] = source[sk]
+
+    # Preserve nested late_pays dict when present so we don't lose last_2_years counts
+    if 'late_pays' in source and isinstance(source.get('late_pays'), dict):
+        out['late_pays'] = dict(source.get('late_pays'))
+    # Accept legacy flat late-pays keys and canonicalize into a nested 'late_pays' dict
+    if 'late_pays_lt2yr' in source and 'late_pays' not in out:
+        out['late_pays'] = {'last_2_years': source.get('late_pays_lt2yr'), 'last_over_2_years': source.get('late_pays_gt2yr')}
+    # Also keep flat late_pays_* keys for backwards compatibility
+    if 'late_pays_lt2yr' in source:
+        out['late_pays_lt2yr'] = source.get('late_pays_lt2yr')
+    if 'late_pays_gt2yr' in source:
+        out['late_pays_gt2yr'] = source.get('late_pays_gt2yr')
+
+    # Normalize collections nested dict into flat counts if present so GT comparisons are stable
+    if 'collections' in source and 'collections_open' not in out:
+        c = source.get('collections')
+        if isinstance(c, dict):
+            out['collections_open'] = c.get('open')
+            out['collections_closed'] = c.get('closed')
+            # also expose count-named keys used in some GT fixtures
+            out['collections_open_count'] = c.get('open')
+            out['collections_closed_count'] = c.get('closed')
 
     return out
 
@@ -176,8 +203,8 @@ def attach_spans_to_gt(gt_json_path: Path, pdf_path: Path) -> Path:
             ("credit freeze", "credit_freeze", "bool"),
             ("fraud alert", "fraud_alert", "bool"),
             ("deceased", "deceased", "bool"),
-            ("inquires", "inquiries_last_6_months", "int"),
-            ("inquiries", "inquiries_last_6_months", "int"),
+            ("inquires", "inquiries_lt6mo", "int"),
+            ("inquiries", "inquiries_lt6mo", "int"),
         ):
             ln_h = _find_by_text(heading)
             if not ln_h:
@@ -197,10 +224,10 @@ def attach_spans_to_gt(gt_json_path: Path, pdf_path: Path) -> Path:
                         break
                 elif value_type == "int":
                     if txt.isdigit():
-                        gt["inquiries_last_6_months"] = int(txt)
-                        gt["inquiries_last_6_months_bbox"] = nxt.get("bbox")
-                        gt["inquiries_last_6_months_page"] = nxt.get("page")
-                        gt["inquiries_last_6_months_spans"] = nxt.get("spans")
+                        gt["inquiries_lt6mo"] = int(txt)
+                        gt["inquiries_lt6mo_bbox"] = nxt.get("bbox")
+                        gt["inquiries_lt6mo_page"] = nxt.get("page")
+                        gt["inquiries_lt6mo_spans"] = nxt.get("spans")
                         break
 
         # Note: previously we removed some phrase-based heuristics; the above checks are conservative and
