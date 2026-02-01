@@ -303,6 +303,12 @@ def compare_dicts(a, b):
         if not (a_has and b_has):
             na.pop(k, None); nb.pop(k, None)
 
+    # Drop transient bbox/page/spans keys used only for span attachments
+    for d in (na, nb):
+        for k in list(d.keys()):
+            if k.endswith('_bbox') or k.endswith('_page') or k.endswith('_spans'):
+                d.pop(k, None)
+
     # Drop noisy 'all_lines_obj' key from both sides (not part of canonical comparison)
     na.pop('all_lines_obj', None)
     nb.pop('all_lines_obj', None)
