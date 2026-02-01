@@ -143,5 +143,6 @@
     "Percent": 116,
     "limit": 35200,
     "Payment": 0
-  }
+  },
+  "credit_card_open_totals_color": null
 }
