@@ -271,9 +271,5 @@
   ],
   "credit_card_open_totals_color": null,
   "pdf_file": "data/pdf_analysis/user_1254_credit_summary_2025-09-01_095528.pdf",
-  "all_lines_obj": [],
-  "late_pays": {
-    "last_2_years": 13,
-    "last_over_2_years": 4
-  }
+  "all_lines_obj": []
 }

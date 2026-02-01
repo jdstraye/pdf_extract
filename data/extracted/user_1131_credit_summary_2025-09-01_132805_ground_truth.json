@@ -112,9 +112,5 @@
     "Percent": 100,
     "limit": 31300,
     "Payment": 1321
-  },
-  "late_pays": {
-    "last_2_years": 3,
-    "last_over_2_years": 1
   }
 }

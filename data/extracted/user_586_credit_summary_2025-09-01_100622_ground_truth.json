@@ -8465,9 +8465,5 @@
     "limit": 124380,
     "Payment": 1640
   },
-  "credit_card_open_totals_color": null,
-  "late_pays": {
-    "last_2_years": 11,
-    "last_over_2_years": 0
-  }
+  "credit_card_open_totals_color": null
 }
