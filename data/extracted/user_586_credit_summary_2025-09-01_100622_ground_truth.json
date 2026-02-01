@@ -1,4 +1,16 @@
 {
+  "late_pays_lt2yr": 11,
+  "late_pays_gt2yr": 0,
+  "revolving_open_count": 13,
+  "revolving_open_total": 54777,
+  "installment_open_count": 1,
+  "installment_open_total": 8836,
+  "real_estate_open_count": 1,
+  "real_estate_open_total": 212712,
+  "line_of_credit_accounts_open_count": 0,
+  "line_of_credit_accounts_open_total": 0,
+  "miscellaneous_accounts_open_count": 0,
+  "miscellaneous_accounts_open_total": 0,
   "filename": "user_586_credit_summary_2025-09-01_100622.pdf",
   "source": "data/pdf_analysis/user_586_credit_summary_2025-09-01_100622.pdf",
   "credit_score": 572,
@@ -10,26 +22,13 @@
   "collections_open": 1,
   "collections_closed": 0,
   "public_records": 0,
-  "revolving_open_count": 13,
-  "revolving_open_total": 54777,
-  "installment_open_count": 1,
-  "installment_open_total": 8836,
   "monthly_payments": 3663,
-  "real_estate_open_count": 1,
-  "real_estate_open_total": 212712,
-  "late_pays_lt2yr": 11,
-  "late_pays_gt2yr": 0,
   "red_credit_factors_count": 7,
   "green_credit_factors_count": 15,
   "black_credit_factors_count": 1,
   "credit_freeze": 0,
   "fraud_alert": 0,
   "deceased": 0,
-  "credit_card_open_totals": {
-    "balance": 54777,
-    "limit": 124380,
-    "Payment": 1640
-  },
   "inquiries_lt6mo": 0,
   "credit_factors": [
     {
@@ -149,8 +148,9 @@
     }
   ],
   "monthly_payments_color": null,
-  "line_of_credit_accounts_open_count": 0,
-  "line_of_credit_accounts_open_total": 0,
-  "miscellaneous_accounts_open_count": 0,
-  "miscellaneous_accounts_open_total": 0
+  "credit_card_open_totals": {
+    "balance": 54777,
+    "limit": 124380,
+    "Payment": 1640
+  }
 }

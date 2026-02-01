@@ -1,4 +1,16 @@
 {
+  "late_pays_lt2yr": 0,
+  "late_pays_gt2yr": 6,
+  "revolving_open_count": 10,
+  "revolving_open_total": 15836,
+  "installment_open_count": 9,
+  "installment_open_total": 214033,
+  "real_estate_open_count": 0,
+  "real_estate_open_total": 0,
+  "line_of_credit_accounts_open_count": 0,
+  "line_of_credit_accounts_open_total": 0,
+  "miscellaneous_accounts_open_count": 0,
+  "miscellaneous_accounts_open_total": 0,
   "filename": "user_1140_credit_summary_2025-09-01_132703.pdf",
   "source": "data/pdf_analysis/user_1140_credit_summary_2025-09-01_132703.pdf",
   "credit_score": 667,
@@ -11,31 +23,13 @@
   "collections_open": 0,
   "collections_closed": 0,
   "public_records": 1,
-  "public_records_details": {
-    "detail": "Bankruptcy Discharged CH-7 Discharged CH-7",
-    "date": "2016-10-11",
-    "color": "red"
-  },
-  "revolving_open_count": 10,
-  "revolving_open_total": 15836,
-  "installment_open_count": 9,
-  "installment_open_total": 214033,
   "monthly_payments": 2167,
-  "real_estate_open_count": 0,
-  "real_estate_open_total": 0,
-  "late_pays_lt2yr": 0,
-  "late_pays_gt2yr": 6,
   "red_credit_factors_count": 8,
   "green_credit_factors_count": 7,
   "black_credit_factors_count": 7,
   "credit_freeze": 0,
   "fraud_alert": 0,
   "deceased": 0,
-  "credit_card_open_totals": {
-    "balance": 15836,
-    "limit": 23775,
-    "Payment": 476
-  },
   "inquiries_lt6mo": 1,
   "credit_factors": [
     {
@@ -150,9 +144,15 @@
     }
   ],
   "monthly_payments_color": null,
-  "line_of_credit_accounts_open_count": 0,
-  "line_of_credit_accounts_open_total": 0,
-  "miscellaneous_accounts_open_count": 0,
-  "miscellaneous_accounts_open_total": 0,
+  "public_records_details": {
+    "detail": "Bankruptcy Discharged CH-7 Discharged CH-7",
+    "date": "2016-10-11",
+    "color": "red"
+  },
+  "credit_card_open_totals": {
+    "balance": 15836,
+    "limit": 23775,
+    "Payment": 476
+  },
   "credit_card_open_totals_color": null
 }
