@@ -107,5 +107,6 @@
     "balance": 0,
     "limit": 200,
     "Payment": 45
-  }
+  },
+  "credit_card_open_totals_color": null
 }
