@@ -1,155 +1,157 @@
 {
-  "rec": {
-    "late_pays_lt2yr": 0,
-    "late_pays_gt2yr": 6,
-    "revolving_open_count": 10,
-    "revolving_open_total": 15836,
-    "installment_open_count": 9,
-    "installment_open_total": 214033,
-    "real_estate_open_count": 0,
-    "real_estate_open_total": 0,
-    "line_of_credit_accounts_open_count": 0,
-    "line_of_credit_accounts_open_total": 0,
-    "miscellaneous_accounts_open_count": 0,
-    "miscellaneous_accounts_open_total": 0,
-    "filename": "user_1140_credit_summary_2025-09-01_132703.pdf",
-    "source": "data/pdf_analysis/user_1140_credit_summary_2025-09-01_132703.pdf",
-    "credit_score": 667,
-    "credit_score_color": "neutral",
-    "age": 45,
-    "address": [
-      "1203 River Forest Dr, Flint, MI 48532",
-      "3462 Ridgecliffe Dr Apt 2, Flint, MI 48532"
-    ],
-    "collections_open": 0,
-    "collections_closed": 0,
-    "public_records": 1,
-    "monthly_payments": 2167,
-    "red_credit_factors_count": 8,
-    "green_credit_factors_count": 7,
-    "black_credit_factors_count": 7,
-    "credit_freeze": 0,
-    "fraud_alert": 0,
-    "deceased": 0,
-    "inquiries_lt6mo": 1,
-    "credit_factors": [
-      {
-        "factor": "1 Over Limit Accnt",
-        "color": "green",
-        "hex": "#428f4e"
-      },
-      {
-        "factor": "Total Rev Usage > 55%",
-        "color": "green",
-        "hex": "#428f4e"
-      },
-      {
-        "factor": "C-7/11 BK in Last 9yrs",
-        "color": "green",
-        "hex": "#428f4e"
-      },
-      {
-        "factor": "Pay $5961 so Accts < 40%",
-        "color": "red",
-        "hex": "#dc3545"
-      },
-      {
-        "factor": "5 Rev Lates in 2-4 yrs",
-        "color": "red",
-        "hex": "#dc3545"
-      },
-      {
-        "factor": "BK w/ Neg Credit",
-        "color": "red",
-        "hex": "#dc3545"
-      },
-      {
-        "factor": "2 New Accnts Last 60 Days",
-        "color": "red",
-        "hex": "#dc3545"
-      },
-      {
-        "factor": "1 Inq Last 4 Mo",
-        "color": "red",
-        "hex": "#dc3545"
-      },
-      {
-        "factor": "No 7.5k+ Lines",
-        "color": "red",
-        "hex": "#dc3545"
-      },
-      {
-        "factor": "1 RE Late in 2-4 yrs",
-        "color": "red",
-        "hex": "#dc3545"
-      },
-      {
-        "factor": "Less than 5 yrs",
-        "color": "red",
-        "hex": "#dc3545"
-      },
-      {
-        "factor": "7k+ lines",
-        "color": "green",
-        "hex": "#428f4e"
-      },
-      {
-        "factor": "Ok Open Rev Depth",
-        "color": "green",
-        "hex": "#428f4e"
-      },
-      {
-        "factor": "3+ Closed Rev Accnts",
-        "color": "green",
-        "hex": "#428f4e"
-      },
-      {
-        "factor": "Closed Accnts Over 7.5k",
-        "color": "green",
-        "hex": "#428f4e"
-      },
-      {
-        "factor": "8+ Rev Accnts with Balances",
-        "color": "black",
-        "hex": "#212529"
-      },
-      {
-        "factor": "No Open Mortgage",
-        "color": "black",
-        "hex": "#212529"
-      },
-      {
-        "factor": "Seasoned Closed Accounts",
-        "color": "black",
-        "hex": "#212529"
-      },
-      {
-        "factor": "Light Closed Rev Depth",
-        "color": "black",
-        "hex": "#212529"
-      },
-      {
-        "factor": "No Rev Acct Open 10K 2yr",
-        "color": "black",
-        "hex": "#212529"
-      },
-      {
-        "factor": "1 Inq last 2-4 Mo",
-        "color": "black",
-        "hex": "#212529"
-      },
-      {
-        "factor": "1 Total Inq 2-4 Mo",
-        "color": "black",
-        "hex": "#212529"
-      }
-    ],
-    "monthly_payments_color": null,
-    "public_records_details": {
-      "detail": "Bankruptcy Discharged CH-7Discharged CH-7",
-      "date": "2016-10-11",
+  "filename": "user_1140_credit_summary_2025-09-01_132703.pdf",
+  "source": "data/pdf_analysis/user_1140_credit_summary_2025-09-01_132703.pdf",
+  "credit_score": 667,
+  "credit_score_color": "neutral",
+  "age": 45,
+  "address": [
+    "1203 River Forest Dr, Flint, MI 48532",
+    "3462 Ridgecliffe Dr Apt 2, Flint, MI 48532"
+  ],
+  "collections_open": 0,
+  "collections_closed": 0,
+  "public_records": 1,
+  "public_records_details": {
+    "detail": "Bankruptcy Discharged CH-7 Discharged CH-7",
+    "date": "2016-10-11",
+    "color": "red"
+  },
+  "revolving_open_count": 10,
+  "revolving_open_total": 15836,
+  "installment_open_count": 9,
+  "installment_open_total": 214033,
+  "monthly_payments": 2167,
+  "real_estate_open_count": 0,
+  "real_estate_open_total": 0,
+  "late_pays_lt2yr": 0,
+  "late_pays_gt2yr": 6,
+  "red_credit_factors_count": 8,
+  "green_credit_factors_count": 7,
+  "black_credit_factors_count": 7,
+  "credit_freeze": 0,
+  "fraud_alert": 0,
+  "deceased": 0,
+  "credit_card_open_totals": {
+    "balance": 15836,
+    "limit": 23775,
+    "Payment": 476
+  },
+  "inquiries_lt6mo": 1,
+  "credit_factors": [
+    {
+      "factor": "1 Over Limit Accnt",
+      "hex": "#428f4e",
+      "color": "green"
+    },
+    {
+      "factor": "Total Rev Usage > 55%",
+      "hex": "#428f4e",
+      "color": "green"
+    },
+    {
+      "factor": "C-7/11 BK in Last 9yrs",
+      "hex": "#428f4e",
+      "color": "green"
+    },
+    {
+      "factor": "Pay $5961 so Accts < 40%",
+      "hex": "#dc3545",
       "color": "red"
     },
-    "credit_card_open_totals_color": null
-  }
+    {
+      "factor": "5 Rev Lates in 2-4 yrs",
+      "hex": "#dc3545",
+      "color": "red"
+    },
+    {
+      "factor": "BK w/ Neg Credit",
+      "hex": "#dc3545",
+      "color": "red"
+    },
+    {
+      "factor": "2 New Accnts Last 60 Days",
+      "hex": "#dc3545",
+      "color": "red"
+    },
+    {
+      "factor": "1 Inq Last 4 Mo",
+      "hex": "#dc3545",
+      "color": "red"
+    },
+    {
+      "factor": "No 7.5k+ Lines",
+      "hex": "#dc3545",
+      "color": "red"
+    },
+    {
+      "factor": "1 RE Late in 2-4 yrs",
+      "hex": "#dc3545",
+      "color": "red"
+    },
+    {
+      "factor": "Less than 5 yrs",
+      "hex": "#dc3545",
+      "color": "red"
+    },
+    {
+      "factor": "7k+ lines",
+      "hex": "#428f4e",
+      "color": "green"
+    },
+    {
+      "factor": "Ok Open Rev Depth",
+      "hex": "#428f4e",
+      "color": "green"
+    },
+    {
+      "factor": "3+ Closed Rev Accnts",
+      "hex": "#428f4e",
+      "color": "green"
+    },
+    {
+      "factor": "Closed Accnts Over 7.5k",
+      "hex": "#428f4e",
+      "color": "green"
+    },
+    {
+      "factor": "8+ Rev Accnts with Balances",
+      "hex": "#212529",
+      "color": "black"
+    },
+    {
+      "factor": "No Open Mortgage",
+      "hex": "#212529",
+      "color": "black"
+    },
+    {
+      "factor": "Seasoned Closed Accounts",
+      "hex": "#212529",
+      "color": "black"
+    },
+    {
+      "factor": "Light Closed Rev Depth",
+      "hex": "#212529",
+      "color": "black"
+    },
+    {
+      "factor": "No Rev Acct Open 10K 2yr",
+      "hex": "#212529",
+      "color": "black"
+    },
+    {
+      "factor": "1 Inq last 2-4 Mo",
+      "hex": "#212529",
+      "color": "black"
+    },
+    {
+      "factor": "1 Total Inq 2-4 Mo",
+      "hex": "#212529",
+      "color": "black"
+    }
+  ],
+  "monthly_payments_color": null,
+  "line_of_credit_accounts_open_count": 0,
+  "line_of_credit_accounts_open_total": 0,
+  "miscellaneous_accounts_open_count": 0,
+  "miscellaneous_accounts_open_total": 0
 }
