@@ -93,6 +93,10 @@ Purpose: give an AI coding agent the minimal, high-value knowledge to be product
 - After every chat interaction, save the *entire* chat history in a markdown file under the `.github/ai-conversations/` directory.
 - Name the file using the format `conversation_{timestamp}.md`, where `{timestamp}` is  the current date and time in `YYYYMMDD-HHMMSS` format.
 - At the top of the markdown file, include a brief summary of the conversation, highlighting the main topics discussed and any key decisions made. However, do *NOT* just summarize. Include the detailed chat conversation below the summary for full context. I want every detail preserved. It should be an exact record of what was said and what was thought. Leave nothing out.
+  - If internal reasoning is omitted, at least include:
+    - Step-by-step factual summary of actions taken (commands, files changed, commits).
+    - Decision rationale in plain language (goal, constraints, chosen approach).
+    - Repro steps & outputs (commands to run, test results, logs, commit IDs).
 - Ensure that the markdown file is well-formatted, with clear headings and sections for easy navigation.
 - Commit and push the markdown file to the repository to maintain a record of all AI interactions related to the project.
 
