@@ -46,16 +46,171 @@ def build_text_only_gt(rec: dict, include_spans: bool = False) -> dict:
         source['credit_score'] = cs.get('value')
         source['credit_score_color'] = cs.get('color')
 
-    # copy top-level known fields (include credit_card_open_totals)
-    for k in ('filename','source','credit_score','credit_score_color','age','address','collections_open','collections_closed','public_records','public_records_details','revolving_open_count','revolving_open_total','installment_open_count','installment_open_total','inquiries_lt6mo','monthly_payments','real_estate_open_count','real_estate_open_total','line_of_credit_accounts_open','miscellaneous_accounts_open','late_pays_lt2yr','late_pays_gt2yr','red_credit_factors_count','green_credit_factors_count','black_credit_factors_count','credit_freeze','fraud_alert','deceased','credit_card_open_totals'):
-        if k in source:
-            out[k] = source[k]
-            # when spans were requested, include any attached bbox/page/spans for these top-level fields
+    # Build a deterministic canonical order that reflects the "credit report details" layout
+    # while allowing derived flat keys for nested structures. This keeps ordering stable and
+    # consistent with `scripts/reorder_gt_files.py` expectations.
+    TOP_LINE = ['filename','source','age','address','credit_score','credit_score_color','credit_freeze','fraud_alert','deceased']
+    DETAILS = [
+        'age', 'address',
+        'revolving_open_count','revolving_open_total',
+        'real_estate_open_count','real_estate_open_total',
+        'line_of_credit_accounts_open_count','line_of_credit_accounts_open_total',
+        'installment_open_count','installment_open_total',
+        'miscellaneous_accounts_open_count','miscellaneous_accounts_open_total',
+        'public_records','collections_open','collections_closed','inquiries_lt6mo','late_pays_lt2yr','late_pays_gt2yr'
+    ]
+
+    # helper to copy if present in source
+    def _copy_if_present(k):
+        if k in source and k not in out:
+            out[k] = source.get(k)
             if include_spans:
                 for suff in ('_bbox','_page','_spans'):
                     sk = f"{k}{suff}"
                     if sk in source:
                         out[sk] = source[sk]
+
+    # 1) top line fields in canonical order
+    for k in TOP_LINE:
+        _copy_if_present(k)
+
+    # 2) details: preserve the order as presented in the PDF by iterating over source keys
+    # and handling the canonical mappings as we encounter them. Any detail keys not seen in the
+    # source will be appended later to ensure presence for downstream consumers.
+    seen_details = []
+    detail_key_variants = {
+        'age': ['age'],
+        'address': ['address'],
+        'revolving_open_count': ['revolving_open_count','revolving_accounts_open'],
+        'revolving_open_total': ['revolving_open_total','revolving_accounts_open'],
+        'real_estate_open_count': ['real_estate_open_count','real_estate_open'],
+        'real_estate_open_total': ['real_estate_open_total','real_estate_open'],
+        'line_of_credit_accounts_open_count': ['line_of_credit_accounts_open_count','line_of_credit_accounts_open'],
+        'line_of_credit_accounts_open_total': ['line_of_credit_accounts_open_total','line_of_credit_accounts_open'],
+        'installment_open_count': ['installment_open_count','installment_accounts_open'],
+        'installment_open_total': ['installment_open_total','installment_accounts_open'],
+        'miscellaneous_accounts_open_count': ['miscellaneous_accounts_open_count','miscellaneous_accounts_open'],
+        'miscellaneous_accounts_open_total': ['miscellaneous_accounts_open_total','miscellaneous_accounts_open'],
+        'public_records': ['public_records'],
+        'collections_open': ['collections_open','collections'],
+        'collections_closed': ['collections_closed','collections'],
+        'inquiries_lt6mo': ['inquiries_lt6mo'],
+        'late_pays_lt2yr': ['late_pays_lt2yr','late_pays'],
+        'late_pays_gt2yr': ['late_pays_gt2yr','late_pays'],
+    }
+
+    # walk the source keys in order and map them to canonical detail keys
+    for s_k in list(source.keys()):
+        # skip transient keys
+        if s_k in ('pdf_file','all_lines_obj','inquiries_6mo','inquiries_last_6_months'):
+            continue
+        # late_pays nested
+        if s_k == 'late_pays' and isinstance(source.get('late_pays'), dict):
+            lp = source.get('late_pays')
+            out['late_pays_lt2yr'] = lp.get('last_2_years') if lp.get('last_2_years') is not None else 0
+            out['late_pays_gt2yr'] = lp.get('last_over_2_years') if lp.get('last_over_2_years') is not None else 0
+            seen_details.extend(['late_pays_lt2yr','late_pays_gt2yr'])
+            continue
+        # collections nested
+        if s_k == 'collections' and isinstance(source.get('collections'), dict):
+            c = source.get('collections')
+            out['collections_open'] = c.get('open')
+            out['collections_closed'] = c.get('closed')
+            seen_details.extend(['collections_open','collections_closed'])
+            continue
+        # account nested mappings
+        if s_k in ('revolving_accounts_open','installment_accounts_open','real_estate_open','line_of_credit_accounts_open','miscellaneous_accounts_open') and isinstance(source.get(s_k), dict):
+            nd = source.get(s_k)
+            mapping = {
+                'revolving_accounts_open': ('revolving_open_count','revolving_open_total'),
+                'installment_accounts_open': ('installment_open_count','installment_open_total'),
+                'real_estate_open': ('real_estate_open_count','real_estate_open_total'),
+                'line_of_credit_accounts_open': ('line_of_credit_accounts_open_count','line_of_credit_accounts_open_total'),
+                'miscellaneous_accounts_open': ('miscellaneous_accounts_open_count','miscellaneous_accounts_open_total'),
+            }
+            ckey, tkey = mapping[s_k]
+            out[ckey] = nd.get('count')
+            out[tkey] = nd.get('amount')
+            seen_details.extend([ckey,tkey])
+            continue
+        # flat detail keys present in source (e.g., age, address, revolving_open_count)
+        for canon_k, variants in detail_key_variants.items():
+            if s_k in variants and canon_k not in seen_details and canon_k not in out:
+                # handle derived variants where necessary
+                if canon_k in ('late_pays_lt2yr','late_pays_gt2yr'):
+                    # prefer source flat values if present
+                    if canon_k in source:
+                        out[canon_k] = source.get(canon_k)
+                    # else will be filled later with default if missing
+                else:
+                    out[canon_k] = source.get(s_k)
+                seen_details.append(canon_k)
+                break
+
+    # ensure any DETAILS keys not seen are appended (to preserve canonical presence)
+    for k in DETAILS:
+        if k not in out:
+            # attempt to derive late_pays from source if possible
+            if k in ('late_pays_lt2yr','late_pays_gt2yr') and 'late_pays' in source and isinstance(source.get('late_pays'), dict):
+                lp = source.get('late_pays')
+                out['late_pays_lt2yr'] = lp.get('last_2_years') if lp.get('last_2_years') is not None else 0
+                out['late_pays_gt2yr'] = lp.get('last_over_2_years') if lp.get('last_over_2_years') is not None else 0
+                continue
+            _copy_if_present(k)
+
+    # 3) credit_factors if present
+    if 'credit_factors' in source:
+        out['credit_factors'] = []
+        for cf in source.get('credit_factors'):
+            out_cf = {'factor': cf.get('factor')}
+            if 'hex' in cf and isinstance(cf.get('hex'), str) and cf.get('hex'):
+                if not cf.get('hex').startswith('#') and cf.get('hex') in ('red','green','black','neutral','amber'):
+                    out_cf['color'] = cf.get('hex')
+                    out_cf['hex'] = None
+                else:
+                    out_cf['hex'] = cf.get('hex')
+            if 'color' in cf and cf.get('color') is not None:
+                out_cf['color'] = cf.get('color')
+            # derive color from hex or spans if missing
+            if 'color' not in out_cf:
+                try:
+                    from src.scripts.pdf_color_extraction import hex_to_rgb, map_color_to_cat
+                    if out_cf.get('hex'):
+                        rgb = hex_to_rgb(out_cf.get('hex'))
+                        if rgb:
+                            out_cf['color'] = map_color_to_cat(rgb)
+                    elif include_spans and cf.get('spans'):
+                        for s in cf.get('spans'):
+                            if s.get('rgb'):
+                                out_cf['color'] = map_color_to_cat(tuple(s.get('rgb')))
+                                break
+                            if s.get('hex'):
+                                rgb = hex_to_rgb(s.get('hex'))
+                                if rgb:
+                                    out_cf['color'] = map_color_to_cat(rgb)
+                                    break
+                except Exception:
+                    pass
+            for key in ('bbox','page','spans','canonical_key'):
+                if key in cf:
+                    out_cf[key] = cf[key]
+            out['credit_factors'].append(out_cf)
+
+    # 4) finally, append any remaining keys in source that weren't covered above
+    for k in list(source.keys()):
+        if k in ('pdf_file','all_lines_obj','inquiries_6mo','inquiries_last_6_months','collections','revolving_accounts_open','installment_accounts_open','real_estate_open','line_of_credit_accounts_open','miscellaneous_accounts_open','late_pays'):
+            # skip transient/legacy/nested keys; these are represented with flat keys instead
+            continue
+        if k in out:
+            continue
+        if k.endswith(('_bbox','_page','_spans')):
+            continue
+        out[k] = source.get(k)
+        if include_spans:
+            for suff in ('_bbox','_page','_spans'):
+                sk = f"{k}{suff}"
+                if sk in source:
+                    out[sk] = source[sk]
     # Accept legacy aliases and canonicalize to 'inquiries_lt6mo'
     if 'inquiries_last_6_months' in source and 'inquiries_lt6mo' not in out:
         out['inquiries_lt6mo'] = source.get('inquiries_last_6_months')
@@ -109,17 +264,21 @@ def build_text_only_gt(rec: dict, include_spans: bool = False) -> dict:
         if sk.endswith('_color') and sk not in out:
             out[sk] = source[sk]
 
-    # Preserve nested late_pays dict when present so we don't lose last_2_years counts
+    # If nested late_pays dict present, derive flat canonical keys and DO NOT keep nested representation
     if 'late_pays' in source and isinstance(source.get('late_pays'), dict):
-        out['late_pays'] = dict(source.get('late_pays'))
-    # Accept legacy flat late-pays keys and canonicalize into a nested 'late_pays' dict
-    if 'late_pays_lt2yr' in source and 'late_pays' not in out:
-        out['late_pays'] = {'last_2_years': source.get('late_pays_lt2yr'), 'last_over_2_years': source.get('late_pays_gt2yr')}
-    # Also keep flat late_pays_* keys for backwards compatibility
+        lp = source.get('late_pays')
+        out['late_pays_lt2yr'] = lp.get('last_2_years') if lp.get('last_2_years') is not None else 0
+        out['late_pays_gt2yr'] = lp.get('last_over_2_years') if lp.get('last_over_2_years') is not None else 0
+    # Accept legacy flat late-pays keys and prefer flat canonical keys (do NOT construct nested 'late_pays')
     if 'late_pays_lt2yr' in source:
         out['late_pays_lt2yr'] = source.get('late_pays_lt2yr')
     if 'late_pays_gt2yr' in source:
         out['late_pays_gt2yr'] = source.get('late_pays_gt2yr')
+    # Ensure numeric defaults for stability
+    if 'late_pays_lt2yr' not in out:
+        out['late_pays_lt2yr'] = 0
+    if 'late_pays_gt2yr' not in out:
+        out['late_pays_gt2yr'] = 0
 
     # Normalize collections nested dict into flat counts if present so GT comparisons are stable
     if 'collections' in source and 'collections_open' not in out:
@@ -130,6 +289,107 @@ def build_text_only_gt(rec: dict, include_spans: bool = False) -> dict:
             # also expose count-named keys used in some GT fixtures
             out['collections_open_count'] = c.get('open')
             out['collections_closed_count'] = c.get('closed')
+
+    # Flatten nested account structures for line_of_credit and miscellaneous into flat count/total keys
+    account_mappings = [
+        ('line_of_credit_accounts_open', 'line_of_credit_accounts_open_count', 'line_of_credit_accounts_open_total'),
+        ('miscellaneous_accounts_open', 'miscellaneous_accounts_open_count', 'miscellaneous_accounts_open_total'),
+    ]
+    for nkey, ckey, tkey in account_mappings:
+        if nkey in source and isinstance(source.get(nkey), dict):
+            nd = source.get(nkey)
+            out[ckey] = nd.get('count')
+            out[tkey] = nd.get('amount')
+        # If flat keys are present in source, they were already copied above; do NOT emit nested dicts
+        out.pop(nkey, None)
+
+    # Build canonical output following the order in which the PDF presents items
+    # (iterate the source keys and map nested structures into flat keys in-place).
+    ordered_out = {}
+    for k in list(source.keys()):
+        # skip transient/legacy keys
+        if k in ('pdf_file','all_lines_obj','inquiries_6mo','inquiries_last_6_months'):
+            continue
+        # nested late_pays -> flat
+        if k == 'late_pays' and isinstance(source.get('late_pays'), dict):
+            lp = source.get('late_pays')
+            ordered_out['late_pays_lt2yr'] = lp.get('last_2_years') if lp.get('last_2_years') is not None else 0
+            ordered_out['late_pays_gt2yr'] = lp.get('last_over_2_years') if lp.get('last_over_2_years') is not None else 0
+            continue
+        # collections nested -> flat
+        if k == 'collections' and isinstance(source.get('collections'), dict):
+            c = source.get('collections')
+            ordered_out['collections_open'] = c.get('open')
+            ordered_out['collections_closed'] = c.get('closed')
+            continue
+        # nested account categories -> flat count/total
+        if k in ('revolving_accounts_open','installment_accounts_open','real_estate_open','line_of_credit_accounts_open','miscellaneous_accounts_open') and isinstance(source.get(k), dict):
+            nd = source.get(k)
+            mapping = {
+                'revolving_accounts_open': ('revolving_open_count','revolving_open_total'),
+                'installment_accounts_open': ('installment_open_count','installment_open_total'),
+                'real_estate_open': ('real_estate_open_count','real_estate_open_total'),
+                'line_of_credit_accounts_open': ('line_of_credit_accounts_open_count','line_of_credit_accounts_open_total'),
+                'miscellaneous_accounts_open': ('miscellaneous_accounts_open_count','miscellaneous_accounts_open_total'),
+            }
+            ckey, tkey = mapping[k]
+            ordered_out[ckey] = nd.get('count')
+            ordered_out[tkey] = nd.get('amount')
+            continue
+        # regular copy of simple keys
+        if k in source and not k.endswith(('_bbox','_page','_spans')):
+            ordered_out[k] = source.get(k)
+
+    # Ensure flat late_pays keys and numeric defaults are present
+    if 'late_pays_lt2yr' not in ordered_out:
+        ordered_out['late_pays_lt2yr'] = source.get('late_pays_lt2yr') if 'late_pays_lt2yr' in source else 0
+    if 'late_pays_gt2yr' not in ordered_out:
+        ordered_out['late_pays_gt2yr'] = source.get('late_pays_gt2yr') if 'late_pays_gt2yr' in source else 0
+
+    # Append any remaining keys from the source that weren't explicitly handled
+    for k in list(source.keys()):
+        if k in ordered_out:
+            continue
+        if k in ('pdf_file','all_lines_obj','inquiries_6mo','inquiries_last_6_months','collections','revolving_accounts_open','installment_accounts_open','real_estate_open','line_of_credit_accounts_open','miscellaneous_accounts_open','late_pays'):
+            continue
+        if k.endswith(('_bbox','_page','_spans')):
+            continue
+        ordered_out[k] = source.get(k)
+
+    # Finally, copy any top-level color fields that were not set yet
+    for sk in source:
+        if sk.endswith('_color') and sk not in ordered_out:
+            ordered_out[sk] = source[sk]
+
+    # If span inclusion requested, copy *_bbox/_page/_spans keys for the top-level fields we've included
+    if include_spans:
+        for k in list(ordered_out.keys()):
+            for suff in ('_bbox','_page','_spans'):
+                sk = f"{k}{suff}"
+                if sk in source and sk not in ordered_out:
+                    ordered_out[sk] = source[sk]
+
+    # Accept legacy inquiries aliases to ensure inquiries_lt6mo is present in canonical output
+    if 'inquiries_last_6_months' in source and 'inquiries_lt6mo' not in ordered_out:
+        ordered_out['inquiries_lt6mo'] = source.get('inquiries_last_6_months')
+    if 'inquiries_lt6mo' in source and 'inquiries_lt6mo' not in ordered_out:
+        ordered_out['inquiries_lt6mo'] = source.get('inquiries_lt6mo')
+
+    # Re-order to place account counts first (matching canonical expectations across GT files),
+    # followed by late_pays, then the remaining keys in their source order.
+    account_seq = ['revolving_open_count','revolving_open_total','installment_open_count','installment_open_total','real_estate_open_count','real_estate_open_total','line_of_credit_accounts_open_count','line_of_credit_accounts_open_total','miscellaneous_accounts_open_count','miscellaneous_accounts_open_total']
+    final = {}
+    for k in account_seq:
+        if k in ordered_out:
+            final[k] = ordered_out.pop(k)
+    # late pays next
+    for k in ('late_pays_lt2yr','late_pays_gt2yr'):
+        if k in ordered_out:
+            final[k] = ordered_out.pop(k)
+    # append remaining in source order
+    for k, v in ordered_out.items():
+        final[k] = v
+    out = final
 
     return out
 

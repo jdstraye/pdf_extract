@@ -52,13 +52,12 @@ def apply_fixes(fixes: dict):
         bak = p.with_suffix(p.suffix + '.bak')
         bak.write_text(p.read_text(encoding='utf-8'), encoding='utf-8')
         obj = json.loads(p.read_text(encoding='utf-8'))
-        # normalize into nested dict
-        obj['late_pays'] = {
-            'last_2_years': int(latep.get('last_2_years') or 0),
-            'last_over_2_years': int(latep.get('last_over_2_years') or 0),
-        }
-        obj['late_pays_lt2yr'] = obj['late_pays']['last_2_years']
-        obj['late_pays_gt2yr'] = obj['late_pays']['last_over_2_years']
+        # write flat canonical late_pays keys (avoid nested representation)
+        lt = int(latep.get('last_2_years') or 0)
+        gt = int(latep.get('last_over_2_years') or 0)
+        obj.pop('late_pays', None)
+        obj['late_pays_lt2yr'] = lt
+        obj['late_pays_gt2yr'] = gt
         p.write_text(json.dumps(obj, indent=2), encoding='utf-8')
         print('Updated', p)
 
