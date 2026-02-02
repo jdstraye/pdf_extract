@@ -375,20 +375,65 @@ def build_text_only_gt(rec: dict, include_spans: bool = False) -> dict:
     if 'inquiries_lt6mo' in source and 'inquiries_lt6mo' not in ordered_out:
         ordered_out['inquiries_lt6mo'] = source.get('inquiries_lt6mo')
 
-    # Re-order to place account counts first (matching canonical expectations across GT files),
-    # followed by late_pays, then the remaining keys in their source order.
-    account_seq = ['revolving_open_count','revolving_open_total','installment_open_count','installment_open_total','real_estate_open_count','real_estate_open_total','line_of_credit_accounts_open_count','line_of_credit_accounts_open_total','miscellaneous_accounts_open_count','miscellaneous_accounts_open_total']
+    # Re-order final output according to the requested canonical category order.
+    # This enforces the following high-level sequence:
+    # 1) credit_score, 2) payments, 3) credit_freeze, 4) fraud_alert, 5) deceased,
+    # 6) age, 7) address, 8) revolving, 9) real_estate, 10) line_of_credit,
+    # 11) installment, 12) miscellaneous, 13) public_records, 14) collections,
+    # 15) inquiries, 16) late_pays, 17) credit_factors, then any remaining keys.
+
+    # helper to move a key and its companion metadata suffixes from ordered_out -> final
+    def _take_key(k):
+        for suff in ('', '_color', '_bbox', '_page', '_spans'):
+            sk = f"{k}{suff}"
+            if sk in ordered_out:
+                final[sk] = ordered_out.pop(sk)
+
     final = {}
-    for k in account_seq:
-        if k in ordered_out:
-            final[k] = ordered_out.pop(k)
-    # late pays next
-    for k in ('late_pays_lt2yr','late_pays_gt2yr'):
-        if k in ordered_out:
-            final[k] = ordered_out.pop(k)
-    # append remaining in source order
-    for k, v in ordered_out.items():
-        final[k] = v
+
+    # category canonical bases (scan in this order and pull matching keys)
+    categories = [
+        ['credit_score'],
+        ['monthly_payments', 'monthly_payments_color', 'monthly_payments_bbox'],
+        ['credit_freeze'],
+        ['fraud_alert'],
+        ['deceased'],
+        ['age'],
+        ['address'],
+        # revolving: include revolving counts/totals and credit_card_open_totals
+        ['revolving_open_count', 'revolving_open_total', 'credit_card_open_totals'],
+        # real estate
+        ['real_estate_open_count', 'real_estate_open_total', 'real_estate_open'],
+        # line of credit
+        ['line_of_credit_accounts_open_count', 'line_of_credit_accounts_open_total', 'line_of_credit_accounts_open'],
+        # installment
+        ['installment_open_count', 'installment_open_total', 'installment_accounts_open'],
+        # miscellaneous
+        ['miscellaneous_accounts_open_count', 'miscellaneous_accounts_open_total', 'miscellaneous_accounts_open'],
+        # public records
+        ['public_records'],
+        # collections
+        ['collections_open', 'collections_closed', 'collections'],
+        # inquiries
+        ['inquiries_lt6mo', 'inquiries_last_6_months', 'inquiries_6mo'],
+        # late pays
+        ['late_pays_lt2yr', 'late_pays_gt2yr', 'late_pays'],
+        # credit factors
+        ['credit_factors', 'red_credit_factors_count', 'green_credit_factors_count', 'black_credit_factors_count'],
+    ]
+
+    # For each category, scan existing ordered_out keys (preserving source order) and pull those that match
+    for bases in categories:
+        for k in list(ordered_out.keys()):
+            for b in bases:
+                if k == b or k.startswith(b + '_') or b in k:
+                    _take_key(k)
+                    break
+
+    # finally, append any remaining keys in source order
+    for k in list(ordered_out.keys()):
+        final[k] = ordered_out.pop(k)
+
     out = final
 
     return out
