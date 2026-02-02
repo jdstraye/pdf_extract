@@ -80,16 +80,24 @@ def _normalize_aliases(d):
             nd = d.get(nkey, {})
             d[ckey] = nd.get('count') if isinstance(nd, dict) else None
             d[tkey] = nd.get('amount') if isinstance(nd, dict) else None
-        if ckey in d and nkey not in d:
-            d[nkey] = {'count': d.get(ckey), 'amount': d.get(tkey)}
+        # If flat keys are present, drop any nested representation to keep canonical form flat
+        if ckey in d or tkey in d:
+            d.pop(nkey, None)
+        # Do NOT create nested structures when flat keys exist; prefer flat canonical keys only
+        # This prevents producing nested dicts like 'line_of_credit_accounts_open' when flat keys are available
+        # (keeps canonical form flat and stable across GT files)
+
     # Collections nested vs flat
     if 'collections' in d and 'collections_open' not in d:
         c = d.get('collections', {})
         if isinstance(c, dict):
             d['collections_open'] = c.get('open')
             d['collections_closed'] = c.get('closed')
-    if 'collections_open' in d and 'collections' not in d:
-        d['collections'] = {'open': d.get('collections_open'), 'closed': d.get('collections_closed')}
+    # If flat collection keys exist, drop any nested 'collections' representation
+    if 'collections' in d and ('collections_open' in d or 'collections_closed' in d):
+        d.pop('collections', None)
+    # Do NOT create nested 'collections' when flat 'collections_open'/'collections_closed' keys exist
+    # Flat keys are preferred to keep canonical form consistent
     # Compute credit factor counts (derive if omitted) so count fields are consistent
     if 'credit_factors' in d and isinstance(d['credit_factors'], list):
         d['red_credit_factors_count'] = sum(1 for f in d['credit_factors'] if f.get('color') == 'red')
@@ -106,6 +114,9 @@ def _normalize_aliases(d):
         d['source'] = pf
         d['filename'] = pf.split('/')[-1]
         d.pop('pdf_file', None)
+    # Remove transient fields that are not part of canonical GT (e.g., intermediate extractor blobs)
+    if 'all_lines_obj' in d:
+        d.pop('all_lines_obj', None)
     # Late pays: prefer flat 'late_pays_lt2yr' and 'late_pays_gt2yr' as canonical keys
     # If nested 'late_pays' present, derive flat keys from it
     if 'late_pays' in d and isinstance(d['late_pays'], dict):
@@ -200,6 +211,11 @@ def _normalize_aliases(d):
             for item in obj:
                 _remove_transient_keys(item)
     _remove_transient_keys(d)
+
+    # Remove any top-level meta-suffix keys (e.g., 'credit_score_bbox') which are transient
+    for k in list(d.keys()):
+        if k.endswith(('_bbox', '_page', '_spans')):
+            d.pop(k, None)
 
     return d
 
