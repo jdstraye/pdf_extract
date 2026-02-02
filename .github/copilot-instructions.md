@@ -90,9 +90,9 @@ Purpose: give an AI coding agent the minimal, high-value knowledge to be product
 
 ## File and Chat preservation instructions:
 ### Chat history preservation:
-- After every chat interaction, save the entire chat history in a markdown file under the `.github/ai-conversations/` directory.
+- After every chat interaction, save the *entire* chat history in a markdown file under the `.github/ai-conversations/` directory.
 - Name the file using the format `conversation_{timestamp}.md`, where `{timestamp}` is  the current date and time in `YYYYMMDD-HHMMSS` format.
-- At the top of the markdown file, include a brief summary of the conversation, highlighting the main topics discussed and any key decisions made. However, do not just summarize. Include the detailed chat conversation below the summary for full context.
+- At the top of the markdown file, include a brief summary of the conversation, highlighting the main topics discussed and any key decisions made. However, do *NOT* just summarize. Include the detailed chat conversation below the summary for full context. I want every detail preserved. It should be an exact record of what was said and what was thought. Leave nothing out.
 - Ensure that the markdown file is well-formatted, with clear headings and sections for easy navigation.
 - Commit and push the markdown file to the repository to maintain a record of all AI interactions related to the project.
 
